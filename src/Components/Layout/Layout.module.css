@@ -1,0 +1,16 @@
+.container {
+  height: 100vh;
+  position: relative;
+  background: #000;
+  padding: 2rem 112px;
+  background: rgb(0, 0, 0);
+}
+
+.header {
+  height: 80px;
+  position: sticky;
+}
+
+.body {
+  height: calc(100vh - (80px + 2rem));
+}

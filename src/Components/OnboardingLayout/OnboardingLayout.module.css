@@ -1,0 +1,17 @@
+.container {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  padding-bottom: 3rem;
+}
+
+.container > div {
+  flex-basis: 50%;
+}
+
+.container > div:nth-child(2) > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+}

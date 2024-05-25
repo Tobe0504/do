@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.innerContainer > h4 {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 29.05px;
+  text-align: left;
+  color: #f35034;
+}
+
+.innerContainer > h4 > sup {
+  color: #fff;
+  font-size: 16px;
+}
+
+.innerContainer > p {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24.2px;
+  text-align: left;
+  margin: 1rem 0;
+}
+
+.type > i:nth-child(1) {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24.2px;
+  text-align: left;
+  color: #c0c0c0;
+}
+
+.type > ol > li > p:nth-child(1) {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24.2px;
+  text-align: left;
+  margin: 0.2rem 0;
+}
+
+.type > ol > li > p:nth-child(2) {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24.2px;
+  text-align: left;
+  color: #c0c0c0;
+}
+
+.buttonSection {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.buttonSection > button {
+  width: 100px;
+}

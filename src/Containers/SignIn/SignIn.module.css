@@ -1,0 +1,46 @@
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.innerContainer > div:nth-child(1) {
+  display: inline-flex;
+  margin-bottom: 2rem;
+}
+
+.innerContainer > h4 {
+  font-family: Inter;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 36px;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.innerContainer > p {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  text-align: left;
+  margin: 24px 0;
+}
+
+.innerContainer > button {
+  margin-top: 3rem;
+}
+
+.innerContainer > span:last-child {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 28.8px;
+  margin-top: 2rem;
+  display: block;
+}
+
+.innerContainer > span:last-child > a {
+  color: #fff;
+}

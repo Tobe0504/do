@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.container > div {
+  background: #1b1b1b;
+  border: 2px solid #262626;
+}
+
+.logoSection {
+  padding: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
