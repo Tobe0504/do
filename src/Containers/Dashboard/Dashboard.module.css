@@ -1,0 +1,13 @@
+.container > div {
+  margin-bottom: 1rem;
+}
+
+.todos {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.todos > div {
+  flex-basis: 50%;
+}

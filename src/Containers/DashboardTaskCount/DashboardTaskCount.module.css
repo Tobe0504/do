@@ -1,0 +1,22 @@
+.container > h4 {
+  font-family: Inter;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 42px;
+  text-align: left;
+}
+
+.container > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container > div > h4 {
+  font-family: Inter;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 42px;
+  text-align: left;
+  color: #e63e21;
+}

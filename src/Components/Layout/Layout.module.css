@@ -13,4 +13,5 @@
 
 .body {
   height: calc(100vh - (80px + 2rem));
+  padding: 2rem 0;
 }

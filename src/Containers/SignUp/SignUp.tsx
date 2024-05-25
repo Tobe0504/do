@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../Components/Button/Button";
 import Input from "../../Components/Input/Input";
 import OnboardingLayout from "../../Components/OnboardingLayout/OnboardingLayout";
@@ -6,6 +6,8 @@ import Logo from "../Logo/Logo";
 import classes from "../SignIn/SignIn.module.css";
 
 const SignUp = () => {
+  // Router
+  const navigate = useNavigate();
   return (
     <OnboardingLayout>
       <div className={classes.container}>
@@ -27,6 +29,7 @@ const SignUp = () => {
           <Button
             onClick={(e) => {
               e.preventDefault();
+              navigate("/dashboard");
             }}
           >
             Create an account

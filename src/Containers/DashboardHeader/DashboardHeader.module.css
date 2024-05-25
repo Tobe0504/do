@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.container > div {
+  flex-basis: 50%;
+  /* border: 2px solid red; */
+}
+
+.container > div:first-child > h4 {
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 43.57px;
+  text-align: left;
+}
+
+.container > div:first-child > p {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: left;
+}
+
+.container > div:first-child > button {
+  margin: 2rem 0;
+  width: 200px;
+}
+
+.container > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container > div:nth-child(2) {
+  font-family: Inter;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 43.57px;
+  text-align: left;
+  color: #e63e21;
+}
