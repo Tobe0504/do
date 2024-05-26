@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../Components/Button/Button";
 import Card from "../../Components/Card/Card";
 import { getCurrentTime } from "../../HelperFunctions/getTime";
@@ -11,6 +12,9 @@ const DashboardHeader = () => {
     minutes: getCurrentTime().minutes,
     seconds: getCurrentTime().seconds,
   });
+
+  // Router
+  const navigate = useNavigate();
 
   // Effects
   useEffect(() => {
@@ -32,7 +36,11 @@ const DashboardHeader = () => {
       <div>
         <h4>Welcome, doer!</h4>
         <p>Let's get you started on your first set of todos</p>
-        <Button>
+        <Button
+          onClick={() => {
+            navigate("/create");
+          }}
+        >
           <svg
             width="14"
             height="14"

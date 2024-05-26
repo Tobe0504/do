@@ -116,10 +116,43 @@ input:valid {
 
 .tip {
   font-family: Inter;
-  font-size: 13px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
+  color: #e63e21;
+}
+
+.quill {
+  border-radius: 10px;
+}
+
+.quill > div {
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  color: #888888;
+  border: 1px solid #2e2e2e;
+}
+
+.quill > div:nth-child(2) {
+  border-top: 1px solid var(#2e2e2e);
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  border-radius: 12px;
+  animation: appear 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid var(#2e2e2e);
+  color: #888888;
+}
+
+.quill > div:nth-child(2) > div > p {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #fff;
 }
 
 @media screen and (min-width: 767px) and (max-width: 1023px) {
