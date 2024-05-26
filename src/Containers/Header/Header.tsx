@@ -6,7 +6,7 @@ import { AuthUserContext } from "../../Context/AuthUserContext";
 
 const Header = () => {
   // Local
-  const user = localStorage.getItem("do-user");
+  const user = localStorage.getItem("do-user-state");
 
   // context
   const { logout } = useContext(AuthUserContext);
@@ -15,7 +15,7 @@ const Header = () => {
     <div className={classes.container}>
       <Logo />
 
-      {user && (
+      {user === "true" && (
         <span onClick={logout}>
           <LogoutOutlinedIcon />
         </span>
