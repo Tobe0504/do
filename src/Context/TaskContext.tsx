@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import { v4 } from "uuid";
-import { tasks, tasksType } from "../Utilities/tasks";
+import { tasksType } from "../Utilities/tasks";
 
 interface TaskContextValues {
   taskState: tasksType[];
@@ -36,7 +36,26 @@ const TaskContextProvider = ({ children }: TaskContextProviderProps) => {
     endDate: "",
     isComplete: false,
     startDate: "",
+    percentageComplete: 0,
   });
+
+  // Local
+  const storedTodos = localStorage.getItem("do-todos");
+
+  // Effects
+  useEffect(() => {
+    localStorage.setItem("do-todos", JSON.stringify(taskState));
+
+    // eslint-disable-next-line
+  }, [taskState]);
+
+  useEffect(() => {
+    if (storedTodos) {
+      setTaskState(JSON.parse(storedTodos));
+    }
+
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <TaskContext.Provider

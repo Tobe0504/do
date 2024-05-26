@@ -21,6 +21,7 @@ const Home = () => {
       ],
     },
   ];
+  const user = localStorage.getItem("do-user-state");
 
   // Router
   const navigate = useNavigate();
@@ -56,7 +57,7 @@ const Home = () => {
           <div className={classes.buttonSection}>
             <Button
               onClick={() => {
-                navigate("/sign-in");
+                navigate(user ? "/sign-in" : "/sign-up");
               }}
             >
               Start doing

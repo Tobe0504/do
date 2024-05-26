@@ -23,8 +23,6 @@ export const checkDate = (date: string) => {
 const TaskCard = ({ data }: TaskCardProps) => {
   const day = moment(data.dateAdded).format("MMM Do YY").split(" ")[1];
   const month = moment(data.dateAdded).format("MMM Do YY").split(" ")[0];
-  const isActive = moment().diff(data.endDate);
-  console.log(isActive);
 
   //   Navigate
   const navigate = useNavigate();
@@ -69,8 +67,11 @@ const TaskCard = ({ data }: TaskCardProps) => {
           {moment(data.dateAdded).calendar()} -{" "}
           {moment(data.endDate).calendar()}
         </p>
-        <p>{}</p>
       </div>
+      <div
+        className={classes.progressBar}
+        style={{ width: `${data.percentageComplete}%` }}
+      ></div>
     </div>
   );
 };

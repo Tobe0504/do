@@ -49,7 +49,6 @@ const Input = ({
 }: InputProps) => {
   // States
   const [invalid, setInvalid] = useState(false);
-  const [passwordIsViewable, setpasswordisViewable] = useState(false);
 
   return (
     <div className={classes.container} style={style}>
@@ -62,15 +61,7 @@ const Input = ({
       )}
       <span className={classes.input}>
         <input
-          type={
-            type === "password" && passwordIsViewable
-              ? "text"
-              : type === "password" && !passwordIsViewable
-              ? "password"
-              : type
-              ? type
-              : "text"
-          }
+          type={type || "text"}
           name={name}
           placeholder={placeholder}
           id={label}
@@ -120,8 +111,6 @@ export const ReactQuillInput = ({
   state,
 }: InputProps) => {
   // States
-
-  const [text, setText] = useState("");
 
   const handleChange = (html: string) => {
     if (setState) setState(html);

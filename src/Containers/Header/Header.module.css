@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   height: 100%;
+  justify-content: space-between;
 }
 
 .container > div {
@@ -15,4 +16,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.container > span {
+  font-size: 14px;
+  cursor: pointer;
+  color: #e63e21;
 }

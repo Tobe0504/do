@@ -1,13 +1,23 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import Button from "../../Components/Button/Button";
+import Error from "../../Components/Error/Error";
 import Input from "../../Components/Input/Input";
 import OnboardingLayout from "../../Components/OnboardingLayout/OnboardingLayout";
+import { AuthUserContext } from "../../Context/AuthUserContext";
 import Logo from "../Logo/Logo";
 import classes from "./SignIn.module.css";
 
 const SignIn = () => {
-  // Router
-  const navigate = useNavigate();
+  // Context
+  const { loginDetails, setLoginDetails, signIn, error } =
+    useContext(AuthUserContext);
+
+  const inputHander = (e: any) => {
+    setLoginDetails((prevState: any) => {
+      return { ...prevState, [e.target.name]: e.target.value };
+    });
+  };
 
   return (
     <OnboardingLayout>
@@ -19,17 +29,28 @@ const SignIn = () => {
             Today is a new day. It's your day. You shape it. <br />
             Sign in to start your doings
           </p>
-          <Input label="Email" placeholder="Example@email.com" type="email" />
+          {error && <Error type="error">{error}</Error>}
+          <Input
+            label="Email"
+            placeholder="Example@email.com"
+            type="email"
+            name="email"
+            onChange={inputHander}
+            value={loginDetails.email}
+          />
           <Input
             label="Password"
             placeholder="At least 8 characters"
             type="password"
+            name="password"
+            onChange={inputHander}
+            value={loginDetails.password}
           />
 
           <Button
             onClick={(e) => {
               e.preventDefault();
-              navigate("/dashboard");
+              signIn();
             }}
           >
             Sign in

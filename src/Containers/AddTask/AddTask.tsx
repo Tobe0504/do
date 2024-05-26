@@ -1,5 +1,5 @@
 import { Radio } from "@mui/material";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Button from "../../Components/Button/Button";
 import Card from "../../Components/Card/Card";
 import Input, { ReactQuillInput } from "../../Components/Input/Input";
@@ -31,8 +31,6 @@ const AddTask = () => {
   const [subTasks, setSubTasks] = useState<any>([]);
   const [subTaskIsActive, setSubTaskIsActive] = useState(false);
 
-  console.log(newtaskState, "Hmm");
-
   //   Utils
   const setTaskIsActive = (index: number) => {
     const subTaskCopy = subTasks.map((data: any, i: number) => {
@@ -42,6 +40,7 @@ const AddTask = () => {
         return { ...data };
       }
     });
+
     setSubTasks(subTaskCopy);
   };
 
@@ -71,7 +70,27 @@ const AddTask = () => {
         return { ...prevState, subTasks };
       });
     }
+
+    // eslint-disable-next-line
   }, [description, subTasks]);
+
+  useEffect(() => {
+    if (subTasks?.length) {
+      const activeLength = subTasks.filter((data: any) => {
+        return data.isComplete;
+      }).length;
+
+      setNewTaskState((prevState) => {
+        return {
+          ...prevState,
+          percentageComplete:
+            (activeLength / (newtaskState?.subTasks?.length as number)) * 100,
+        };
+      });
+    }
+
+    // eslint-disable-next-line
+  }, [subTasks]);
 
   return (
     <Layout>
@@ -187,6 +206,7 @@ const AddTask = () => {
                 endDate: "",
                 isComplete: false,
                 startDate: "",
+                percentageComplete: 0,
               });
               setDescription("");
               setSubTasks([]);

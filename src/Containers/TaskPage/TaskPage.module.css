@@ -1,3 +1,27 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 29.05px;
+  text-align: left;
+  color: #c0c0c0;
+  margin-bottom: 2rem;
+}
+
+.header > a {
+  margin-left: auto;
+  display: block;
+  color: #fff;
+}
+
 .task {
   padding: 0.75rem;
   border: 1px solid var(--ds-gray-400, #2e2e2e);
@@ -53,11 +77,6 @@
   line-height: 24.2px;
   text-align: left;
   color: #ffffff;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow-y: hidden;
 }
 
 .upperSection > div:nth-child(2) > span {
@@ -67,11 +86,6 @@
   line-height: 24.2px;
   text-align: left;
   color: #c0c0c0;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow-y: hidden;
 }
 
 .upperSection > div:nth-child(3) {
@@ -103,15 +117,6 @@
   text-align: center;
 }
 
-.progressBar {
-  height: 4px;
-  background-color: #e63e21;
-  border-radius: 4px;
-  transition: all 0.3s ease-in-out;
-  margin-top: 0.5rem;
-  animation: width 0.4s ease-in-out;
-}
-
 @keyframes blinker {
   0% {
     opacity: 0.4;
@@ -123,15 +128,5 @@
 
   100% {
     opacity: 0.4;
-  }
-}
-
-@keyframes width {
-  0% {
-    width: 0%;
-  }
-
-  100% {
-    min-width: 0%;
   }
 }

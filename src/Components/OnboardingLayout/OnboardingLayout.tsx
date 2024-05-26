@@ -12,7 +12,7 @@ const OnboardingLayout = ({ children }: OnboardingLayoutProps) => {
       <div className={classes.container}>
         <div>{children}</div>
         <div>
-          <img src={loginImage} alt="Login Image" />
+          <img src={loginImage} alt="Login" />
         </div>
       </div>
     </Layout>

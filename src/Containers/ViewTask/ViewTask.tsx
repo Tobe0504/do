@@ -1,11 +1,10 @@
 import { useContext } from "react";
 import { useNavigate, useParams } from "react-router";
 import Layout from "../../Components/Layout/Layout";
-import { checkDate } from "../../Components/TaskCard/TaskCard";
 import { TaskContext } from "../../Context/TaskContext";
 import { tasksType } from "../../Utilities/tasks";
-import TimerOutlinedIcon from "@mui/icons-material/TimerOutlined";
-import Input, { ReactQuillInput } from "../../Components/Input/Input";
+
+import Input from "../../Components/Input/Input";
 import { Radio } from "@mui/material";
 import Button from "../../Components/Button/Button";
 import Card from "../../Components/Card/Card";
@@ -24,7 +23,6 @@ const ViewTask = () => {
     return task.id === id;
   });
 
-  console.log(activeTask);
   return (
     <Layout>
       <Card styleName={classes.container}>

@@ -22,7 +22,7 @@ const DashboardTodos = () => {
           <circle cx="5" cy="4.51221" r="4.5" fill="#C0C0C0" />
         </svg>
         <h4>Activity</h4>
-        {taskState.length > 2 && <Link to="/">View all</Link>}
+        {taskState.length > 2 && <Link to="/todos">View all</Link>}
       </div>
 
       <div className={classes.taskList}>
