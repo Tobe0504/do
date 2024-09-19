@@ -7,9 +7,9 @@ import { tasksType } from "../../Utilities/tasks";
 import Input from "../../Components/Input/Input";
 import { Radio } from "@mui/material";
 import Button from "../../Components/Button/Button";
-import Card from "../../Components/Card/Card";
 import classes from "../AddTask/AddTask.module.css";
 import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
+import task from "../../Assets/viewTask.jpeg";
 
 const ViewTask = () => {
   // Context
@@ -25,10 +25,10 @@ const ViewTask = () => {
 
   return (
     <Layout>
-      <Card styleName={classes.container}>
-        <h4> {activeTask?.title}</h4>
+      <div className={classes.container}>
+        <div className={classes.innerContainer}>
+          <h4> {activeTask?.title}</h4>
 
-        <div>
           <Input
             label="Title"
             name="title"
@@ -84,17 +84,22 @@ const ViewTask = () => {
               readOnly
             />
           </div>
-
-          <Button
-            onClick={() => {
-              navigate(`/edit/${activeTask?.id}`);
-            }}
-          >
-            <CreateOutlinedIcon />
-            <span>Edit "{activeTask?.title}"</span>
-          </Button>
+          <div className={classes.buttonSection}>
+            <Button
+              onClick={() => {
+                navigate(`/edit/${activeTask?.id}`);
+              }}
+            >
+              <CreateOutlinedIcon />
+              <span>Edit "{activeTask?.title}"</span>
+            </Button>
+          </div>
         </div>
-      </Card>
+
+        <div>
+          <img src={task} alt="Add task" />
+        </div>
+      </div>
     </Layout>
   );
 };

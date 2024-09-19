@@ -1,7 +1,6 @@
 import { Radio } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import Button from "../../Components/Button/Button";
-import Card from "../../Components/Card/Card";
 import Input, { ReactQuillInput } from "../../Components/Input/Input";
 import Layout from "../../Components/Layout/Layout";
 import { TaskContext } from "../../Context/TaskContext";
@@ -10,6 +9,7 @@ import classes from "../AddTask/AddTask.module.css";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import { v4 } from "uuid";
 import { useNavigate, useParams } from "react-router";
+import task from "../../Assets/editTask.jpeg";
 
 const EditTask = () => {
   // Context
@@ -119,10 +119,10 @@ const EditTask = () => {
 
   return (
     <Layout>
-      <Card styleName={classes.container}>
-        <h4>Edit "{newtaskState.title}"</h4>
+      <div className={classes.container}>
+        <form className={classes.innerContainer}>
+          <h4>Edit "{newtaskState.title}"</h4>
 
-        <form>
           <Input
             label="Title"
             placeholder="Eg. wash dishes..."
@@ -249,7 +249,11 @@ const EditTask = () => {
             Submit
           </Button>
         </form>
-      </Card>
+
+        <div>
+          <img src={task} alt="View task" />
+        </div>
+      </div>
     </Layout>
   );
 };

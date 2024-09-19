@@ -31,10 +31,15 @@ const DashboardHeader = () => {
       clearInterval(interval);
     };
   });
+
+  // Local
+  const userString = localStorage.getItem("do-user");
+  const user = JSON.parse(userString as string);
+
   return (
     <Card styleName={classes.container}>
       <div>
-        <h4>Welcome, doer!</h4>
+        <h4>Welcome, {user?.firstname || "doer!"}</h4>
         <p>Let's get you started on your first set of todos</p>
         <Button
           onClick={() => {

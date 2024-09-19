@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
 import AddTask from "./Containers/AddTask/AddTask";
+import ConfirmUssr from "./Containers/ConfirmUssr/ConfirmUssr";
 import Dashboard from "./Containers/Dashboard/Dashboard";
 import EditTask from "./Containers/EditTask/EditTask";
 import Home from "./Containers/Home/Home";
@@ -15,6 +16,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/sign-up" element={<SignUp />} />
+      <Route path="/confirm" element={<ConfirmUssr />} />
 
       <Route element={<RequireAuth />}>
         <Route path="/dashboard" element={<Dashboard />} />

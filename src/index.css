@@ -29,3 +29,41 @@ h5,
 h6 {
   margin: 0;
 }
+
+.quill {
+  border: none;
+  color: #888888 !important;
+}
+
+.ql-container.ql-snow {
+  border: 0px solid transparent !important;
+  color: #888888 !important;
+}
+
+.ql-toolbar.ql-snow {
+  border-radius: 12px;
+  padding: 0px;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  border: 1px solid var(--ds-gray-400, #2e2e2e) !important;
+  color: #888888 !important;
+}
+
+.ql-editor {
+  display: block;
+  width: 100%;
+  padding: 18px 15px;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+  margin: 5px 0;
+  border-radius: 12px;
+  animation: appear 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid var(--ds-gray-400, #2e2e2e);
+  color: #888888 !important;
+}

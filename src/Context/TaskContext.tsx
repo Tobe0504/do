@@ -11,6 +11,8 @@ import { tasksType } from "../Utilities/tasks";
 interface TaskContextValues {
   taskState: tasksType[];
   setTaskState: Dispatch<SetStateAction<tasksType[]>>;
+  recycleState: tasksType[];
+  setRecycleState: Dispatch<SetStateAction<tasksType[]>>;
   newtaskState: tasksType;
   setNewTaskState: Dispatch<SetStateAction<tasksType>>;
 }
@@ -27,6 +29,7 @@ const TaskContextProvider = ({ children }: TaskContextProviderProps) => {
 
   // States
   const [taskState, setTaskState] = useState<tasksType[]>([]);
+  const [recycleState, setRecycleState] = useState<tasksType[]>([]);
   const [newtaskState, setNewTaskState] = useState<tasksType>({
     id: v4(),
     title: "",
@@ -45,9 +48,10 @@ const TaskContextProvider = ({ children }: TaskContextProviderProps) => {
   // Effects
   useEffect(() => {
     localStorage.setItem("do-todos", JSON.stringify(taskState));
+    localStorage.setItem("do-recycle", JSON.stringify(recycleState));
 
     // eslint-disable-next-line
-  }, [taskState]);
+  }, [taskState, recycleState]);
 
   useEffect(() => {
     if (storedTodos) {
@@ -59,7 +63,14 @@ const TaskContextProvider = ({ children }: TaskContextProviderProps) => {
 
   return (
     <TaskContext.Provider
-      value={{ taskState, setTaskState, newtaskState, setNewTaskState }}
+      value={{
+        taskState,
+        setTaskState,
+        newtaskState,
+        setNewTaskState,
+        recycleState,
+        setRecycleState,
+      }}
     >
       {children}
     </TaskContext.Provider>

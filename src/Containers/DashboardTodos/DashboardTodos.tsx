@@ -1,13 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "../../Components/Card/Card";
 import TaskCard from "../../Components/TaskCard/TaskCard";
 import { TaskContext } from "../../Context/TaskContext";
+import {
+  deleteTask,
+  restoreDeletedTask,
+} from "../../HelperFunctions/deleteTask";
+import { tasksType } from "../../Utilities/tasks";
 import classes from "./DashboardTodos.module.css";
 
 const DashboardTodos = () => {
   // Context
-  const { taskState } = useContext(TaskContext);
+  const { taskState, recycleState, setTaskState, setRecycleState } =
+    useContext(TaskContext);
+
+  // States
+  const [showRecycled, setShowRecycled] = useState(false);
 
   return (
     <Card styleName={classes.container}>
@@ -31,13 +40,47 @@ const DashboardTodos = () => {
         ) : (
           taskState?.slice(0, 2)?.map((data, i) => {
             return (
-              <React.Fragment>
-                <TaskCard data={data} />
+              <React.Fragment key={i}>
+                <TaskCard
+                  data={data}
+                  onDbClick={() => {
+                    deleteTask(
+                      taskState,
+                      String(data.id),
+                      setTaskState,
+                      recycleState,
+                      setRecycleState
+                    );
+
+                    setShowRecycled(true);
+                  }}
+                />
               </React.Fragment>
             );
           })
         )}
       </div>
+
+      {recycleState.length > 0 && showRecycled && (
+        <div className={classes.restore}>
+          A task was recently deleted. Do you want to{" "}
+          <span
+            onClick={() => {
+              // Local storage
+              const recycle = localStorage.getItem("do-recycle");
+
+              const parsedRecycled = JSON.parse(
+                recycle as string
+              ) as tasksType[];
+
+              restoreDeletedTask(parsedRecycled[0], setTaskState);
+              setShowRecycled(false);
+            }}
+          >
+            restore task?
+          </span>
+        </div>
+      )}
     </Card>
   );
 };

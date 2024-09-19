@@ -8,14 +8,15 @@ const DashboardTaskCount = () => {
   const { taskState } = useContext(TaskContext);
 
   const activetasks = taskState.filter((data) => {
-    return !data.isComplete;
+    return data.percentageComplete < 100;
   });
+
   return (
     <Card styleName={classes.container}>
       <h4>Active Projects</h4>
 
       <div>
-        <h4>{String(activetasks.length).padStart(2, "0")}</h4>
+        <h4>{String(activetasks.length)?.padStart(2, "0")}</h4>
         <svg
           width="151"
           height="151"

@@ -6,18 +6,22 @@ interface AuthUserContextValues {
     firstname: string;
     email: string;
     password: string;
+    lastname: string;
   };
   setLoginDetails: Dispatch<
     SetStateAction<{
       firstname: string;
       email: string;
       password: string;
+      lastname: string;
     }>
   >;
   signIn: () => void;
   signUp: () => void;
   logout: () => void;
   error: string;
+  otp: string;
+  setOtp: Dispatch<SetStateAction<string>>;
 }
 
 interface AuthUserContextProviderProps {
@@ -32,10 +36,13 @@ const AuthUserContextProvider = ({
   // States
   const [loginDetails, setLoginDetails] = useState({
     firstname: "",
+    lastname: "",
     email: "",
     password: "",
   });
   const [error, setError] = useState("");
+
+  const [otp, setOtp] = useState("ise-task-user-email");
 
   //   Router
   const navigate = useNavigate();
@@ -48,13 +55,12 @@ const AuthUserContextProvider = ({
     navigate("/dashboard");
   };
 
-  //   Utils
   const signIn = () => {
     setError("");
     const doUser = localStorage.getItem("do-user");
     if (
-      loginDetails.email !== JSON.parse(doUser as string).email ||
-      loginDetails.password !== JSON.parse(doUser as string).password
+      loginDetails?.email !== JSON.parse(doUser as string)?.email ||
+      loginDetails?.password !== JSON.parse(doUser as string)?.password
     ) {
       setError("Invalid login credentials");
       return;
@@ -78,6 +84,8 @@ const AuthUserContextProvider = ({
         signUp,
         logout,
         error,
+        otp,
+        setOtp,
       }}
     >
       {children}

@@ -1,7 +1,6 @@
 import { Radio } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import Button from "../../Components/Button/Button";
-import Card from "../../Components/Card/Card";
 import Input, { ReactQuillInput } from "../../Components/Input/Input";
 import Layout from "../../Components/Layout/Layout";
 import { TaskContext } from "../../Context/TaskContext";
@@ -9,11 +8,16 @@ import { tasksType } from "../../Utilities/tasks";
 import classes from "./AddTask.module.css";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import { v4 } from "uuid";
+import { useNavigate } from "react-router-dom";
+import task from "../../Assets/addTodo.jpeg";
 
 const AddTask = () => {
   // Context
   const { newtaskState, setNewTaskState, setTaskState } =
     useContext(TaskContext);
+
+  // Router
+  const navigate = useNavigate();
 
   // Utils
   const inputHander = (e: any) => {
@@ -94,10 +98,12 @@ const AddTask = () => {
 
   return (
     <Layout>
-      <Card styleName={classes.container}>
-        <h4>Create a todo</h4>
-
-        <form>
+      <div className={classes.container}>
+        <form
+          className={classes.innerContainer}
+          onSubmit={(e) => e.preventDefault()}
+        >
+          <h4>Create a todo</h4>
           <Input
             label="Title"
             placeholder="Eg. wash dishes..."
@@ -107,7 +113,6 @@ const AddTask = () => {
           />
           <ReactQuillInput
             label="Description"
-            placeholder="Eg. wash dishes..."
             setState={setDescription}
             state={description}
           />
@@ -192,37 +197,43 @@ const AddTask = () => {
               min={"31-05-2024"}
             />
           </div>
-
-          <Button
-            onClick={(e) => {
-              e.preventDefault();
-              submitTodo();
-              setNewTaskState({
-                id: v4(),
-                title: "",
-                description: "",
-                subTasks: [],
-                dateAdded: date,
-                endDate: "",
-                isComplete: false,
-                startDate: "",
-                percentageComplete: 0,
-              });
-              setDescription("");
-              setSubTasks([]);
-            }}
-            disabled={
-              !newtaskState.title ||
-              !newtaskState.description ||
-              !newtaskState.startDate ||
-              !newtaskState.endDate ||
-              subTaskIsActive
-            }
-          >
-            Add todo
-          </Button>
+          <div className={classes.buttonSection}>
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                submitTodo();
+                setNewTaskState({
+                  id: v4(),
+                  title: "",
+                  description: "",
+                  subTasks: [],
+                  dateAdded: date,
+                  endDate: "",
+                  isComplete: false,
+                  startDate: "",
+                  percentageComplete: 0,
+                });
+                setDescription("");
+                setSubTasks([]);
+                navigate("/dashboard");
+              }}
+              disabled={
+                !newtaskState.title ||
+                !newtaskState.description ||
+                !newtaskState.startDate ||
+                !newtaskState.endDate ||
+                subTaskIsActive
+              }
+            >
+              Add todo
+            </Button>
+          </div>
         </form>
-      </Card>
+
+        <div>
+          <img src={task} alt="Add task" />
+        </div>
+      </div>
     </Layout>
   );
 };

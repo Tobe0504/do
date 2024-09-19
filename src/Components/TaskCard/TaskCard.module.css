@@ -4,6 +4,7 @@
   background: var(--ds-background-100, #0a0a0a);
   border-radius: 12px;
   margin-bottom: 0.5rem;
+  cursor: pointer;
 }
 
 .upperSection {
@@ -23,6 +24,12 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  animation: appear 0.3s ease-in-out;
+}
+
+.upperSection > div:nth-child(1) > span > svg {
+  color: #e63e21;
+  animation: appear 0.3s ease-in-out;
 }
 
 .upperSection > div:nth-child(1) > h4 {
@@ -31,6 +38,7 @@
   font-weight: 600;
   line-height: 24.2px;
   color: #ffffff;
+  animation: appear 0.3s ease-in-out;
 }
 
 .upperSection > div:nth-child(1) > span {
@@ -40,6 +48,7 @@
   line-height: 24.2px;
   text-align: left;
   color: #c0c0c0;
+  animation: appear 0.3s ease-in-out;
 }
 
 .upperSection > div:nth-child(2) {
@@ -110,6 +119,11 @@
   transition: all 0.3s ease-in-out;
   margin-top: 0.5rem;
   animation: width 0.4s ease-in-out;
+  flex: 1;
+}
+
+.disabled {
+  color: #c0c0c0;
 }
 
 @keyframes blinker {
@@ -133,5 +147,15 @@
 
   100% {
     min-width: 0%;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

@@ -2,9 +2,12 @@ import { tasksType } from "../../Utilities/tasks";
 import classes from "./TaskCard.module.css";
 import moment from "moment";
 import { useNavigate } from "react-router";
+import DeleteOutlineOutlined from "@mui/icons-material/DeleteOutlineOutlined";
+import { useEffect, useRef, useState } from "react";
 
 interface TaskCardProps {
   data: tasksType;
+  onDbClick?: () => void;
 }
 
 export const checkDate = (date: string) => {
@@ -20,12 +23,32 @@ export const checkDate = (date: string) => {
   }
 };
 
-const TaskCard = ({ data }: TaskCardProps) => {
+const TaskCard = ({ data, onDbClick }: TaskCardProps) => {
   const day = moment(data.dateAdded).format("MMM Do YY").split(" ")[1];
   const month = moment(data.dateAdded).format("MMM Do YY").split(" ")[0];
 
   //   Navigate
   const navigate = useNavigate();
+
+  // States
+  const [isDelete, setIsDelete] = useState(false);
+
+  // ref
+  const date = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const removeDropdownHandler = (e: any) => {
+      if (date?.current && !date?.current?.contains(e.target)) {
+        setIsDelete(false);
+      } else {
+      }
+    };
+    document.addEventListener("mousedown", removeDropdownHandler);
+
+    return () => {
+      document.removeEventListener("mousedown", removeDropdownHandler);
+    };
+  }, []);
 
   return (
     <div
@@ -42,9 +65,24 @@ const TaskCard = ({ data }: TaskCardProps) => {
       }}
     >
       <div className={classes.upperSection}>
-        <div className={classes.date}>
-          <h4>{day}</h4>
-          <span>{month}</span>
+        <div
+          className={classes.date}
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsDelete(!isDelete);
+          }}
+          ref={date}
+        >
+          {!isDelete ? (
+            <>
+              <h4>{day}</h4>
+              <span>{month}</span>{" "}
+            </>
+          ) : (
+            <span onClick={onDbClick}>
+              <DeleteOutlineOutlined />
+            </span>
+          )}
         </div>
 
         <div className={classes.date}>
@@ -56,6 +94,8 @@ const TaskCard = ({ data }: TaskCardProps) => {
           style={
             checkDate(data.endDate) === "past"
               ? { background: "#c0c0c0", animation: "none" }
+              : data.percentageComplete === 100
+              ? { background: "green", animation: "none" }
               : {
                   background: "#E63E21",
                 }

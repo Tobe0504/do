@@ -1,9 +1,62 @@
 .container {
-  max-width: 800px;
-  margin: auto;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 90px;
 }
 
-.container > h4 {
+.innerContainer {
+  margin-top: 2rem;
+}
+
+.innerContainer > h4 {
+  font-family: Inter;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 36px;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.innerContainer > p {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  text-align: left;
+  margin: 24px 0;
+}
+
+.innerContainer > button {
+  margin-top: 3rem;
+}
+
+.container > form:nth-child(1),
+.container > div:nth-child(1) {
+  flex-basis: 50%;
+}
+
+.container > div:nth-child(2) > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+.container > div:nth-child(2) {
+  flex-basis: 50%;
+  height: 80vh;
+}
+
+.container > div:nth-child(2) > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+.container > form > h4 {
   font-family: Inter;
   font-size: 24px;
   font-weight: 600;
@@ -66,4 +119,16 @@
   font-weight: 400;
   line-height: 16px;
   text-align: left;
+}
+
+.buttonSection {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 2rem;
+}
+
+.buttonSection > button {
+  min-width: 200px;
+  width: fit-content;
 }

@@ -28,12 +28,21 @@ const SignUp = () => {
             Sign up to start your doings
           </p>
           <Input
-            label="Full name"
-            placeholder="Doer"
+            label="First name"
+            placeholder="John"
             name="firstname"
             onChange={inputHander}
             value={loginDetails.firstname}
           />
+
+          <Input
+            label="Last name"
+            placeholder="Doe"
+            name="lastname"
+            onChange={inputHander}
+            value={loginDetails.lastname}
+          />
+
           <Input
             label="Email"
             placeholder="example@email.com"
@@ -56,6 +65,12 @@ const SignUp = () => {
               e.preventDefault();
               signUp();
             }}
+            disabled={
+              !loginDetails.email ||
+              !loginDetails.firstname ||
+              !loginDetails.lastname ||
+              !loginDetails.password
+            }
           >
             Create an account
           </Button>

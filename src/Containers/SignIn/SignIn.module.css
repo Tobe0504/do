@@ -41,6 +41,8 @@
   display: block;
 }
 
-.innerContainer > span:last-child > a {
+.innerContainer > span:last-child > a,
+.innerContainer > span:last-child > span {
   color: #fff;
+  text-decoration: underline;
 }

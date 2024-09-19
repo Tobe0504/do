@@ -112,6 +112,21 @@
   text-align: center;
 }
 
+.restore {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24.2px;
+  text-align: left;
+  color: #c0c0c0;
+  margin-top: 1rem;
+}
+
+.restore > span {
+  color: #e63e21;
+  cursor: pointer;
+}
+
 @keyframes blinker {
   0% {
     opacity: 0.4;

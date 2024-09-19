@@ -24,7 +24,7 @@ const SignIn = () => {
       <div className={classes.container}>
         <form className={classes.innerContainer}>
           <Logo />
-          <h4>Welcome Back 👋</h4>
+          <h4>Welcome Back 😼</h4>
           <p>
             Today is a new day. It's your day. You shape it. <br />
             Sign in to start your doings
@@ -52,6 +52,7 @@ const SignIn = () => {
               e.preventDefault();
               signIn();
             }}
+            disabled={!loginDetails.email || !loginDetails.password}
           >
             Sign in
           </Button>
