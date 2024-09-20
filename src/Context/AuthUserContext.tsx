@@ -1,5 +1,9 @@
 import { createContext, Dispatch, SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  getLocalStorage,
+  setLocalStorage,
+} from "../HelperFunctions/decryptData";
 
 interface AuthUserContextValues {
   loginDetails: {
@@ -49,15 +53,15 @@ const AuthUserContextProvider = ({
 
   //   Utils
   const signUp = () => {
-    localStorage.setItem("do-user", JSON.stringify(loginDetails));
-    localStorage.setItem("do-user-state", "true");
+    setLocalStorage(loginDetails, "do-user", "user");
+    setLocalStorage("true", "do-user-state", "userState");
 
     navigate("/dashboard");
   };
 
   const signIn = () => {
     setError("");
-    const doUser = localStorage.getItem("do-user");
+    const doUser = getLocalStorage("do-user", "user");
     if (
       loginDetails?.email !== JSON.parse(doUser as string)?.email ||
       loginDetails?.password !== JSON.parse(doUser as string)?.password
@@ -65,14 +69,14 @@ const AuthUserContextProvider = ({
       setError("Invalid login credentials");
       return;
     } else {
-      localStorage.setItem("do-user-state", "true");
+      setLocalStorage("true", "do-user-state", "userState");
       navigate("/dashboard");
     }
   };
 
   const logout = () => {
     navigate("/");
-    localStorage.setItem("do-user-state", "false");
+    setLocalStorage("false", "do-user-state", "userState");
   };
 
   return (

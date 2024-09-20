@@ -27,6 +27,13 @@ const DashboardActivity = () => {
     };
   }, []);
 
+  const filteredTasks = taskState?.filter((data) => {
+    return (
+      checkDate(data.startDate) !== "future" &&
+      checkDate(data?.endDate) !== "past"
+    );
+  });
+
   return (
     <Card styleName={classes.container}>
       <div className={classes.header}>
@@ -42,14 +49,8 @@ const DashboardActivity = () => {
         <h4>Activity</h4>
       </div>
 
-      {taskState
-        ?.filter((data) => {
-          return (
-            checkDate(data.startDate) !== "future" &&
-            checkDate(data?.endDate) !== "past"
-          );
-        })
-        ?.map((task, i) => {
+      {filteredTasks?.length > 0 ? (
+        filteredTasks?.map((task, i) => {
           const timeRemaining = moment(task.endDate).diff(task.startDate);
           const startMoment = moment(task?.startDate);
           const endMoment = moment(task?.endDate);
@@ -99,7 +100,10 @@ const DashboardActivity = () => {
               </div>
             </div>
           );
-        })}
+        })
+      ) : (
+        <p className={classes.noTodo}>No active tasks available</p>
+      )}
     </Card>
   );
 };

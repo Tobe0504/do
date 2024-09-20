@@ -1,8 +1,9 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { getLocalStorage } from "../../HelperFunctions/decryptData";
 
 const RequireAuth = () => {
   // Local storage
-  const user = localStorage.getItem("do-user-state");
+  const user = getLocalStorage("do-user-state", "userState");
 
   // Location
   const location = useLocation();

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../../Components/Button/Button";
 import Layout from "../../Components/Layout/Layout";
+import { getLocalStorage } from "../../HelperFunctions/decryptData";
 import classes from "./Home.module.css";
 
 const Home = () => {
@@ -21,7 +22,7 @@ const Home = () => {
       ],
     },
   ];
-  const user = localStorage.getItem("do-user-state");
+  const user = getLocalStorage("do-user-state", "userState");
 
   // Router
   const navigate = useNavigate();

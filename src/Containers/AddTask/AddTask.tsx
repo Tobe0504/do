@@ -167,7 +167,7 @@ const AddTask = () => {
           <div>
             <Input
               label="Subtasks"
-              placeholder="Eg. wash dishes..."
+              placeholder="Eg. wash more dishes..."
               onChange={(e) => {
                 setSubTaskText(e.target.value);
               }}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../Components/Button/Button";
 import Card from "../../Components/Card/Card";
+import { getLocalStorage } from "../../HelperFunctions/decryptData";
 import { getCurrentTime } from "../../HelperFunctions/getTime";
 import classes from "./DashboardHeader.module.css";
 
@@ -33,8 +34,8 @@ const DashboardHeader = () => {
   });
 
   // Local
-  const userString = localStorage.getItem("do-user");
-  const user = JSON.parse(userString as string);
+  const userString = getLocalStorage("do-user", "user");
+  const user = userString;
 
   return (
     <Card styleName={classes.container}>

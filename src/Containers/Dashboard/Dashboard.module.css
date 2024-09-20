@@ -14,6 +14,7 @@
 
 .todos > div {
   max-height: 450px;
+  min-height: 300px;
 }
 
 .todos > div > img {

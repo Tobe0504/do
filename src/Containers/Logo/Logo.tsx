@@ -1,8 +1,12 @@
 import classes from "./Logo.module.css";
 
-const Logo = () => {
+type LogoTypes = {
+  onClick?: () => void;
+};
+
+const Logo = ({ onClick }: LogoTypes) => {
   return (
-    <div className={classes.logoSection}>
+    <div className={classes.logoSection} onClick={onClick}>
       <svg
         width="28"
         height="28"

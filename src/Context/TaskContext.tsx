@@ -6,6 +6,12 @@ import {
   useState,
 } from "react";
 import { v4 } from "uuid";
+import {
+  decryptData,
+  encryptData,
+  getLocalStorage,
+  setLocalStorage,
+} from "../HelperFunctions/decryptData";
 import { tasksType } from "../Utilities/tasks";
 
 interface TaskContextValues {
@@ -43,19 +49,19 @@ const TaskContextProvider = ({ children }: TaskContextProviderProps) => {
   });
 
   // Local
-  const storedTodos = localStorage.getItem("do-todos");
+  const storedTodos = getLocalStorage("do-todos", "tasks");
 
   // Effects
   useEffect(() => {
-    localStorage.setItem("do-todos", JSON.stringify(taskState));
-    localStorage.setItem("do-recycle", JSON.stringify(recycleState));
+    setLocalStorage(taskState, "do-todos", "tasks");
+    setLocalStorage(recycleState, "do-recycle", "recycle");
 
     // eslint-disable-next-line
   }, [taskState, recycleState]);
 
   useEffect(() => {
     if (storedTodos) {
-      setTaskState(JSON.parse(storedTodos));
+      getLocalStorage("do-todos", "tasks");
     }
 
     // eslint-disable-next-line

@@ -10,6 +10,7 @@ import {
 } from "../../HelperFunctions/deleteTask";
 import { tasksType } from "../../Utilities/tasks";
 import Button from "../../Components/Button/Button";
+import { getLocalStorage } from "../../HelperFunctions/decryptData";
 
 const TaskPage = () => {
   // Context
@@ -68,7 +69,7 @@ const TaskPage = () => {
             <span
               onClick={() => {
                 // Local storage
-                const recycle = localStorage.getItem("do-recycle");
+                const recycle = getLocalStorage("do-recycle", "recycle");
 
                 const parsedRecycled = JSON.parse(
                   recycle as string

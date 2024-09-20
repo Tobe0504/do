@@ -29,6 +29,10 @@ const SignIn = () => {
             Today is a new day. It's your day. You shape it. <br />
             Sign in to start your doings
           </p>
+          <p>
+            ...and sure, since we're totally offline, <br /> you are sure
+            whatever is here, stays here🔒
+          </p>
           {error && <Error type="error">{error}</Error>}
           <Input
             label="Email"

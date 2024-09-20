@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Card from "../../Components/Card/Card";
 import TaskCard from "../../Components/TaskCard/TaskCard";
 import { TaskContext } from "../../Context/TaskContext";
+import { getLocalStorage } from "../../HelperFunctions/decryptData";
 import {
   deleteTask,
   restoreDeletedTask,
@@ -67,13 +68,9 @@ const DashboardTodos = () => {
           <span
             onClick={() => {
               // Local storage
-              const recycle = localStorage.getItem("do-recycle");
+              const recycle = getLocalStorage("do-recycle", "recycle");
 
-              const parsedRecycled = JSON.parse(
-                recycle as string
-              ) as tasksType[];
-
-              restoreDeletedTask(parsedRecycled[0], setTaskState);
+              restoreDeletedTask(recycle[0], setTaskState);
               setShowRecycled(false);
             }}
           >
