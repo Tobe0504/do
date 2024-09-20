@@ -11,6 +11,8 @@ const Header = () => {
   // context
   const { logout } = useContext(AuthUserContext);
 
+  // States
+
   return (
     <div className={classes.container}>
       <Logo />

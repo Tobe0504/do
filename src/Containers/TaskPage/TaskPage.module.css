@@ -117,6 +117,26 @@
   text-align: center;
 }
 
+.restore {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24.2px;
+  text-align: left;
+  color: #c0c0c0;
+  margin-top: 1rem;
+}
+
+.restore > span {
+  color: #e63e21;
+  cursor: pointer;
+}
+
+.container > button {
+  margin-top: 2rem;
+  max-width: 200px;
+}
+
 @keyframes blinker {
   0% {
     opacity: 0.4;
@@ -128,5 +148,29 @@
 
   100% {
     opacity: 0.4;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    padding: 1rem;
+    margin: 2rem 1rem;
+  }
+
+  .header {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 16px;
+    line-height: 29.05px;
+    margin-bottom: 1rem;
+  }
+
+  .task {
+    padding: 0.75rem;
+    border: 1px solid var(--ds-gray-400, #2e2e2e);
+    background: var(--ds-background-100, #0a0a0a);
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
   }
 }

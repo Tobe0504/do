@@ -30,7 +30,7 @@ const DashboardTodos = () => {
         >
           <circle cx="5" cy="4.51221" r="4.5" fill="#C0C0C0" />
         </svg>
-        <h4>Activity</h4>
+        <h4>To-dos</h4>
         {taskState.length > 2 && <Link to="/todos">View all</Link>}
       </div>
 

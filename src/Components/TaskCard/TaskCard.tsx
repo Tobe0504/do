@@ -19,7 +19,7 @@ export const checkDate = (date: string) => {
   } else if (inputDate.isAfter(now)) {
     return "future";
   } else {
-    return "future";
+    return "okay";
   }
 };
 
@@ -56,6 +56,8 @@ const TaskCard = ({ data, onDbClick }: TaskCardProps) => {
       style={
         checkDate(data.endDate) === "past"
           ? { border: "1px solid #ff6166" }
+          : checkDate(data.startDate) === "future"
+          ? { border: "1px solid #e63e215a" }
           : {
               border: "1px solid #2e2e2e",
             }
@@ -96,6 +98,8 @@ const TaskCard = ({ data, onDbClick }: TaskCardProps) => {
               ? { background: "#c0c0c0", animation: "none" }
               : data.percentageComplete === 100
               ? { background: "green", animation: "none" }
+              : checkDate(data.startDate) === "future"
+              ? { background: "#e63e215a", animation: "none" }
               : {
                   background: "#E63E21",
                 }
@@ -104,13 +108,13 @@ const TaskCard = ({ data, onDbClick }: TaskCardProps) => {
       </div>
       <div className={classes.lowerSection}>
         <p>
-          {moment(data.dateAdded).calendar()} -{" "}
+          {moment(data.startDate).calendar()} -{" "}
           {moment(data.endDate).calendar()}
         </p>
       </div>
       <div
         className={classes.progressBar}
-        style={{ width: `${data.percentageComplete}%` }}
+        style={{ width: `${data.percentageComplete || 0}%` }}
       ></div>
     </div>
   );

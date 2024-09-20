@@ -4,14 +4,35 @@
   background: #000;
   padding: 2rem 112px;
   background: rgb(0, 0, 0);
+  overflow: auto;
 }
 
 .header {
   height: 80px;
   position: sticky;
+  top: 0;
+  z-index: 4;
 }
 
 .body {
   height: calc(100vh - (80px + 2rem));
   padding: 2rem 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    min-height: 100vh;
+    padding: 0px;
+  }
+
+  .header {
+    height: 80px;
+    top: 0;
+  }
+
+  .body {
+    height: calc(100vh - (80px));
+    padding: 0px;
+    overflow: auto;
+  }
 }

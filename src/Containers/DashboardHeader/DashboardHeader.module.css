@@ -42,3 +42,41 @@
   text-align: left;
   color: #e63e21;
 }
+
+@media screen and (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .container > div {
+    flex-basis: 100%;
+  }
+
+  .container > div:first-child > h4 {
+    font-size: 18px;
+    line-height: 150%;
+  }
+
+  .container > div:first-child > p {
+    font-size: 14px;
+    line-height: 150%;
+  }
+
+  .container > div:first-child > button {
+    margin: 2rem 0 0rem 0rem;
+    width: 200px;
+  }
+
+  .container > div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .container > div:nth-child(2) {
+    font-size: 36px;
+    line-height: 150%;
+  }
+}

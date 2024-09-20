@@ -70,17 +70,17 @@ const ViewTask = () => {
           <div className={classes.inputGroup}>
             <Input
               label="State date"
-              type="date"
+              type="datetime-local"
               name="startDate"
               value={activeTask?.startDate}
               readOnly
             />
             <Input
               label="End date"
-              type="date"
+              type="datetime-local"
               placeholder="Eg. wash dishes..."
               name="endDate"
-              value={activeTask?.startDate}
+              value={activeTask?.endDate}
               readOnly
             />
           </div>

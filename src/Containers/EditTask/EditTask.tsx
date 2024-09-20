@@ -201,7 +201,7 @@ const EditTask = () => {
           <div className={classes.inputGroup}>
             <Input
               label="State date"
-              type="date"
+              type="datetime-local"
               placeholder="Eg. wash dishes..."
               name="startDate"
               onChange={inputHander}
@@ -209,7 +209,7 @@ const EditTask = () => {
             />
             <Input
               label="End date"
-              type="date"
+              type="datetime-local"
               placeholder="Eg. wash dishes..."
               name="endDate"
               onChange={inputHander}

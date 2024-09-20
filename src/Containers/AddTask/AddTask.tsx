@@ -96,6 +96,22 @@ const AddTask = () => {
     // eslint-disable-next-line
   }, [subTasks]);
 
+  useEffect(() => {
+    setNewTaskState({
+      id: v4(),
+      title: "",
+      description: "",
+      subTasks: [],
+      dateAdded: date,
+      endDate: "",
+      isComplete: false,
+      startDate: "",
+      percentageComplete: 0,
+    });
+
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <Layout>
       <div className={classes.container}>
@@ -181,20 +197,20 @@ const AddTask = () => {
           <div className={classes.inputGroup}>
             <Input
               label="State date"
-              type="date"
               placeholder="Eg. wash dishes..."
               name="startDate"
               onChange={inputHander}
               value={newtaskState.startDate}
+              type="datetime-local"
             />
             <Input
               label="End date"
-              type="date"
               placeholder="Eg. wash dishes..."
               name="endDate"
               onChange={inputHander}
               value={newtaskState.endDate}
               min={"31-05-2024"}
+              type="datetime-local"
             />
           </div>
           <div className={classes.buttonSection}>

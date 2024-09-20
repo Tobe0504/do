@@ -65,3 +65,53 @@
 .buttonSection > button {
   width: 100px;
 }
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .innerContainer > h4 {
+    font-family: Inter;
+    font-size: 20px;
+    line-height: 150%;
+    text-align: left;
+    color: #f35034;
+  }
+
+  .innerContainer > h4 > sup {
+    color: #fff;
+    font-size: 14px;
+  }
+
+  .innerContainer > p {
+    font-size: 14px;
+    line-height: 150%;
+    margin: 0.8rem 0;
+  }
+
+  .type > i:nth-child(1) {
+    font-size: 14px;
+    line-height: 150%;
+  }
+
+  .type > ol > li > p:nth-child(1) {
+    font-family: Inter;
+    font-size: 14px;
+    line-height: 150%;
+    margin: 0.2rem 0;
+  }
+
+  .type > ol > li > p:nth-child(2) {
+    font-size: 14px;
+    line-height: 150%;
+  }
+
+  .buttonSection {
+    margin-top: 1.5rem;
+  }
+
+  .buttonSection > button {
+    width: 100px;
+  }
+}
