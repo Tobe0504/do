@@ -1,0 +1,58 @@
+.container {
+  width: 500px;
+  height: 500px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.imageSection {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageSection > img {
+  height: 100%;
+  width: 100%;
+}
+
+.container > p {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: center;
+  color: #e63e21;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    width: 90vw;
+    height: 400px;
+    padding: 1rem;
+  }
+
+  .imageSection {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .imageSection > img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .container > p {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 150%;
+  }
+}

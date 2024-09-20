@@ -54,3 +54,10 @@ export const setLocalStorage = (data: any, key: string, type: typeType) => {
 export const getLocalStorage = (key: string, type: typeType) => {
   return decryptData(key, type);
 };
+
+export const onTasksImport = (tasks: tasksType) => {
+  if (tasks) {
+    setLocalStorage(tasks, "tasks", "tasks");
+    alert("Tasks imported successfully!");
+  }
+};

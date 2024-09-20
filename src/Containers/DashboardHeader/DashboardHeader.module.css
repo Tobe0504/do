@@ -43,6 +43,17 @@
   color: #e63e21;
 }
 
+.buttonSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 2rem;
+}
+
+.buttonSection > button {
+  max-width: 200px;
+}
+
 @media screen and (max-width: 1024px) {
   .container {
     flex-direction: column;

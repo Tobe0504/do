@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../Components/Button/Button";
 import Card from "../../Components/Card/Card";
+import Modal from "../../Components/Modal/Modal";
+import { TaskContext } from "../../Context/TaskContext";
 import { getLocalStorage } from "../../HelperFunctions/decryptData";
+import { generateTaskQRCode } from "../../HelperFunctions/generateQrCode";
 import { getCurrentTime } from "../../HelperFunctions/getTime";
 import classes from "./DashboardHeader.module.css";
+import QrModalBody from "./QrModalBody";
+import ScanQr from "./ScanQr";
 
 const DashboardHeader = () => {
   // States
@@ -13,9 +18,22 @@ const DashboardHeader = () => {
     minutes: getCurrentTime().minutes,
     seconds: getCurrentTime().seconds,
   });
+  const [qrCodeData, setQrCodeData] = useState({ url: "", isLoading: false });
+  const [scanQr, setScanQr] = useState(false);
+
+  // Utils
+  const handleGenerateQR = async () => {
+    setQrCodeData({ url: "", isLoading: true });
+
+    const qrCodeURL = await generateTaskQRCode();
+    setQrCodeData({ url: qrCodeURL as string, isLoading: false });
+  };
 
   // Router
   const navigate = useNavigate();
+
+  // Context
+  const { taskState } = useContext(TaskContext);
 
   // Effects
   useEffect(() => {
@@ -38,34 +56,67 @@ const DashboardHeader = () => {
   const user = userString;
 
   return (
-    <Card styleName={classes.container}>
-      <div>
-        <h4>Welcome, {user?.firstname || "doer!"}</h4>
-        <p>Let's get you started on your first set of todos</p>
-        <Button
+    <>
+      {qrCodeData.url && (
+        <Modal
+          body={<QrModalBody url={qrCodeData?.url} />}
           onClick={() => {
-            navigate("/create");
+            setQrCodeData({ url: "", isLoading: false });
           }}
-        >
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 14 14"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M13 7.99854H8V12.9985C8 13.2638 7.89464 13.5181 7.70711 13.7056C7.51957 13.8932 7.26522 13.9985 7 13.9985C6.73478 13.9985 6.48043 13.8932 6.29289 13.7056C6.10536 13.5181 6 13.2638 6 12.9985V7.99854H1C0.734784 7.99854 0.48043 7.89318 0.292893 7.70564C0.105357 7.51811 0 7.26375 0 6.99854C0 6.73332 0.105357 6.47896 0.292893 6.29143C0.48043 6.10389 0.734784 5.99854 1 5.99854H6V0.998535C6 0.733319 6.10536 0.478964 6.29289 0.291428C6.48043 0.103892 6.73478 -0.00146484 7 -0.00146484C7.26522 -0.00146484 7.51957 0.103892 7.70711 0.291428C7.89464 0.478964 8 0.733319 8 0.998535V5.99854H13C13.2652 5.99854 13.5196 6.10389 13.7071 6.29143C13.8946 6.47896 14 6.73332 14 6.99854C14 7.26375 13.8946 7.51811 13.7071 7.70564C13.5196 7.89318 13.2652 7.99854 13 7.99854Z"
-              fill="white"
-            />
-          </svg>
-          <span>Create a new Todo</span>
-        </Button>
-      </div>
-      <div>
-        {time.hours}:{time.minutes}:{time.seconds}
-      </div>
-    </Card>
+        />
+      )}
+
+      {scanQr && (
+        <Modal
+          body={<ScanQr />}
+          onClick={() => {
+            setScanQr(false);
+            window.location.reload();
+          }}
+        />
+      )}
+
+      <Card styleName={classes.container}>
+        <div>
+          <h4>Welcome, {user?.firstname || "doer!"}</h4>
+          <p>
+            {" "}
+            {taskState?.length > 0
+              ? "Seamlessly and securely share your tasks across devices, all while staying offline."
+              : "Let's get you started on your first set of todos"}
+          </p>
+
+          <div className={classes.buttonSection}>
+            <Button
+              onClick={() => {
+                setScanQr(true);
+              }}
+              loading={qrCodeData?.isLoading}
+              type={taskState.length < 1 ? "secondary" : "primary"}
+            >
+              <span>Scan a todo</span>
+            </Button>
+
+            <Button
+              onClick={() => {
+                taskState.length > 0 ? handleGenerateQR() : navigate("/create");
+              }}
+              loading={qrCodeData?.isLoading}
+              type={taskState.length > 0 ? "secondary" : "primary"}
+            >
+              <span>
+                {taskState?.length > 0
+                  ? "Share your todos"
+                  : "Create a new Todo"}
+              </span>
+            </Button>
+          </div>
+        </div>
+        <div>
+          {time.hours}:{time.minutes}:{time.seconds}
+        </div>
+      </Card>
+    </>
   );
 };
 
