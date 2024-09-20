@@ -7,8 +7,6 @@ import {
 } from "react";
 import { v4 } from "uuid";
 import {
-  decryptData,
-  encryptData,
   getLocalStorage,
   setLocalStorage,
 } from "../HelperFunctions/decryptData";
