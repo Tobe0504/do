@@ -63,8 +63,8 @@ const AuthUserContextProvider = ({
     setError("");
     const doUser = getLocalStorage("do-user", "user");
     if (
-      loginDetails?.email !== JSON.parse(doUser as string)?.email ||
-      loginDetails?.password !== JSON.parse(doUser as string)?.password
+      loginDetails?.email !== doUser?.email ||
+      loginDetails?.password !== doUser?.password
     ) {
       setError("Invalid login credentials");
       return;

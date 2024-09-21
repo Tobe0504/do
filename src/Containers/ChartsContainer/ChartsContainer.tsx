@@ -23,12 +23,14 @@ const ChartsContainer = () => {
             dataKey="taskCount"
             strokeWidth={2}
             stroke="#888888"
+            activeDot={{ r: 4 }}
           />
           <Line
             type="bump"
             dataKey="numberComplete"
             stroke="#e63e21"
             strokeWidth={2}
+            activeDot={{ r: 4 }}
           />
         </LineChart>
       </ResponsiveContainer>
