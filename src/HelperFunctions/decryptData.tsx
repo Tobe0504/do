@@ -65,6 +65,5 @@ export const getLocalStorage = (key: string, type: typeType) => {
 export const onTasksImport = (tasks: tasksType) => {
   if (tasks) {
     setLocalStorage(tasks, "do-todos", "tasks");
-    alert("Tasks imported successfully!");
   }
 };

@@ -68,7 +68,13 @@ const DashboardHeader = () => {
 
       {scanQr && (
         <Modal
-          body={<ScanQr />}
+          body={
+            <ScanQr
+              onClick={() => {
+                setScanQr(false);
+              }}
+            />
+          }
           onClick={() => {
             setScanQr(false);
           }}

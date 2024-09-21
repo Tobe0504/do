@@ -1,5 +1,4 @@
 import QRCode from "qrcode";
-import { getLocalStorage } from "./decryptData";
 
 export const generateTaskQRCode = async () => {
   try {
@@ -12,7 +11,7 @@ export const generateTaskQRCode = async () => {
     const qrCodeDataURL = await QRCode.toDataURL(base64Data);
     return qrCodeDataURL;
   } catch (error) {
-    console.error("Error generating QR code:", error);
+    alert(`Error generating QR code:", ${error}`);
     return null;
   }
 };

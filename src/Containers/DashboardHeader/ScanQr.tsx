@@ -1,14 +1,14 @@
 import classes from "./ScanQr.module.css";
-import { useContext, useState } from "react";
-import {
-  decryptData,
-  getLocalStorage,
-  onTasksImport,
-} from "../../HelperFunctions/decryptData";
+import { useContext } from "react";
+import { decryptData, onTasksImport } from "../../HelperFunctions/decryptData";
 import { Scanner } from "@yudiel/react-qr-scanner";
 import { TaskContext } from "../../Context/TaskContext";
 
-const ScanQr = () => {
+type ScanQrTypes = {
+  onClick: () => void;
+};
+
+const ScanQr = ({ onClick }: ScanQrTypes) => {
   // Context
   const { setTaskState } = useContext(TaskContext);
 
@@ -20,10 +20,10 @@ const ScanQr = () => {
       onTasksImport(decryptedTasks);
 
       setTaskState(decryptedTasks);
+
+      onClick();
     }
   };
-
-  console.log(getLocalStorage("do-todos", "tasks"));
 
   const handleError = (err: any) => {
     console.error("QR scan error:", err);
@@ -48,8 +48,12 @@ const ScanQr = () => {
           }
         }}
         constraints={constraints}
-        // containerStyle={{ width: "100%", innerHeight: "100%" }}
+        classNames={{
+          container: classes.qrScanner, // Custom class for the container
+          video: classes.qrScannerVideo, // Custom class for the video element
+        }}
       />
+      <p>Place barcode close enough to fit the camera box</p>
     </div>
   );
 };
