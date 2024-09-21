@@ -130,6 +130,16 @@
   cursor: pointer;
 }
 
+.buttonSection {
+  max-width: 200px;
+  margin-top: 1rem;
+  margin-left: auto;
+}
+
+.container {
+  overflow: hidden;
+}
+
 @keyframes blinker {
   0% {
     opacity: 0.4;

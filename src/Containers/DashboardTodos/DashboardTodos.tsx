@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Button from "../../Components/Button/Button";
 import Card from "../../Components/Card/Card";
 import TaskCard from "../../Components/TaskCard/TaskCard";
 import { TaskContext } from "../../Context/TaskContext";
@@ -8,7 +9,6 @@ import {
   deleteTask,
   restoreDeletedTask,
 } from "../../HelperFunctions/deleteTask";
-import { tasksType } from "../../Utilities/tasks";
 import classes from "./DashboardTodos.module.css";
 
 const DashboardTodos = () => {
@@ -18,6 +18,9 @@ const DashboardTodos = () => {
 
   // States
   const [showRecycled, setShowRecycled] = useState(false);
+
+  // Router
+  const navigate = useNavigate();
 
   return (
     <Card styleName={classes.container}>
@@ -32,7 +35,19 @@ const DashboardTodos = () => {
           <circle cx="5" cy="4.51221" r="4.5" fill="#C0C0C0" />
         </svg>
         <h4>To-dos</h4>
-        {taskState.length > 2 && <Link to="/todos">View all</Link>}
+        {taskState.length > 2 ? (
+          <Link to="/todos">View all</Link>
+        ) : taskState.length > 0 ? (
+          <div className={classes.buttonSection}>
+            <Button
+              onClick={() => {
+                navigate("/create");
+              }}
+            >
+              Add todos
+            </Button>
+          </div>
+        ) : null}
       </div>
 
       <div className={classes.taskList}>

@@ -71,7 +71,6 @@ const DashboardHeader = () => {
           body={<ScanQr />}
           onClick={() => {
             setScanQr(false);
-            window.location.reload();
           }}
         />
       )}
@@ -106,7 +105,7 @@ const DashboardHeader = () => {
             >
               <span>
                 {taskState?.length > 0
-                  ? "Share your todos"
+                  ? "Transfer your todos"
                   : "Create a new Todo"}
               </span>
             </Button>

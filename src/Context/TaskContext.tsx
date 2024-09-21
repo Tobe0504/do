@@ -49,17 +49,26 @@ const TaskContextProvider = ({ children }: TaskContextProviderProps) => {
   // Local
   const storedTodos = getLocalStorage("do-todos", "tasks");
 
+  console.log(storedTodos, "Stored new things");
+
   // Effects
   useEffect(() => {
-    setLocalStorage(taskState, "do-todos", "tasks");
-    setLocalStorage(recycleState, "do-recycle", "recycle");
+    if (taskState.length) {
+      setLocalStorage(taskState, "do-todos", "tasks");
+    }
+
+    console.log(taskState.length, "Hmm");
+
+    if (recycleState.length) {
+      setLocalStorage(recycleState, "do-recycle", "recycle");
+    }
 
     // eslint-disable-next-line
   }, [taskState, recycleState]);
 
   useEffect(() => {
     if (storedTodos) {
-      getLocalStorage("do-todos", "tasks");
+      setTaskState(getLocalStorage("do-todos", "tasks"));
     }
 
     // eslint-disable-next-line

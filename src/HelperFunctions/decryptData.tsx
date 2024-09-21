@@ -3,7 +3,11 @@ import { tasksType } from "../Utilities/tasks";
 
 type typeType = "tasks" | "user" | "userState" | "recycle";
 
-export const decryptData = (localStorageKey: string, type: typeType) => {
+export const decryptData = (
+  localStorageKey: string,
+  type: typeType,
+  noLocal?: boolean
+) => {
   const secretKey =
     type === "tasks"
       ? process.env.REACT_APP_CRYPTO_SECRET_KEY_TASKS
@@ -15,12 +19,15 @@ export const decryptData = (localStorageKey: string, type: typeType) => {
       ? process.env.REACT_APP_CRYPTO_SECRET_KEY_USER_STATE
       : "";
 
-  const encryptedData = localStorage.getItem(localStorageKey);
+  const encryptedData = noLocal
+    ? localStorageKey
+    : localStorage.getItem(localStorageKey);
 
   if (!encryptedData) return null;
 
   const bytes = CryptoJS.AES.decrypt(encryptedData, secretKey as string);
   const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+
   const parsed = JSON.parse(decryptedData);
   return parsed;
 };
@@ -57,7 +64,7 @@ export const getLocalStorage = (key: string, type: typeType) => {
 
 export const onTasksImport = (tasks: tasksType) => {
   if (tasks) {
-    setLocalStorage(tasks, "tasks", "tasks");
+    setLocalStorage(tasks, "do-todos", "tasks");
     alert("Tasks imported successfully!");
   }
 };
