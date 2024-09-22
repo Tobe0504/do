@@ -19,7 +19,9 @@ const ScanQr = ({ onClick }: ScanQrTypes) => {
 
       onTasksImport(decryptedTasks);
 
-      setTaskState(decryptedTasks);
+      setTaskState((prevState) => {
+        return [...prevState, ...decryptedTasks];
+      });
 
       onClick();
     }

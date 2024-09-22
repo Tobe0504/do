@@ -60,7 +60,6 @@
   border: 1px solid var(--ds-gray-400, #2e2e2e);
   color: #888888;
   background: var(--ds-background-100, #0a0a0a);
-  -webkit-appearance: none;
 }
 
 .input input:focus {
