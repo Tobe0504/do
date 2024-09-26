@@ -5,6 +5,7 @@ import Card from "../../Components/Card/Card";
 import Modal from "../../Components/Modal/Modal";
 import { TaskContext } from "../../Context/TaskContext";
 import { getLocalStorage } from "../../HelperFunctions/decryptData";
+import { generateTaskSummary } from "../../HelperFunctions/generateDates";
 import { generateTaskQRCode } from "../../HelperFunctions/generateQrCode";
 import { getCurrentTime } from "../../HelperFunctions/getTime";
 import classes from "./DashboardHeader.module.css";
@@ -21,6 +22,9 @@ const DashboardHeader = () => {
   const [qrCodeData, setQrCodeData] = useState({ url: "", isLoading: false });
   const [scanQr, setScanQr] = useState(false);
 
+  // Context
+  const { taskState } = useContext(TaskContext);
+
   // Utils
   const handleGenerateQR = async () => {
     setQrCodeData({ url: "", isLoading: true });
@@ -32,9 +36,6 @@ const DashboardHeader = () => {
   // Router
   const navigate = useNavigate();
 
-  // Context
-  const { taskState } = useContext(TaskContext);
-
   // Effects
   useEffect(() => {
     const interval = setInterval(() => {
@@ -44,6 +45,17 @@ const DashboardHeader = () => {
         minutes: getCurrentTime().minutes,
         seconds: getCurrentTime().seconds,
       });
+
+      if (
+        time.hours === "23" &&
+        time.minutes === "57" &&
+        time.seconds === "00"
+      ) {
+        localStorage.setItem(
+          JSON.stringify(generateTaskSummary(taskState)),
+          "summary"
+        );
+      }
     }, 1000);
 
     return () => {

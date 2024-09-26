@@ -42,7 +42,6 @@ const ScanQr = ({ onClick }: ScanQrTypes) => {
         onScan={(result) => {
           if (!!result) {
             handleScan(result[0].rawValue);
-            console.log(result[0]);
           }
 
           if (!result) {

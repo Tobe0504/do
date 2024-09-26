@@ -1,22 +1,16 @@
 import classes from "./ChartsContainer.module.css";
 import { LineChart, Line, ResponsiveContainer, Tooltip } from "recharts";
 import Card from "../../Components/Card/Card";
-import { useContext } from "react";
-import { TaskContext } from "../../Context/TaskContext";
-import { generateTaskSummary } from "../../HelperFunctions/generateDates";
 
-const ChartsContainer = () => {
-  // Context
-  const { taskState } = useContext(TaskContext);
+type ChartsContainerTypes = {
+  summary: any[];
+};
 
+const ChartsContainer = ({ summary }: ChartsContainerTypes) => {
   return (
     <Card styleName={classes.container}>
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart
-          width={300}
-          height={100}
-          data={generateTaskSummary(taskState)}
-        >
+        <LineChart width={300} height={100} data={summary || []}>
           <Tooltip />
           <Line
             type="bump"

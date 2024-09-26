@@ -49,15 +49,11 @@ const TaskContextProvider = ({ children }: TaskContextProviderProps) => {
   // Local
   const storedTodos = getLocalStorage("do-todos", "tasks");
 
-  console.log(storedTodos, "Stored new things");
-
   // Effects
   useEffect(() => {
     if (taskState.length) {
       setLocalStorage(taskState, "do-todos", "tasks");
     }
-
-    console.log(taskState.length, "Hmm");
 
     if (recycleState.length) {
       setLocalStorage(recycleState, "do-recycle", "recycle");

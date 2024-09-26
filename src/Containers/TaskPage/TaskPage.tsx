@@ -11,6 +11,7 @@ import {
 import { tasksType } from "../../Utilities/tasks";
 import Button from "../../Components/Button/Button";
 import { getLocalStorage } from "../../HelperFunctions/decryptData";
+import { useNavigate } from "react-router-dom";
 
 const TaskPage = () => {
   // Context
@@ -19,6 +20,9 @@ const TaskPage = () => {
 
   // States
   const [showRecycled, setShowRecycled] = useState(false);
+
+  // Router
+  const navigate = useNavigate();
 
   return (
     <Layout>
@@ -84,7 +88,11 @@ const TaskPage = () => {
           </div>
         )}
 
-        <Button>
+        <Button
+          onClick={() => {
+            navigate("/create");
+          }}
+        >
           <svg
             width="14"
             height="14"
