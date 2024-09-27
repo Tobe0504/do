@@ -45,23 +45,21 @@ const DashboardHeader = () => {
         minutes: getCurrentTime().minutes,
         seconds: getCurrentTime().seconds,
       });
-
-      if (
-        time.hours === "23" &&
-        time.minutes === "57" &&
-        time.seconds === "00"
-      ) {
-        localStorage.setItem(
-          JSON.stringify(generateTaskSummary(taskState)),
-          "summary"
-        );
-      }
     }, 1000);
 
     return () => {
       clearInterval(interval);
     };
   });
+
+  useEffect(() => {
+    if (taskState?.length > 0) {
+      localStorage.setItem(
+        "summary",
+        JSON.stringify(generateTaskSummary(taskState))
+      );
+    }
+  }, []);
 
   // Local
   const userString = getLocalStorage("do-user", "user");
