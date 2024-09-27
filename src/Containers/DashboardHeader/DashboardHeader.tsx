@@ -21,6 +21,7 @@ const DashboardHeader = () => {
   });
   const [qrCodeData, setQrCodeData] = useState({ url: "", isLoading: false });
   const [scanQr, setScanQr] = useState(false);
+  const [initialSummary, setInitialSummary] = useState([]);
 
   // Context
   const { taskState } = useContext(TaskContext);
@@ -35,6 +36,12 @@ const DashboardHeader = () => {
 
   // Router
   const navigate = useNavigate();
+
+  // Local
+  const userString = getLocalStorage("do-user", "user");
+  const localSummary = JSON.parse(localStorage.getItem("summary") as string);
+
+  const user = userString;
 
   // Effects
   useEffect(() => {
@@ -53,17 +60,26 @@ const DashboardHeader = () => {
   });
 
   useEffect(() => {
-    if (taskState?.length > 0) {
-      localStorage.setItem(
-        "summary",
-        JSON.stringify(generateTaskSummary(taskState))
-      );
+    if (localSummary) {
+      setInitialSummary(localSummary);
     }
-  }, []);
+  }, [localSummary]);
 
-  // Local
-  const userString = getLocalStorage("do-user", "user");
-  const user = userString;
+  useEffect(() => {
+    if (taskState?.length > 0) {
+      if (initialSummary?.length) {
+        localStorage.setItem(
+          "summary",
+          JSON.stringify([...generateTaskSummary(taskState), ...initialSummary])
+        );
+      } else {
+        localStorage.setItem(
+          "summary",
+          JSON.stringify(generateTaskSummary(taskState))
+        );
+      }
+    }
+  }, [taskState]);
 
   return (
     <>
