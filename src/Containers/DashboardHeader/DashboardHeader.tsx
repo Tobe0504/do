@@ -38,7 +38,6 @@ const DashboardHeader = () => {
 
   // Local
   const userString = getLocalStorage("do-user", "user");
-  const localSummary = JSON.parse(localStorage.getItem("summary") as string);
 
   const user = userString;
 
