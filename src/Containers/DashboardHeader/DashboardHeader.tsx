@@ -21,7 +21,6 @@ const DashboardHeader = () => {
   });
   const [qrCodeData, setQrCodeData] = useState({ url: "", isLoading: false });
   const [scanQr, setScanQr] = useState(false);
-  const [initialSummary, setInitialSummary] = useState([]);
 
   // Context
   const { taskState } = useContext(TaskContext);
@@ -57,29 +56,16 @@ const DashboardHeader = () => {
     return () => {
       clearInterval(interval);
     };
-  });
-
-  useEffect(() => {
-    if (localSummary) {
-      setInitialSummary(localSummary);
-    }
-  }, [localSummary]);
+  }, []);
 
   useEffect(() => {
     if (taskState?.length > 0) {
-      if (initialSummary?.length) {
-        localStorage.setItem(
-          "summary",
-          JSON.stringify([...generateTaskSummary(taskState), ...initialSummary])
-        );
-      } else {
-        localStorage.setItem(
-          "summary",
-          JSON.stringify(generateTaskSummary(taskState))
-        );
-      }
+      localStorage.setItem(
+        "summary",
+        JSON.stringify(generateTaskSummary(taskState))
+      );
     }
-  }, [taskState]);
+  }, []);
 
   return (
     <>
