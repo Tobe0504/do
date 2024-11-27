@@ -17,6 +17,7 @@
   line-height: 36px;
   text-align: left;
   margin-bottom: 16px;
+  font-style: italic;
 }
 
 .innerContainer > p {
@@ -135,6 +136,80 @@
 .buttonSection > button {
   min-width: 200px;
   width: fit-content;
+}
+
+.prioritySection {
+  margin-bottom: 1rem;
+}
+
+.prioritySection > p {
+  font-family: Inter;
+  color: var(--ds-gray-900, #a1a1a1);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+.priorityInner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.priorityInner > div {
+  padding: 0.25rem 1rem;
+  border-radius: 10px;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24.2px;
+  text-align: left;
+  color: #c0c0c0;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.priorityInner > div > span:nth-child(2) {
+  border: 2px solid red;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: #e63e21;
+  font-family: Inter;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 24.2px;
+}
+
+.priorityInner > div > div {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-width: 1px 0px 1px 1px;
+  border-color: #e63e21;
+  border-style: solid;
+  border-radius: 10px 0 0 10px;
+}
+
+.priorityInner > div:not(.active) {
+  border: 1px solid var(--ds-gray-400, #2e2e2e);
+}
+
+.active {
+  border: 1px solid #e63e21;
 }
 
 @media screen and (max-width: 1024px) {

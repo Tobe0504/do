@@ -4,7 +4,6 @@ import Button from "../../Components/Button/Button";
 import Input from "../../Components/Input/Input";
 import OnboardingLayout from "../../Components/OnboardingLayout/OnboardingLayout";
 import { AuthUserContext } from "../../Context/AuthUserContext";
-import { getLocalStorage } from "../../HelperFunctions/decryptData";
 import Logo from "../Logo/Logo";
 import classes from "../SignIn/SignIn.module.css";
 
@@ -65,10 +64,6 @@ const SignUp = () => {
             onClick={(e) => {
               e.preventDefault();
               signUp();
-              localStorage.removeItem("do-todos");
-              localStorage.removeItem("do-user");
-              localStorage.removeItem("do-user-state");
-              localStorage.removeItem("summary");
             }}
             disabled={
               !loginDetails.email ||

@@ -1,19 +1,44 @@
 import { Radio } from "@mui/material";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import Button from "../../Components/Button/Button";
 import Input, { ReactQuillInput } from "../../Components/Input/Input";
 import Layout from "../../Components/Layout/Layout";
 import { TaskContext } from "../../Context/TaskContext";
-import { tasksType } from "../../Utilities/tasks";
+import {
+  prerequisitesType,
+  subTasksType,
+  tasksType,
+} from "../../Utilities/tasks";
 import classes from "./AddTask.module.css";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import { v4 } from "uuid";
 import { useNavigate } from "react-router-dom";
-import task from "../../Assets/addTodo.jpeg";
+import task from "../../Assets/addTodo.jpg";
+import { activeToggler } from "../../HelperFunctions/activeTogglerr";
+import { generateRandomQuote } from "../../HelperFunctions/generateRandomQuote";
+import { useGetTasks } from "../../Hooks/useGetTask";
+
+export const priotity = [
+  {
+    title: "Low",
+    number: 1,
+    isActive: false,
+  },
+  {
+    title: "Medium",
+    number: 2,
+    isActive: false,
+  },
+  {
+    title: "High",
+    number: 3,
+    isActive: false,
+  },
+];
 
 const AddTask = () => {
   // Context
-  const { newtaskState, setNewTaskState, setTaskState } =
+  const { newtaskState, setNewTaskState, setTaskState, taskState } =
     useContext(TaskContext);
 
   // Router
@@ -32,12 +57,19 @@ const AddTask = () => {
   //   States
   const [description, setDescription] = useState("");
   const [subTaskText, setSubTaskText] = useState("");
-  const [subTasks, setSubTasks] = useState<any>([]);
   const [subTaskIsActive, setSubTaskIsActive] = useState(false);
+  const [priorityState, setPriorityState] = useState(priotity);
+
+  // Hooks
+  const { getTasksDetails, getTaskProgress } = useGetTasks();
 
   //   Utils
-  const setTaskIsActive = (index: number) => {
-    const subTaskCopy = subTasks.map((data: any, i: number) => {
+  const setTaskIsActive = (index: number | string) => {
+    const activeLength = newtaskState?.subTasks.filter((data: any) => {
+      return data.isComplete;
+    }).length;
+
+    const subTaskCopy = newtaskState?.subTasks?.map((data: any, i: number) => {
       if (i === index) {
         return { ...data, isComplete: !data.isComplete };
       } else {
@@ -45,14 +77,24 @@ const AddTask = () => {
       }
     });
 
-    setSubTasks(subTaskCopy);
+    setNewTaskState((prevState) => {
+      return {
+        ...prevState,
+        subTasks: subTaskCopy,
+        percentageComplete:
+          (activeLength / (prevState?.subTasks?.length as number)) * 100,
+      };
+    });
   };
 
   const deleteTask = (index: number) => {
-    const subTaskCopy = subTasks.filter((data: any, i: number) => {
-      return i !== index;
+    const filteredSubTasks = newtaskState?.subTasks?.filter(
+      (_, i) => i !== index
+    );
+
+    setNewTaskState((prevState) => {
+      return { ...prevState, subTasks: filteredSubTasks };
     });
-    setSubTasks(subTaskCopy);
   };
 
   const submitTodo = () => {
@@ -61,40 +103,51 @@ const AddTask = () => {
     });
   };
 
+  // Memo
+  const tasks: prerequisitesType[] = useMemo(
+    () => taskState?.map((data) => data?.id),
+    [taskState]
+  );
+
+  const generatedQuote = useMemo(() => generateRandomQuote(), []);
+
   // Effects
   useEffect(() => {
+    if (newtaskState) {
+      const percentageComplete = getTaskProgress(
+        newtaskState?.subTasks as subTasksType[],
+        newtaskState?.prerequisites as prerequisitesType[]
+      );
+
+      if (newtaskState?.percentageComplete !== percentageComplete) {
+        setNewTaskState((prevState) => {
+          return {
+            ...prevState,
+            percentageComplete,
+          };
+        });
+      }
+    }
+    // eslint-disable-next-line
+  }, [newtaskState]);
+
+  useEffect(() => {
+    const activePriority = priorityState.find((data) => data?.isActive);
+
     if (description) {
       setNewTaskState((prevState: tasksType) => {
         return { ...prevState, description };
       });
     }
 
-    if (subTasks.length) {
+    if (activePriority) {
       setNewTaskState((prevState: tasksType) => {
-        return { ...prevState, subTasks };
+        return { ...prevState, priority: activePriority?.number || 0 };
       });
     }
 
     // eslint-disable-next-line
-  }, [description, subTasks]);
-
-  useEffect(() => {
-    if (subTasks?.length) {
-      const activeLength = subTasks.filter((data: any) => {
-        return data.isComplete;
-      }).length;
-
-      setNewTaskState((prevState) => {
-        return {
-          ...prevState,
-          percentageComplete:
-            (activeLength / (newtaskState?.subTasks?.length as number)) * 100,
-        };
-      });
-    }
-
-    // eslint-disable-next-line
-  }, [subTasks]);
+  }, [description, priorityState]);
 
   useEffect(() => {
     setNewTaskState({
@@ -107,6 +160,8 @@ const AddTask = () => {
       isComplete: false,
       startDate: "",
       percentageComplete: 0,
+      priority: 0,
+      prerequisites: [],
     });
 
     // eslint-disable-next-line
@@ -119,7 +174,7 @@ const AddTask = () => {
           className={classes.innerContainer}
           onSubmit={(e) => e.preventDefault()}
         >
-          <h4>Create a todo</h4>
+          <h4>"{generatedQuote}"</h4>
           <Input
             label="Title"
             placeholder="Eg. wash dishes..."
@@ -132,8 +187,27 @@ const AddTask = () => {
             setState={setDescription}
             state={description}
           />
+          <div className={classes.prioritySection}>
+            <p>Priority</p>
+            <div className={classes.priorityInner}>
+              {priorityState.map((data, i) => {
+                return (
+                  <div
+                    key={data?.number}
+                    onClick={() =>
+                      activeToggler(i, priorityState, setPriorityState)
+                    }
+                    className={data?.isActive ? classes.active : undefined}
+                  >
+                    {data?.title}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
           <div className={classes.subTaskSections}>
-            {subTasks.map((data: any, i: number) => {
+            {newtaskState?.subTasks?.map((data: any, i: number) => {
               return (
                 <div className={classes.subTask} key={i}>
                   <Radio
@@ -175,12 +249,16 @@ const AddTask = () => {
               onKeyup={(e) => {
                 e.preventDefault();
                 if (subTaskText && e.key === "Enter") {
-                  setSubTasks((prevState: any) => {
-                    return [
+                  setNewTaskState((prevState) => {
+                    return {
                       ...prevState,
-                      { title: subTaskText, isComplete: false },
-                    ];
+                      subTasks: [
+                        ...prevState.subTasks,
+                        { title: subTaskText, isComplete: false },
+                      ],
+                    };
                   });
+
                   setSubTaskText("");
                 }
               }}
@@ -193,6 +271,69 @@ const AddTask = () => {
               tip='Hit "Enter" to save a sub-task'
             />
           </div>
+
+          {tasks?.length > 0 && (
+            <div className={classes.prioritySection}>
+              <p>Prerequisites</p>
+              <div className={classes.priorityInner}>
+                {tasks?.map((datum: prerequisitesType) => {
+                  const data = getTasksDetails(datum as string);
+
+                  const taskIsPrerequisite = newtaskState?.prerequisites?.find(
+                    (pre) => pre === datum
+                  );
+
+                  return (
+                    <div
+                      key={data?.id}
+                      onClick={() => {
+                        if (taskIsPrerequisite) {
+                          const filteredPre =
+                            newtaskState?.prerequisites?.filter(
+                              (pre) => datum !== pre
+                            );
+                          setNewTaskState((prevState: tasksType) => {
+                            return {
+                              ...prevState,
+                              prerequisites: filteredPre,
+                            };
+                          });
+                        } else {
+                          setNewTaskState((prevState: tasksType) => {
+                            const updatedState = { ...prevState };
+                            updatedState.prerequisites = [
+                              ...updatedState?.prerequisites,
+                              datum,
+                            ];
+
+                            return updatedState;
+                          });
+                        }
+                      }}
+                    >
+                      <span>{data?.title}</span>
+                      {taskIsPrerequisite && (
+                        <span>
+                          {newtaskState.prerequisites.indexOf(datum) + 1}
+                        </span>
+                      )}
+                      {(data?.percentageComplete as number) > 0 && (
+                        <div
+                          style={{
+                            width: `${data?.percentageComplete}%`,
+                            borderRadius:
+                              data?.percentageComplete === 100
+                                ? "10px 10px 10px 10px"
+                                : "10px 0 0 10px",
+                          }}
+                        ></div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           <div className={classes.inputGroup}>
             <Input
@@ -228,9 +369,10 @@ const AddTask = () => {
                   isComplete: false,
                   startDate: "",
                   percentageComplete: 0,
+                  priority: 0,
+                  prerequisites: [],
                 });
                 setDescription("");
-                setSubTasks([]);
                 navigate("/dashboard");
               }}
               disabled={
@@ -238,6 +380,7 @@ const AddTask = () => {
                 !newtaskState.description ||
                 !newtaskState.startDate ||
                 !newtaskState.endDate ||
+                !newtaskState?.priority ||
                 subTaskIsActive
               }
             >

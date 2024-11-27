@@ -54,7 +54,11 @@ const AuthUserContextProvider = ({
   //   Utils
   const signUp = () => {
     setLocalStorage(loginDetails, "do-user", "user");
+
     setLocalStorage("true", "do-user-state", "userState");
+
+    localStorage.removeItem("do-todos");
+    localStorage.removeItem("summary");
 
     navigate("/dashboard");
   };
@@ -62,6 +66,7 @@ const AuthUserContextProvider = ({
   const signIn = () => {
     setError("");
     const doUser = getLocalStorage("do-user", "user");
+
     if (
       loginDetails?.email !== doUser?.email ||
       loginDetails?.password !== doUser?.password

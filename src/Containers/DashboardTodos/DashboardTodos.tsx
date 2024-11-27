@@ -54,26 +54,29 @@ const DashboardTodos = () => {
         {!taskState?.length ? (
           <p className={classes.noTodo}>No todos added yet</p>
         ) : (
-          taskState?.slice(0, 2)?.map((data, i) => {
-            return (
-              <React.Fragment key={i}>
-                <TaskCard
-                  data={data}
-                  onDbClick={() => {
-                    deleteTask(
-                      taskState,
-                      String(data.id),
-                      setTaskState,
-                      recycleState,
-                      setRecycleState
-                    );
+          taskState
+            ?.sort((a, b) => b?.priority - a?.priority)
+            ?.slice(0, 2)
+            ?.map((data, i) => {
+              return (
+                <React.Fragment key={i}>
+                  <TaskCard
+                    data={data}
+                    onDbClick={() => {
+                      deleteTask(
+                        taskState,
+                        String(data.id),
+                        setTaskState,
+                        recycleState,
+                        setRecycleState
+                      );
 
-                    setShowRecycled(true);
-                  }}
-                />
-              </React.Fragment>
-            );
-          })
+                      setShowRecycled(true);
+                    }}
+                  />
+                </React.Fragment>
+              );
+            })
         )}
       </div>
 

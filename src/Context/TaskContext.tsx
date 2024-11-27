@@ -44,6 +44,8 @@ const TaskContextProvider = ({ children }: TaskContextProviderProps) => {
     isComplete: false,
     startDate: "",
     percentageComplete: 0,
+    priority: 0,
+    prerequisites: [],
   });
 
   // Local

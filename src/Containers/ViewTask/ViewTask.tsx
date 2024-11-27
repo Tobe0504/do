@@ -3,13 +3,13 @@ import { useNavigate, useParams } from "react-router";
 import Layout from "../../Components/Layout/Layout";
 import { TaskContext } from "../../Context/TaskContext";
 import { tasksType } from "../../Utilities/tasks";
-
 import Input from "../../Components/Input/Input";
 import { Radio } from "@mui/material";
 import Button from "../../Components/Button/Button";
 import classes from "../AddTask/AddTask.module.css";
 import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
-import task from "../../Assets/viewTask.jpeg";
+import task from "../../Assets/viewTask.jpg";
+import { useGetTasks } from "../../Hooks/useGetTask";
 
 const ViewTask = () => {
   // Context
@@ -18,6 +18,9 @@ const ViewTask = () => {
   // Router
   const { id } = useParams();
   const navigate = useNavigate();
+
+  // Hooks
+  const { getActivePriority, getTasksDetails } = useGetTasks();
 
   const activeTask: tasksType | undefined = taskState.find((task) => {
     return task.id === id;
@@ -44,6 +47,15 @@ const ViewTask = () => {
             className={classes.description}
           ></div>
 
+          <div className={classes.prioritySection}>
+            <p>Priority</p>
+            <div className={classes.priorityInner}>
+              <div className={classes.active}>
+                {getActivePriority(activeTask?.priority as number)?.title}
+              </div>
+            </div>
+          </div>
+
           <div className={classes.subTaskSections}>
             <label className={classes.label}>Subtasks</label>
             {activeTask?.subTasks?.map((data: any, i: number) => {
@@ -65,6 +77,33 @@ const ViewTask = () => {
                 </div>
               );
             })}
+          </div>
+
+          <div className={classes.prioritySection}>
+            <p>Prerequisites</p>
+            <div className={classes.priorityInner}>
+              {activeTask?.prerequisites?.map((datum) => {
+                const data = getTasksDetails(datum as string);
+
+                return (
+                  <div key={data?.id}>
+                    <span>{data?.title}</span>
+                    <span>{activeTask?.prerequisites?.indexOf(datum) + 1}</span>
+                    {(data?.percentageComplete as number) > 0 && (
+                      <div
+                        style={{
+                          width: `${data?.percentageComplete}%`,
+                          borderRadius:
+                            data?.percentageComplete === 100
+                              ? "10px 10px 10px 10px"
+                              : "10px 0 0 10px",
+                        }}
+                      ></div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           <div className={classes.inputGroup}>

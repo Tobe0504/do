@@ -55,6 +55,8 @@ const DashboardHeader = () => {
     return () => {
       clearInterval(interval);
     };
+
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -64,6 +66,8 @@ const DashboardHeader = () => {
         JSON.stringify(generateTaskSummary(taskState))
       );
     }
+
+    // eslint-disable-next-line
   }, []);
 
   return (
