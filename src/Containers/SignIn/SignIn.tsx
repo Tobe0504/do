@@ -5,6 +5,7 @@ import Error from "../../Components/Error/Error";
 import Input from "../../Components/Input/Input";
 import OnboardingLayout from "../../Components/OnboardingLayout/OnboardingLayout";
 import { AuthUserContext } from "../../Context/AuthUserContext";
+import { routes } from "../../Utilities/routes";
 import Logo from "../Logo/Logo";
 import classes from "./SignIn.module.css";
 
@@ -29,10 +30,7 @@ const SignIn = () => {
             Today is a new day. It's your day. You shape it. <br />
             Sign in to start your doings
           </p>
-          <p>
-            ...and since we're totally offline, <br /> you are sure whatever is
-            here, stays here🔒
-          </p>
+          <p>you are sure whatever is here, stays here🔒</p>
           {error && <Error type="error">{error}</Error>}
           <Input
             label="Email"
@@ -50,6 +48,8 @@ const SignIn = () => {
             onChange={inputHander}
             value={loginDetails.password}
           />
+
+          <Link to={routes.FORGOT_PASSWORD}>Forgot Password? </Link>
 
           <Button
             onClick={(e) => {

@@ -1,0 +1,19 @@
+type ArrowbackType = {
+  fill?: string;
+};
+
+const Arrowback = ({ fill }: ArrowbackType) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24px"
+      viewBox="0 -960 960 960"
+      width="16px"
+      fill={fill || "#e8eaed"}
+    >
+      <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
+    </svg>
+  );
+};
+
+export default Arrowback;

@@ -32,17 +32,25 @@
   margin-top: 3rem;
 }
 
-.innerContainer > span:last-child {
+.innerContainer > span:last-child,
+.innerContainer > a {
   font-family: Inter;
   font-size: 14px;
   font-weight: 400;
   line-height: 28.8px;
   margin-top: 2rem;
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .innerContainer > span:last-child > a,
+.innerContainer > a,
 .innerContainer > span:last-child > span {
   color: #fff;
   text-decoration: underline;
+}
+
+.innerContainer > span:last-child > a {
+  color: var(--orange);
 }

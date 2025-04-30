@@ -3,14 +3,9 @@
   align-items: center;
   height: 100%;
   justify-content: space-between;
-  /* background: #1b1b1b6a; */
-  /* padding: 0 1rem; */
   border-radius: calc(infinity * 1px);
-}
-
-.container > div {
-  background: #1b1b1b;
-  border: 2px solid #262626;
+  padding-inline: 112px;
+  padding-block: 1rem;
 }
 
 .logoSection {

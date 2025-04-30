@@ -1,0 +1,140 @@
+import AddTask from "../Containers/AddTask/AddTask";
+import Dashboard from "../Containers/Dashboard/Dashboard";
+import EditTask from "../Containers/EditTask/EditTask";
+import ForgotPassword from "../Containers/ForgotPassword/ForgotPassword";
+import Home from "../Containers/Home/Home";
+import ResetPassword from "../Containers/ResetPassword/ResetPassword";
+import SignIn from "../Containers/SignIn/SignIn";
+import SignUp from "../Containers/SignUp/SignUp";
+import TaskPage from "../Containers/TaskPage/TaskPage";
+import ViewTask from "../Containers/ViewTask/ViewTask";
+import HomeIcon from "../SvgIcons/HomeIcon";
+import Notifications from "../SvgIcons/Notifications";
+import Search from "../SvgIcons/Search";
+import Settings from "../SvgIcons/Settings";
+import Trash from "../SvgIcons/Trash";
+
+export const routes = Object.freeze({
+  BASE_URL: "/",
+  SIGN_IN: "/sign-in",
+  SIGN_UP: "/sign-up",
+  FORGOT_PASSWORD: "/forgot-password",
+  RESET_PASSWORD: "/reset-password",
+  CREATE: "/create",
+  VIEW: "/view/:id",
+  EDIT: "/edit/:id",
+  DOs: "/do",
+  DASHBOARD: "/dashboard",
+});
+
+export const routeComponents = [
+  {
+    title: "Home",
+    component: <Home />,
+    properties: null,
+    route: routes.BASE_URL,
+    icon: null,
+  },
+  {
+    title: "Sign In",
+    component: <SignIn />,
+    properties: null,
+    route: routes.SIGN_IN,
+    icon: null,
+  },
+  {
+    title: "Sign Up",
+    component: <SignUp />,
+    properties: null,
+    route: routes.SIGN_UP,
+    icon: null,
+  },
+  {
+    title: "Forgot Password",
+    component: <ForgotPassword />,
+    properties: null,
+    route: routes.FORGOT_PASSWORD,
+    icon: null,
+  },
+
+  {
+    title: "Reset Password",
+    component: <ResetPassword />,
+    properties: null,
+    route: routes.RESET_PASSWORD,
+    icon: null,
+  },
+  {
+    title: "Create Do",
+    component: <AddTask />,
+    properties: ["isProtected"],
+    route: routes.SIGN_IN,
+    icon: null,
+  },
+  {
+    title: "View Do",
+    component: <ViewTask />,
+    properties: ["isProtected"],
+    route: routes.SIGN_IN,
+    icon: null,
+  },
+  {
+    title: "Edit Task",
+    component: <EditTask />,
+    properties: ["isProtected"],
+    route: routes.EDIT,
+    icon: null,
+  },
+  {
+    title: "DOs",
+    component: <TaskPage />,
+    properties: ["isProtected"],
+    route: routes.DOs,
+    icon: null,
+  },
+  {
+    title: "Dashboard",
+    component: <Dashboard />,
+    properties: ["isProtected", "isSideNavRoute"],
+    route: routes.DASHBOARD,
+    icon: <HomeIcon />,
+  },
+  {
+    title: "Search",
+    component: <Dashboard />,
+    properties: ["isProtected", "isSideNavRoute"],
+    route: routes.DASHBOARD,
+    icon: <Search />,
+  },
+  {
+    title: "Notifications",
+    component: <Dashboard />,
+    properties: ["isProtected", "isSideNavRoute"],
+    route: routes.DASHBOARD,
+    icon: <Notifications />,
+  },
+];
+
+export const sideNavFooterRoutes = [
+  {
+    title: "Settings",
+    component: <Dashboard />,
+    properties: ["isProtected", "isSideNavRoute"],
+    route: routes.DASHBOARD,
+    icon: <Settings />,
+  },
+  {
+    title: "Help & Support",
+    component: <Dashboard />,
+    properties: ["isProtected", "isSideNavRoute"],
+    route: routes.DASHBOARD,
+    icon: <Notifications />,
+  },
+  {
+    title: "Trash",
+    component: <Dashboard />,
+    properties: ["isProtected", "isSideNavRoute"],
+    route: routes.DASHBOARD,
+    icon: <Trash />,
+  },
+];

@@ -1,0 +1,87 @@
+.outerContainer {
+  padding: 24px 20px;
+  border-right: 1px solid var(--black1);
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex-basis: calc(100svh - 70px);
+}
+
+.altContainer {
+  height: 140px;
+  padding-block: 0.5rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.header > h1 {
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: -0.34%;
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  gap: 0.3rem;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.header > h1:hover {
+  background-color: var(--black1);
+}
+
+.container > nav {
+  margin-top: 1.5rem;
+}
+
+.container > nav > a,
+.altContainer > a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px;
+  margin-bottom: 4px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.container > nav > a:hover,
+.altContainer > a:hover {
+  background-color: var(--black1);
+}
+
+.container > nav > a > span,
+.altContainer > a > span {
+  font-family: Inter;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: -0.34%;
+  color: var(--white);
+  font-family: Inter;
+  font-weight: 542;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: -0.34%;
+}
+
+.container > nav > h3 {
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: -0.34%;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
+}

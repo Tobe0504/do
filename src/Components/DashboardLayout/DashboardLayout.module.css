@@ -1,0 +1,13 @@
+.container {
+  height: 100vh;
+  display: flex;
+}
+
+.container > section:nth-child(1) {
+  flex-basis: 256px;
+  width: 256px;
+}
+
+.container > section:nth-child(2) {
+  flex: 1;
+}

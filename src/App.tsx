@@ -1,30 +1,42 @@
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
-import AddTask from "./Containers/AddTask/AddTask";
-import ConfirmUssr from "./Containers/ConfirmUssr/ConfirmUssr";
-import Dashboard from "./Containers/Dashboard/Dashboard";
-import EditTask from "./Containers/EditTask/EditTask";
-import Home from "./Containers/Home/Home";
-import SignIn from "./Containers/SignIn/SignIn";
-import SignUp from "./Containers/SignUp/SignUp";
-import TaskPage from "./Containers/TaskPage/TaskPage";
-import ViewTask from "./Containers/ViewTask/ViewTask";
+import { routeComponents } from "./Utilities/routes";
 
 function App() {
+  // Router
+  const location = useLocation();
+
+  // Effects
+  useEffect(() => {
+    const activeRoute = routeComponents?.find(
+      (routes) => routes?.route === location?.pathname
+    );
+
+    document.title = activeRoute?.title as string;
+  }, [location?.pathname]);
+
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/sign-in" element={<SignIn />} />
-      <Route path="/sign-up" element={<SignUp />} />
-      <Route path="/confirm" element={<ConfirmUssr />} />
+      {/* <Route
+        path={routes.BASE_URL}
+        element={<Navigate to={routes.DASHBOARD} />}
+      /> */}
+      {routeComponents.map((route) => {
+        if (route.properties?.includes("isProtected")) {
+          <React.Fragment key={route.route}>
+            <Route element={<RequireAuth />}>
+              <Route path={route.route} element={route.component} />
+            </Route>
+          </React.Fragment>;
+        }
 
-      <Route element={<RequireAuth />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/create" element={<AddTask />} />
-        <Route path="/view/:id" element={<ViewTask />} />
-        <Route path="/edit/:id" element={<EditTask />} />
-        <Route path="/todos" element={<TaskPage />} />
-      </Route>
+        return (
+          <React.Fragment key={route.route}>
+            <Route path={route.route} element={route.component} />
+          </React.Fragment>
+        );
+      })}
     </Routes>
   );
 }

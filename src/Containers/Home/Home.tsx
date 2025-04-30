@@ -30,6 +30,16 @@ const Home = () => {
   return (
     <Layout>
       <div className={classes.container}>
+        <div className={classes["gradient-background"]}>
+          <div className={`${classes.gradientSphere} ${classes.sphere1}`}></div>
+          <div className={`${classes.gradientSphere} ${classes.sphere2}`}></div>
+          <div className={`${classes.gradientSphere} ${classes.sphere3}`}></div>
+          <div className={classes.gridOverlay}></div>
+          <div
+            className={classes.particlesContainer}
+            id="particles-container"
+          ></div>
+        </div>
         <div className={classes.innerContainer}>
           <h4>
             do
