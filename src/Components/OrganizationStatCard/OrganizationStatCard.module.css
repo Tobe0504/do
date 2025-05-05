@@ -1,0 +1,23 @@
+.container {
+  padding: 2rem;
+  border: 2px solid var(--orangeWithTransparency);
+  border-radius: 5px;
+  background-color: var(--black);
+}
+
+.container > h4 {
+  font-family: Inter;
+  font-size: var(--headerFontSize);
+  font-weight: 600;
+  line-height: 150%;
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+.container > p {
+  font-family: Inter;
+  font-size: var(--paragraphFontSize);
+  font-weight: 00;
+  line-height: 150%;
+  text-align: left;
+}

@@ -3,6 +3,8 @@ import Dashboard from "../Containers/Dashboard/Dashboard";
 import EditTask from "../Containers/EditTask/EditTask";
 import ForgotPassword from "../Containers/ForgotPassword/ForgotPassword";
 import Home from "../Containers/Home/Home";
+import Onboarding from "../Containers/Onboarding/Onboarding";
+import Organizations from "../Containers/Organizations/Organizations";
 import ResetPassword from "../Containers/ResetPassword/ResetPassword";
 import SignIn from "../Containers/SignIn/SignIn";
 import SignUp from "../Containers/SignUp/SignUp";
@@ -25,6 +27,17 @@ export const routes = Object.freeze({
   EDIT: "/edit/:id",
   DOs: "/do",
   DASHBOARD: "/dashboard",
+  ORGANIZATIONS: "/hives",
+  ORGANIZATION_OVERVIEW: "/hives/:organizationId/overview",
+  ORGANIZATIONS_MEMBERS: "/hives/:organizationId/members-and-roles",
+  ORGANIZATION_TEAMS: "/hives/:organizationId/squads",
+  ORGANIZATION_CHAT: "/hive/:organizationId/chat",
+  ORGANIZATION_ACTIVITY: "/hives/:organizationId/activity",
+  ORGANIZATION_RECIGNITION: "/hives/:organizationId/recognition",
+  ORGANIZATION_VIBE_ROOM: "/hives/::organizationId/vibe-room",
+  ORGANIZATION_RESOURCES: "/hives/:organizationId/resources",
+  ORGANIZATION_SECRETS: "/hives/:organizationId/secrets",
+  ONBOARDING: "/onboarding",
 });
 
 export const routeComponents = [
@@ -112,6 +125,41 @@ export const routeComponents = [
     properties: ["isProtected", "isSideNavRoute"],
     route: routes.DASHBOARD,
     icon: <Notifications />,
+  },
+  {
+    title: "Organizations",
+    component: <Organizations />,
+    properties: ["isProtected"],
+    route: routes.ORGANIZATIONS,
+    icon: null,
+  },
+  {
+    title: "Onboarding",
+    component: <Onboarding />,
+    properties: [""],
+    route: routes.ONBOARDING,
+    icon: null,
+  },
+  {
+    title: "Overview",
+    component: <Onboarding />,
+    properties: ["isOrganization", "isProtected"],
+    route: routes.ORGANIZATION_OVERVIEW,
+    icon: "🌄",
+  },
+  {
+    title: "Teams & Roles",
+    component: <Onboarding />,
+    properties: ["isOrganization", "isProtected"],
+    route: routes.ORGANIZATION_TEAMS,
+    icon: "👥",
+  },
+  {
+    title: "Chat",
+    component: <Onboarding />,
+    properties: ["isOrganization", "isProtected"],
+    route: routes.ORGANIZATION_TEAMS,
+    icon: "👥",
   },
 ];
 

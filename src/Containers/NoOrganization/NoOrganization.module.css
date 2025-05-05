@@ -1,0 +1,63 @@
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-block: 2rem;
+}
+
+.header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.header > h2 {
+  font-family: Inter;
+  font-size: var(--headerFontSize);
+  font-weight: 700;
+  line-height: 140%;
+  margin-bottom: 0.5rem;
+}
+
+.header > p {
+  font-family: Inter;
+  font-size: var(--paragraphFontSize);
+  font-weight: 400;
+  line-height: 140%;
+  margin-bottom: 0.5rem;
+  color: var(--gray);
+}
+
+.features {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  gap: 4rem;
+  margin-bottom: 3rem;
+}
+
+.features > div {
+  text-align: center;
+  border: 2px solid var(--black1);
+  padding: 1rem 2rem;
+  min-width: 250px;
+  border-radius: 5px;
+}
+
+.features > div > h4 {
+  font-family: Inter;
+  font-size: var(--headerFontSize);
+  font-weight: 400;
+  line-height: 140%;
+  margin-bottom: 0.5rem;
+  color: var(--gray);
+}
+
+.features > div > p {
+  font-family: Inter;
+  font-size: var(--paragraphFontSize);
+  font-weight: 400;
+  line-height: 140%;
+  color: var(--white);
+}

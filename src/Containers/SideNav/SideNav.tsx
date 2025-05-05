@@ -1,10 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ChevronDown from "../../SvgIcons/ChevronDown";
-import { routeComponents, sideNavFooterRoutes } from "../../Utilities/routes";
+import {
+  routeComponents,
+  routes,
+  sideNavFooterRoutes,
+} from "../../Utilities/routes";
 import Logo from "../Logo/Logo";
 import classes from "./SideNav.module.css";
 
 const SideNav = () => {
+  // Router
+  const navigate = useNavigate();
+
   return (
     <section className={classes.outerContainer}>
       <div className={classes.container}>
@@ -30,29 +37,12 @@ const SideNav = () => {
         </nav>
 
         <nav>
-          <h3>
-            <span>Favourites</span>
-            <ChevronDown />
-          </h3>
-          <Link to="#0">
-            <span>📝</span>
-            <span>Articles</span>
-          </Link>
-
-          <Link to="#0">
-            <span>🎨</span>
-            <span>Design</span>
-          </Link>
-
-          <Link to="#0">
-            <span>💗</span>
-            <span>Volunteering</span>
-          </Link>
-        </nav>
-
-        <nav>
-          <h3>
-            <span>Teams</span>
+          <h3
+            onClick={() => {
+              navigate(routes.ORGANIZATIONS);
+            }}
+          >
+            <span>Hives</span>
             <ChevronDown />
           </h3>
           <Link to="#0">
@@ -79,6 +69,27 @@ const SideNav = () => {
           <Link to="#0">
             <span>💻</span>
             <span>Tech</span>
+          </Link>
+        </nav>
+
+        <nav>
+          <h3>
+            <span>Favourites</span>
+            <ChevronDown />
+          </h3>
+          <Link to="#0">
+            <span>📝</span>
+            <span>Articles</span>
+          </Link>
+
+          <Link to="#0">
+            <span>🎨</span>
+            <span>Design</span>
+          </Link>
+
+          <Link to="#0">
+            <span>💗</span>
+            <span>Volunteering</span>
           </Link>
         </nav>
       </div>

@@ -1,5 +1,6 @@
 import classes from "./Button.module.css";
 import { CircularProgress } from "@mui/material";
+import { SmallLoader } from "../Loader/Loader";
 
 type ButtonPropTypes = {
   children: React.ReactNode;
@@ -46,7 +47,7 @@ const Button = ({
       onClick={onClick}
       disabled={loading || disabled}
     >
-      {loading ? <CircularProgress size="1.5rem" color="inherit" /> : children}
+      {loading ? <SmallLoader /> : children}
     </button>
   );
 };

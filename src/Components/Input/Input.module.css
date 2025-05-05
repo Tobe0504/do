@@ -13,7 +13,7 @@
 .container > label {
   font-family: Inter;
   color: var(--gray, #a1a1a1);
-  font-size: 13px;
+  font-size: var(--paragraphFontSize);
   font-weight: 400;
   line-height: 16px;
   text-align: left;
@@ -22,7 +22,7 @@
 .container > span:nth-child(2) {
   color: var(--red);
   font-family: Inter;
-  font-size: 18px;
+  font-size: var(--paragraphFontSize);
   font-style: normal;
   font-weight: 400;
   line-height: 27px;
@@ -48,18 +48,19 @@
 .input > input {
   display: block;
   width: 100%;
-  padding: 16px;
+  padding: 12px;
   font-family: Inter;
-  font-size: 13px;
+  font-size: var(--paragraphFontSize);
   font-weight: 400;
   line-height: 16px;
   margin: 5px 0;
-  border-radius: 12px;
+  border-radius: 5px;
   animation: appear 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   border: 1px solid var(--gray);
   color: var(--white);
   background: var(--ds-background-100, #0a0a0a);
+  position: relative;
 }
 
 .input input:focus {
@@ -93,17 +94,34 @@ input:-webkit-autofill:active {
 .input > input::placeholder {
   color: #8897ad;
   font-family: Inter;
-  font-size: 13px;
+  font-size: var(--paragraphFontSize);
   font-weight: 400;
   line-height: 24px;
   text-align: left;
   color: var(--geist-color-secondary-geist-secondary, #888888);
 }
 
+.input > svg {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  margin-block: auto;
+  cursor: pointer;
+}
+
+.emojiPicker {
+  position: absolute;
+  top: 120%;
+  right: 10px;
+  z-index: 3;
+  user-select: none;
+}
+
 .errorMessage {
   color: #ff6166;
   font-family: Inter;
-  font-size: 13px;
+  font-size: var(--paragraphFontSize);
   font-style: normal;
   font-weight: 400;
   line-height: 20px;

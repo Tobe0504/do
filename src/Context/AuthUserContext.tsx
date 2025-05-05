@@ -4,6 +4,7 @@ import {
   getLocalStorage,
   setLocalStorage,
 } from "../HelperFunctions/decryptData";
+import { routes } from "../Utilities/routes";
 
 interface AuthUserContextValues {
   loginDetails: {
@@ -53,14 +54,7 @@ const AuthUserContextProvider = ({
 
   //   Utils
   const signUp = () => {
-    setLocalStorage(loginDetails, "do-user", "user");
-
-    setLocalStorage("true", "do-user-state", "userState");
-
-    localStorage.removeItem("do-todos");
-    localStorage.removeItem("summary");
-
-    navigate("/dashboard");
+    navigate(routes.ONBOARDING);
   };
 
   const signIn = () => {

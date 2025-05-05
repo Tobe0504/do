@@ -4,6 +4,7 @@ import Button from "../../Components/Button/Button";
 import Input from "../../Components/Input/Input";
 import OnboardingLayout from "../../Components/OnboardingLayout/OnboardingLayout";
 import { AuthUserContext } from "../../Context/AuthUserContext";
+import { routes } from "../../Utilities/routes";
 import Logo from "../Logo/Logo";
 import classes from "../SignIn/SignIn.module.css";
 
@@ -75,7 +76,7 @@ const SignUp = () => {
             Create an account
           </Button>
           <span>
-            Already have an account? <Link to="/sign-in">Sign in</Link>
+            Already have an account? <Link to={routes.SIGN_IN}>Sign in</Link>
           </span>
         </form>
       </div>

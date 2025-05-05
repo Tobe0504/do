@@ -1,0 +1,16 @@
+.container {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.body {
+  max-width: 600px;
+}

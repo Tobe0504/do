@@ -1,16 +1,15 @@
 .button {
-  border-radius: 8px;
+  border-radius: 5px;
   display: flex;
-  padding: 10px 8px;
+  padding: 8px 12px;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 4px;
   font-family: Inter;
-  font-size: 14px;
+  font-size: var(--paragraphFontSize);
   font-weight: 500;
-  line-height: 20px;
+  line-height: 21px;
   text-align: center;
-  width: 100%;
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.2s ease-in-out;
@@ -23,19 +22,19 @@
 }
 
 .secondary {
-  border: 1px solid var(--ds-gray-400, #2e2e2e);
+  border: 1px solid var(--orange);
   color: var(--ds-gray-1000, #ededed);
-  background: transparent;
+  background: var(--orangeWithTransparency);
 }
 
 .tertiary {
-  color: var(--white-body-text, #fff);
-  background: #2ba792;
+  color: var(--white);
+  background: transparent;
   border: none;
 }
 
 .tertiary:hover {
-  background: var(--tertiatyButtonHover);
+  background: var(--orangeWithTransparency);
 }
 
 .tertiary:active {
@@ -61,8 +60,10 @@
 }
 
 .primary:disabled,
+.secondary:disabled,
 .tertiary:disabled {
   background-color: #888888;
+  border: 1px solid transparent;
 }
 
 .black {

@@ -1,10 +1,11 @@
 import DashboardLayout from "../../Components/DashboardLayout/DashboardLayout";
+import DashboardHeader from "../DashboardHeader/DashboardHeader";
 
 const Dashboard = () => {
   // Local
 
   return (
-    <DashboardLayout>
+    <DashboardLayout header={<DashboardHeader />}>
       <></>
     </DashboardLayout>
   );

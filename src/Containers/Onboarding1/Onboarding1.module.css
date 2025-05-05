@@ -1,0 +1,49 @@
+.container {
+  max-width: 600px;
+}
+
+.container > h1,
+.container > form > div > h2 {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 150%;
+}
+
+.container > form > div > h2 {
+  margin-block: 1rem;
+}
+
+.container > h1 {
+  margin-block: 1.5rem;
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+}
+
+.options > div {
+  cursor: pointer;
+}
+
+.options > div > div {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.container > button {
+  margin-top: 2rem;
+}
+
+.butotonSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}

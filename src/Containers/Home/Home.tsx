@@ -28,7 +28,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <Layout>
+    <Layout notShowHeader>
       <div className={classes.container}>
         <div className={classes["gradient-background"]}>
           <div className={`${classes.gradientSphere} ${classes.sphere1}`}></div>

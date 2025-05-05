@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.container > h1 {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 140%;
+  text-align: left;
+}
+
+.container > button {
+  margin-left: auto;
+  max-width: 130px;
+}

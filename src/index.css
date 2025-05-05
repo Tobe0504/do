@@ -5,7 +5,10 @@
   --white: #fff;
   --black1: #1b1b1b;
   --orange: #e63e21;
+  --orangeWithTransparency: #e63e2158;
   --gray: #a1a1a1;
+  --headerFontSize: 15px;
+  --paragraphFontSize: 13px;
 }
 
 body {
@@ -66,4 +69,16 @@ code {
   transition: all 0.3s ease-in-out;
   border: 1px solid var(--ds-gray-400, #2e2e2e);
   color: #888888 !important;
+}
+
+.EmojiPickerReact.epr-dark-theme {
+}
+
+.EmojiPickerReact.epr-dark-theme {
+  --epr-emoji-size: 20px;
+  --epr-emoji-gap: 8px;
+  --epr-hover-bg-color: #333333;
+  --epr-bg-color: #000000;
+  --epr-text-color: #f0f0f0;
+  --epr-category-label-bg-color: #000;
 }

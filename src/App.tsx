@@ -1,7 +1,7 @@
+import { routeComponents } from "./Utilities/routes";
 import React, { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
-import { routeComponents } from "./Utilities/routes";
 
 function App() {
   // Router
@@ -13,15 +13,11 @@ function App() {
       (routes) => routes?.route === location?.pathname
     );
 
-    document.title = activeRoute?.title as string;
+    document.title = `${activeRoute?.title as string} - Do`;
   }, [location?.pathname]);
 
   return (
     <Routes>
-      {/* <Route
-        path={routes.BASE_URL}
-        element={<Navigate to={routes.DASHBOARD} />}
-      /> */}
       {routeComponents.map((route) => {
         if (route.properties?.includes("isProtected")) {
           <React.Fragment key={route.route}>

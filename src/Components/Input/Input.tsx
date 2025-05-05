@@ -1,7 +1,13 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import ReactQuill from "react-quill";
 import classes from "./Input.module.css";
 import "react-quill/dist/quill.snow.css";
+import Smiley from "../../Assets/Icons/Smiley";
+import EmojiPicker, {
+  EmojiClickData,
+  SuggestionMode,
+  Theme,
+} from "emoji-picker-react";
 
 type InputProps = {
   type?: string;
@@ -25,6 +31,11 @@ type InputProps = {
   onFocus?: () => void;
   min?: any;
   max?: any;
+  emojiObject?: {
+    setState: Dispatch<SetStateAction<{ [key: string]: string }>>;
+    valueName: string;
+    isSimple: boolean;
+  };
 };
 
 const Input = ({
@@ -46,9 +57,50 @@ const Input = ({
   onFocus,
   min,
   max,
+  emojiObject,
 }: InputProps) => {
   // States
   const [invalid, setInvalid] = useState(false);
+  const [showEmoji, setShowEmoji] = useState(false);
+
+  // Ref
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  // Utils
+  const handleEmojiSelect = (emojiData: EmojiClickData, event: MouseEvent) => {
+    if (emojiObject) {
+      emojiObject.setState((prevState: any) => {
+        if (!emojiObject?.isSimple) {
+          return {
+            ...prevState,
+            [emojiObject.valueName]: `${
+              prevState[emojiObject.valueName] as any
+            }${emojiData?.emoji}`,
+          };
+        } else {
+          return `${prevState}${emojiData?.emoji}`;
+        }
+      });
+    }
+  };
+
+  // Effects
+  useEffect(() => {
+    const handleEmojiContainerDisappear = (e: any) => {
+      if (
+        containerRef?.current &&
+        !containerRef?.current?.contains(e?.target)
+      ) {
+        setShowEmoji(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleEmojiContainerDisappear);
+
+    return () => {
+      document.removeEventListener("mousedown", handleEmojiContainerDisappear);
+    };
+  });
 
   return (
     <div className={classes.container} style={style}>
@@ -90,6 +142,20 @@ const Input = ({
           min={min}
           max={max}
         />
+        {emojiObject && (
+          <Smiley onClick={() => setShowEmoji((prevState) => !prevState)} />
+        )}
+        {showEmoji && (
+          <div className={classes.emojiPicker} ref={containerRef}>
+            <EmojiPicker
+              onEmojiClick={handleEmojiSelect}
+              height={500}
+              width={400}
+              theme={"dark" as Theme}
+              suggestedEmojisMode={"recent" as SuggestionMode}
+            />
+          </div>
+        )}
       </span>
       {(invalid || inValidCondition) && (
         <span className={classes.errorMessage}>

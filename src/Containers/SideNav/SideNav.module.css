@@ -1,6 +1,5 @@
 .outerContainer {
   padding: 24px 20px;
-  border-right: 1px solid var(--black1);
   display: flex;
   flex-direction: column;
 }
@@ -56,7 +55,8 @@
 }
 
 .container > nav > a:hover,
-.altContainer > a:hover {
+.altContainer > a:hover,
+.container > nav > h3:hover {
   background-color: var(--black1);
 }
 
@@ -84,4 +84,11 @@
   align-items: center;
   gap: 0.3rem;
   margin-bottom: 0.5rem;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 5px;
+}
+
+.container > nav > h3:hover {
+  text-decoration: underline;
 }

@@ -1,13 +1,41 @@
 .container {
-  height: 100vh;
+  height: 100svh;
   display: flex;
+  overflow: hidden;
 }
 
 .container > section:nth-child(1) {
-  flex-basis: 256px;
-  width: 256px;
+  border-right: 1px solid var(--black1);
 }
 
 .container > section:nth-child(2) {
   flex: 1;
+  position: relative;
+  height: 100svh;
+  overflow-y: auto;
+}
+
+.container > section:nth-child(3) {
+  transition: all 0.2s ease-in-out;
+}
+
+.rightOpen {
+  flex-basis: 250px;
+  border-left: 1px solid var(--black1);
+}
+
+.rightClosed {
+  flex-basis: 0px;
+  border-left: 1px solid transparent;
+}
+
+.container > section > header {
+  height: 60px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+.container > section > section {
+  height: calc(100svh - 60px);
 }

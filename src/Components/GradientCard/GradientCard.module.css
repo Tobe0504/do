@@ -1,0 +1,43 @@
+.outerContainer {
+  border-radius: 5px;
+  padding: 2px;
+  transition: all 0.2s ease-in-out;
+  background: var(--black1);
+}
+
+.outerContainer:hover {
+  background: var(--orangeWithTransparency);
+}
+
+.active {
+  background: linear-gradient(
+    278.85deg,
+    #1b1b1b 3.36%,
+    #e08878 48.72%,
+    #e63e21 99.06%
+  );
+  background-size: 600% 600%;
+  animation: colorMotion 8s ease infinite;
+}
+
+.inActive {
+  background: var(--black1);
+}
+
+.container {
+  padding: 8px;
+  border-radius: 3px;
+  background-color: var(--black);
+}
+
+@keyframes colorMotion {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

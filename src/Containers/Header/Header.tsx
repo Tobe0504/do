@@ -1,31 +1,15 @@
-import Logo from "../Logo/Logo";
+import DefaultHeader from "../DefaultHeader/DefaultHeader";
 import classes from "./Header.module.css";
-import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-import { useContext } from "react";
-import { AuthUserContext } from "../../Context/AuthUserContext";
-import { useNavigate } from "react-router-dom";
-import { getLocalStorage } from "../../HelperFunctions/decryptData";
 
-const Header = () => {
-  // Local
-  const user = getLocalStorage("do-user-state", "userState");
+type HeaderTypes = {
+  children?: React.ReactNode;
+};
 
-  // context
-  const { logout } = useContext(AuthUserContext);
-
-  // Router
-  const navigate = useNavigate();
-
+const Header = ({ children }: HeaderTypes) => {
   return (
-    <div className={classes.container}>
-      <Logo onClick={() => navigate("/dashboard")} />
-
-      {user === "true" && (
-        <span onClick={logout}>
-          <LogoutOutlinedIcon />
-        </span>
-      )}
-    </div>
+    <header className={classes.container}>
+      {children || <DefaultHeader />}
+    </header>
   );
 };
 
