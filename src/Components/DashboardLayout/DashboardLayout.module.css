@@ -20,7 +20,7 @@
 }
 
 .rightOpen {
-  flex-basis: 250px;
+  flex-basis: 350px;
   border-left: 1px solid var(--black1);
 }
 
@@ -34,6 +34,8 @@
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: 20;
+  background-color: var(--black);
 }
 
 .container > section > section {

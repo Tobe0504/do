@@ -61,10 +61,6 @@ const SideNav = () => {
             <span>Personal</span>
             <ChevronDown />
           </h3>
-          <Link to="#0">
-            <span>🏦</span>
-            <span>FCMB</span>
-          </Link>
 
           <Link to="#0">
             <span>💻</span>

@@ -11,8 +11,6 @@ import OrganizationOverview from "../OrganizationOverview/OrganizationOverview";
 import classes from "./Organizations.module.css";
 
 const Organizations = () => {
-  // States
-
   // Hooks
   const { updateSearchParams } = useUpdateSearchParams();
 
@@ -45,7 +43,17 @@ const Organizations = () => {
               "delete"
             );
           }}
-          body={<CreateOrganization />}
+          body={
+            <CreateOrganization
+              onClose={() => {
+                updateSearchParams(
+                  searchParamKeys.ORGANIZATIONS.KEY,
+                  undefined,
+                  "delete"
+                );
+              }}
+            />
+          }
         />
       )}
 

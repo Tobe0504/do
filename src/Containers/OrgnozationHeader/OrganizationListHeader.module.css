@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 2rem;
+}
+
+.container > div > h1 {
+  font-family: Inter;
+  font-size: var(--headerFontSize);
+  font-weight: 600;
+  line-height: 150%;
+}
+
+.container > div > p {
+  font-family: Inter;
+  font-size: var(--paragraphFontSize);
+  font-weight: 400;
+  line-height: 150%;
+}

@@ -1,23 +1,58 @@
-.container {
-  padding: 2rem;
-  border: 2px solid var(--orangeWithTransparency);
-  border-radius: 5px;
-  background-color: var(--black);
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 1rem;
+  min-width: 200px;
+  backdrop-filter: blur(12px);
+  color: white;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
 }
 
-.container > h4 {
-  font-family: Inter;
-  font-size: var(--headerFontSize);
-  font-weight: 600;
-  line-height: 150%;
-  text-align: left;
-  margin-bottom: 0.5rem;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.container > p {
-  font-family: Inter;
+.icon {
+  font-size: 1.4rem;
+  background: linear-gradient(135deg, #e08878, #e63e21);
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.value {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
   font-size: var(--paragraphFontSize);
-  font-weight: 00;
-  line-height: 150%;
-  text-align: left;
+  color: #ccc;
+}
+
+.label {
+  font-weight: 500;
+}
+
+.trend {
+  font-weight: 600;
+}
+
+.up {
+  color: #4ade80;
+}
+
+.down {
+  color: #f87171;
 }

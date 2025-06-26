@@ -1,121 +1,68 @@
-import { tasksType } from "../../Utilities/tasks";
-import classes from "./TaskCard.module.css";
-import moment from "moment";
-import { useNavigate } from "react-router";
-import DeleteOutlineOutlined from "@mui/icons-material/DeleteOutlineOutlined";
-import { useEffect, useRef, useState } from "react";
+import React from "react";
+import { useDraggable } from "@dnd-kit/core";
+import styles from "./TaskCard.module.css";
+import { TaskType } from "../../Utilities/types";
 
-interface TaskCardProps {
-  data: tasksType;
-  onDbClick?: () => void;
-}
+const TaskCard: React.FC<TaskType> = ({
+  id,
+  title,
+  description,
+  image,
+  startDate,
+  endDate,
+  project,
+  squad,
+  status,
+  assignee,
+}) => {
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({ id });
 
-export const checkDate = (date: string) => {
-  const inputDate = moment(date);
-  const now = moment();
-
-  if (inputDate.isBefore(now)) {
-    return "past";
-  } else if (inputDate.isAfter(now)) {
-    return "future";
-  } else {
-    return "okay";
-  }
-};
-
-const TaskCard = ({ data, onDbClick }: TaskCardProps) => {
-  const day = moment(data.dateAdded).format("MMM Do YY").split(" ")[1];
-  const month = moment(data.dateAdded).format("MMM Do YY").split(" ")[0];
-
-  //   Navigate
-  const navigate = useNavigate();
-
-  // States
-  const [isDelete, setIsDelete] = useState(false);
-
-  // ref
-  const date = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const removeDropdownHandler = (e: any) => {
-      if (date?.current && !date?.current?.contains(e.target)) {
-        setIsDelete(false);
-      } else {
+  const style = transform
+    ? {
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+        cursor: "grab",
+        zIndex: 1000,
       }
-    };
-    document.addEventListener("mousedown", removeDropdownHandler);
-
-    return () => {
-      document.removeEventListener("mousedown", removeDropdownHandler);
-    };
-  }, []);
+    : { cursor: "grab" };
 
   return (
     <div
-      className={classes.task}
-      style={
-        checkDate(data.endDate) === "past"
-          ? { border: "1px solid #ff6166" }
-          : checkDate(data.startDate) === "future"
-          ? { border: "1px solid #e63e215a" }
-          : {
-              border: "1px solid #2e2e2e",
-            }
-      }
-      onClick={() => {
-        navigate(`/view/${data.id}`);
-      }}
+      ref={setNodeRef}
+      className={styles.card}
+      style={style}
+      {...listeners}
+      {...attributes}
     >
-      <div className={classes.upperSection}>
-        <div
-          className={classes.date}
-          onClick={(e) => {
-            e.stopPropagation();
-            setIsDelete(!isDelete);
-          }}
-          ref={date}
-        >
-          {!isDelete ? (
-            <>
-              <h4>{day}</h4>
-              <span>{month}</span>{" "}
-            </>
-          ) : (
-            <span onClick={onDbClick}>
-              <DeleteOutlineOutlined />
-            </span>
-          )}
+      {image && <img src={image} alt="Task preview" className={styles.image} />}
+      <div className={styles.content}>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.description}>{description}</p>
+
+        <div className={styles.meta}>
+          <span className={styles.tag}>
+            <strong>Project:</strong> {project}
+          </span>
+          <span className={styles.tag}>
+            <strong>Squad:</strong> {squad}
+          </span>
+          <span className={styles.tag}>
+            <strong>Status:</strong> {status}
+          </span>
         </div>
 
-        <div className={classes.date}>
-          <h4>{data.title}</h4>
-          <span dangerouslySetInnerHTML={{ __html: data.description }}></span>
+        <div className={styles.dates}>
+          <span>
+            <strong>Start:</strong> {startDate}
+          </span>
+          <span>
+            <strong>End:</strong> {endDate}
+          </span>
         </div>
 
-        <div
-          style={
-            checkDate(data.endDate) === "past"
-              ? { background: "#c0c0c0", animation: "none" }
-              : data.percentageComplete === 100
-              ? { background: "green", animation: "none" }
-              : checkDate(data.startDate) === "future"
-              ? { background: "#e63e215a", animation: "none" }
-              : {
-                  background: "#E63E21",
-                }
-          }
-        ></div>
+        <div className={styles.footer}>
+          <img src={assignee} alt="Assignee" className={styles.avatar} />
+        </div>
       </div>
-      <div className={classes.lowerSection}>
-        <p>
-          {moment(data.startDate).calendar()} -{" "}
-          {moment(data.endDate).calendar()}
-        </p>
-      </div>
-      <div
-        className={classes.progressBar}
-        style={{ width: `${data.percentageComplete || 0}%` }}
-      ></div>
     </div>
   );
 };

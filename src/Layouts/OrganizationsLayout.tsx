@@ -14,7 +14,7 @@ const OrganizationsLayout = ({
 }: OrganizationsLayoutTypes) => {
   return (
     <DashboardLayout header={<OrganizationHeader />}>
-      <OrganizationSideNav />
+      {/* <OrganizationSideNav /> */}
       <section className={className}>{children}</section>
     </DashboardLayout>
   );

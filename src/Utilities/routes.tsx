@@ -1,6 +1,4 @@
-import AddTask from "../Containers/AddTask/AddTask";
 import Dashboard from "../Containers/Dashboard/Dashboard";
-import EditTask from "../Containers/EditTask/EditTask";
 import ForgotPassword from "../Containers/ForgotPassword/ForgotPassword";
 import Home from "../Containers/Home/Home";
 import Onboarding from "../Containers/Onboarding/Onboarding";
@@ -8,8 +6,6 @@ import Organizations from "../Containers/Organizations/Organizations";
 import ResetPassword from "../Containers/ResetPassword/ResetPassword";
 import SignIn from "../Containers/SignIn/SignIn";
 import SignUp from "../Containers/SignUp/SignUp";
-import TaskPage from "../Containers/TaskPage/TaskPage";
-import ViewTask from "../Containers/ViewTask/ViewTask";
 import HomeIcon from "../SvgIcons/HomeIcon";
 import Notifications from "../SvgIcons/Notifications";
 import Search from "../SvgIcons/Search";
@@ -77,34 +73,7 @@ export const routeComponents = [
     route: routes.RESET_PASSWORD,
     icon: null,
   },
-  {
-    title: "Create Do",
-    component: <AddTask />,
-    properties: ["isProtected"],
-    route: routes.SIGN_IN,
-    icon: null,
-  },
-  {
-    title: "View Do",
-    component: <ViewTask />,
-    properties: ["isProtected"],
-    route: routes.SIGN_IN,
-    icon: null,
-  },
-  {
-    title: "Edit Task",
-    component: <EditTask />,
-    properties: ["isProtected"],
-    route: routes.EDIT,
-    icon: null,
-  },
-  {
-    title: "DOs",
-    component: <TaskPage />,
-    properties: ["isProtected"],
-    route: routes.DOs,
-    icon: null,
-  },
+
   {
     title: "Dashboard",
     component: <Dashboard />,

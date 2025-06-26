@@ -1,8 +1,9 @@
 .container {
   display: flex;
   gap: 0.5rem;
+  margin-bottom: 2rem;
 }
 
 .container > div {
-  width: 280px;
+  width: 250px;
 }

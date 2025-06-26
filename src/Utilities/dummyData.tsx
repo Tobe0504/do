@@ -1,0 +1,154 @@
+import { images } from "./constants";
+
+export const projects = [
+  {
+    title: "Design System Build",
+    description: "Creating shared tokens and components for Do.",
+    tags: ["Design", "Sprint 4"],
+    members: [
+      images.USER_AVATAR,
+      images.USER_AVATAR,
+      images.USER_AVATAR,
+      images.USER_AVATAR,
+      images.USER_AVATAR,
+    ],
+    progress: 72,
+  },
+  {
+    title: "Marketing Campaign Launch",
+    description: "Preparing launch strategy and assets for July campaign.",
+    tags: ["Marketing", "Q3"],
+    members: [images.USER_AVATAR, images.USER_AVATAR],
+    progress: 45,
+  },
+  {
+    title: "Mobile App Revamp",
+    description: "Redesigning the mobile app UI for smoother UX.",
+    tags: ["Mobile", "Redesign"],
+    members: [images.USER_AVATAR, images.USER_AVATAR, images.USER_AVATAR],
+    progress: 58,
+  },
+  {
+    title: "Onboarding Flow Improvements",
+    description: "Improving first-time user experience.",
+    tags: ["UX", "Growth"],
+    members: [images.USER_AVATAR, images.USER_AVATAR],
+    progress: 89,
+  },
+  {
+    title: "Internal Wiki Setup",
+    description: "Creating an internal knowledge base for the team.",
+    tags: ["Operations", "Docs"],
+    members: [images.USER_AVATAR, images.USER_AVATAR],
+    progress: 32,
+  },
+  {
+    title: "Quarterly Planning",
+    description: "Drafting plans and OKRs for the next quarter.",
+    tags: ["Strategy", "Q4"],
+    members: [images.USER_AVATAR, images.USER_AVATAR, images.USER_AVATAR],
+    progress: 20,
+  },
+  {
+    title: "New Feature Research",
+    description: "Exploring potential AI integrations for Do.",
+    tags: ["R&D", "Innovation"],
+    members: [images.USER_AVATAR, images.USER_AVATAR],
+    progress: 10,
+  },
+  {
+    title: "Customer Feedback Loop",
+    description: "Setting up channels for better customer insights.",
+    tags: ["Support", "Feedback"],
+    members: [images.USER_AVATAR, images.USER_AVATAR],
+    progress: 64,
+  },
+  {
+    title: "Performance Optimization",
+    description: "Improving app load times and responsiveness.",
+    tags: ["Engineering", "Performance"],
+    members: [images.USER_AVATAR, images.USER_AVATAR, images.USER_AVATAR],
+    progress: 78,
+  },
+  {
+    title: "Do Website Refresh",
+    description: "Modernizing landing page visuals and copy.",
+    tags: ["Design", "Marketing"],
+    members: [images.USER_AVATAR, images.USER_AVATAR, images.USER_AVATAR],
+    progress: 50,
+  },
+];
+
+export const squads = [
+  {
+    name: "Design Explorers",
+    description:
+      "Design-first squad focused on product visuals, UX, and brand identity.",
+    imageUrl:
+      "https://res.cloudinary.com/dmpdhnjqs/image/upload/v1695719282/samples/landscapes/architecture-signs.jpg",
+    members: [images.USER_AVATAR, images.USER_AVATAR, images.USER_AVATAR],
+  },
+  {
+    name: "Code Crafters",
+    description: "Frontend and backend engineers delivering robust features.",
+    imageUrl:
+      "https://res.cloudinary.com/dmpdhnjqs/image/upload/v1695719285/samples/ecommerce/accessories-bag.jpg",
+    members: [images.USER_AVATAR, images.USER_AVATAR, images.USER_AVATAR],
+  },
+  {
+    name: "Hive Ops",
+    description:
+      "Operations and support team ensuring smooth hive functioning.",
+    imageUrl:
+      "https://res.cloudinary.com/dmpdhnjqs/image/upload/v1695719286/samples/imagecon-group.jpg",
+    members: [images.USER_AVATAR, images.USER_AVATAR, images.USER_AVATAR],
+  },
+  {
+    name: "Growth Sprinters",
+    description: "Marketing and product growth squad experimenting weekly.",
+    imageUrl:
+      "https://res.cloudinary.com/dmpdhnjqs/image/upload/v1695719282/samples/landscapes/architecture-signs.jpg",
+    members: [images.USER_AVATAR, images.USER_AVATAR, images.USER_AVATAR],
+  },
+  {
+    name: "Bug Busters",
+    description: "QA and testing squad squashing bugs like a pro.",
+    imageUrl:
+      "https://res.cloudinary.com/dmpdhnjqs/image/upload/v1695719307/samples/man-portrait.jpg",
+    members: [images.USER_AVATAR, images.USER_AVATAR, images.USER_AVATAR],
+  },
+  {
+    name: "Storytellers",
+    description: "Content creators, writers, and documentation wizards.",
+    imageUrl:
+      "https://res.cloudinary.com/dmpdhnjqs/image/upload/v1695719303/samples/look-up.jpg",
+    members: [images.USER_AVATAR, images.USER_AVATAR, images.USER_AVATAR],
+  },
+  {
+    name: "Pixel Pushers",
+    description: "Visual designers refining the tiniest UI details.",
+    imageUrl:
+      "https://res.cloudinary.com/dmpdhnjqs/image/upload/v1695719280/samples/people/jazz.jpg",
+    members: [images.USER_AVATAR, images.USER_AVATAR, images.USER_AVATAR],
+  },
+  {
+    name: "Data Dive",
+    description: "Analysts and data scientists uncovering product insights.",
+    imageUrl:
+      "https://res.cloudinary.com/dmpdhnjqs/image/upload/v1695719281/samples/animals/three-dogs.jpg",
+    members: [images.USER_AVATAR, images.USER_AVATAR, images.USER_AVATAR],
+  },
+  {
+    name: "Launch Legends",
+    description: "Product managers coordinating roadmap & releases.",
+    imageUrl:
+      "https://res.cloudinary.com/dmpdhnjqs/image/upload/v1695719278/samples/landscapes/girl-urban-view.jpg",
+    members: [images.USER_AVATAR, images.USER_AVATAR, images.USER_AVATAR],
+  },
+  {
+    name: "Support Squad",
+    description: "Customer happiness heroes answering tickets & feedback.",
+    imageUrl: images.USER_AVATAR,
+    members: [images.USER_AVATAR, images.USER_AVATAR, images.USER_AVATAR],
+  },
+];

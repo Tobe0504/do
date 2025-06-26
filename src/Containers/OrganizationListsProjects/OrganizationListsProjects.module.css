@@ -1,0 +1,10 @@
+.container {
+  padding: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.container > div {
+  flex-basis: calc(20% - 0.5rem);
+}

@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Add from "../../Assets/Icons/Add";
 import ArrowRight from "../../Assets/Icons/ArrowRight";
 import Copy from "../../Assets/Icons/Copy";
 import Button from "../../Components/Button/Button";
 import Input from "../../Components/Input/Input";
+import { ToastContext } from "../../Context/ToastContext";
 import { generateRandomQuote } from "../../HelperFunctions/generateRandomQuote";
 import { inputChangeHandler } from "../../HelperFunctions/inputChangeHandler";
+import ToastContainer from "../ToastContainer/ToastContainer";
 import classes from "./CreateOrganizationForm.module.css";
 
-const CreateOrganizationForm = () => {
+type CreateOrganizationFormTypes = {
+  onClose?: () => void;
+};
+
+const CreateOrganizationForm = ({ onClose }: CreateOrganizationFormTypes) => {
   //   States
   const [data, setData] = useState({
     hiveName: "",
   });
+
+  // Hooks
+  const { showToast } = useContext(ToastContext);
 
   return (
     <div className={classes.container}>
@@ -48,7 +57,14 @@ const CreateOrganizationForm = () => {
               <Add />
             </Button>
 
-            <Button type="tertiary">
+            <Button
+              type="tertiary"
+              onClick={(e) => {
+                e.preventDefault();
+                console.log("Pressed");
+                showToast("Link has been copied to clipboard", 3000);
+              }}
+            >
               <Copy />
               <span>Copy invite link</span>
             </Button>
@@ -56,11 +72,21 @@ const CreateOrganizationForm = () => {
         </div>
 
         <div className={classes.butotonSection}>
-          <Button type="tertiary">
+          <Button
+            type="tertiary"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onClose) onClose();
+            }}
+          >
             <span>Cancel</span>
           </Button>
 
-          <Button>
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
             <span>Create Organization</span>
             <ArrowRight />
           </Button>

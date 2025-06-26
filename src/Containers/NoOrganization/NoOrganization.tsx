@@ -1,6 +1,5 @@
 import Add from "../../Assets/Icons/Add";
 import Button from "../../Components/Button/Button";
-import Loader from "../../Components/Loader/Loader";
 import useUpdateSearchParams from "../../Hooks/useUpdateSearchParams";
 import { searchParamKeys } from "../../Utilities/constants";
 import classes from "./NoOrganization.module.css";

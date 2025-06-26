@@ -2,10 +2,14 @@ import { images } from "../../Utilities/constants";
 import CreateOrganizationForm from "../CreateOrganizationForm/CreateOrganizationForm";
 import classes from "./CreateOrganization.module.css";
 
-const CreateOrganization = () => {
+type CreateOrganizationTypes = {
+  onClose: () => void;
+};
+
+const CreateOrganization = ({ onClose }: CreateOrganizationTypes) => {
   return (
     <section className={classes.container}>
-      <CreateOrganizationForm />
+      <CreateOrganizationForm onClose={onClose} />
       <div>
         <img src={images.addTodo} alt="Create Organization" />
       </div>
