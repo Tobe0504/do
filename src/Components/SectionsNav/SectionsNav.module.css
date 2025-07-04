@@ -24,7 +24,7 @@
 
 .active {
   color: var(--white);
-  border-bottom: 2px solid var(--orange);
+  /* border-bottom: 2px solid var(--orange); */
 }
 
 .active.button {
@@ -52,6 +52,22 @@
 
 .container::-webkit-scrollbar {
   display: none;
+}
+
+.track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.indicator {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background: var(--orange);
+  transition: all 0.3s ease;
+  border-radius: 4px;
 }
 
 @media screen and (max-width: 767px) {

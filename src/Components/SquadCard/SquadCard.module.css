@@ -1,19 +1,19 @@
 .card {
-  background: linear-gradient(135deg, #ffede3, #ffe0db);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   cursor: pointer;
   position: relative;
   height: 240px;
   display: flex;
   flex-direction: column;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 28px rgba(0, 0, 0, 0.15);
 }
 
 .image {
@@ -25,16 +25,18 @@
 
 .content {
   padding: 0.5rem;
-  background-color: white;
   width: 100%;
   bottom: 0;
   flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-top: none;
 }
 
 .name {
   font-size: var(--headerFontSize);
   font-weight: 700;
-  color: var(--orange);
+  color: var(--white);
   margin-bottom: 0.5rem;
 }
 
@@ -70,17 +72,8 @@
   }
 }
 
-.dark .card {
-  background: linear-gradient(135deg, #1b1b1b, #2a1a1a);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-}
-
-.dark .content {
-  background-color: #242424;
-}
-
 .dark .name {
-  color: #ff9472;
+  color: var(--white);
 }
 
 .dark .description {

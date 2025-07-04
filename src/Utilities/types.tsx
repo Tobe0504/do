@@ -22,3 +22,9 @@ export type TaskType = {
   status: "todo" | "inprogress" | "done";
   [key: string]: any;
 };
+
+export type optionsType = {
+  title: string;
+  action?: (data?: any) => void;
+  condition?: boolean;
+};

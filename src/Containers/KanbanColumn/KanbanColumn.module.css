@@ -1,8 +1,8 @@
 .container {
   flex: 1;
-  padding: 1rem;
-  border-radius: 12px;
-  min-height: 300px;
+  padding: 12px 8px;
+  border-radius: 10px;
+  min-height: 200px;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -12,6 +12,13 @@
 .container > h3 {
   color: #fff;
   text-transform: capitalize;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-size: var(--headerFontSize);
+}
+
+.noTasks {
+  font-size: var(--paragraphFontSize);
+  text-align: center;
+  color: var(--gray);
+  margin-top: 70px;
 }

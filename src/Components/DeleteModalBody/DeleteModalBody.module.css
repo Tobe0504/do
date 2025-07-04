@@ -1,0 +1,36 @@
+.container {
+  width: 400px;
+  padding: 2rem 1rem;
+}
+
+.container > h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.container > p {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 2rem;
+  line-height: 130%;
+  color: var(--gray);
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.buttons > button {
+  padding: 0.25rem 0.5rem;
+  font-size: small;
+}
+
+.buttons > button > svg {
+  width: 18px;
+  height: 18px;
+}

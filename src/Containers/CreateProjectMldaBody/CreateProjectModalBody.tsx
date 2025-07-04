@@ -1,0 +1,105 @@
+import Add from "../../Assets/Icons/Add";
+import Close from "../../Assets/Icons/Close";
+import Button from "../../Components/Button/Button";
+import FilterOptions from "../../Components/FilterOptions/FilterOptions";
+import Input from "../../Components/Input/Input";
+import { images } from "../../Utilities/constants";
+import classes from "./CreateProjectModalBody.module.css";
+
+type CreateProjectModalBodyTypes = {
+  isEdit?: boolean;
+};
+
+const CreateProjectModalBody = ({ isEdit }: CreateProjectModalBodyTypes) => {
+  return (
+    <div className={classes.container}>
+      <h2>{isEdit ? "Edit Task Name" : "Create a New Project"}</h2>
+      <form className={classes.form}>
+        <Input placeholder="E.g. Revamp landing page" label="Project Name" />
+
+        <Input
+          placeholder="Briefly describe the project scope..."
+          label="Description"
+        />
+
+        <Input type="date" label="Start Date" />
+
+        <Input type="date" label="End Date" />
+
+        <FilterOptions
+          label="Assign Squad"
+          options={[
+            {
+              text: "Design",
+              image: images?.USER_AVATAR,
+            },
+            {
+              text: "Engineering",
+              image: images?.USER_AVATAR,
+            },
+            {
+              text: "Marketing",
+              image: images?.USER_AVATAR,
+            },
+          ]}
+          isMultiple
+        />
+
+        <FilterOptions
+          label="Tags"
+          options={[
+            {
+              text: "Design",
+            },
+            {
+              text: "Engineering",
+            },
+            {
+              text: "Marketing",
+            },
+          ]}
+          isMultiple
+        />
+
+        <FilterOptions
+          label="Status"
+          options={[
+            {
+              text: "Not Started",
+            },
+            {
+              text: "In Progress",
+            },
+            {
+              text: "Completed",
+            },
+          ]}
+        />
+
+        <div className={classes.actions}>
+          <Button
+            type="null"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
+            <Close />
+            <span>Close</span>
+          </Button>
+
+          <Button
+            type="primary"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
+            <Add />
+            <span>Create Project</span>
+          </Button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default CreateProjectModalBody;

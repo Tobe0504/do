@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { DndContext, DragEndEvent, closestCenter } from "@dnd-kit/core";
 import { initialTasks } from "../OrganozationListTasksContainer/OrganizationListTasksContainer";
 import KanbanColumn from "../KanbanColumn/KanbanColumn";
@@ -41,7 +41,6 @@ const KanbanBoard = () => {
     );
     const destinationGroup = over.id as string;
 
-    // Validate source and destination
     if (
       !sourceGroup ||
       !destinationGroup ||

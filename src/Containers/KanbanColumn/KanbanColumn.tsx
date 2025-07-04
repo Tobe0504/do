@@ -23,9 +23,14 @@ const KanbanColumn = ({ id, title, tasks }: KanbanColumnProps) => {
   return (
     <div ref={setNodeRef} className={classes.container}>
       <h3>{title}</h3>
-      {tasks.map((task: TaskType) => (
-        <TaskCard key={task.id} {...task} />
-      ))}
+      {tasks?.length > 0 ? (
+        tasks.map((task: TaskType) => <TaskCard key={task.id} {...task} />)
+      ) : (
+        <p className={classes.noTasks}>
+          🪄 Abracadabra! No tasks here (yet), <br />
+          maybe they're hiding?
+        </p>
+      )}
     </div>
   );
 };

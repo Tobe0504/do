@@ -39,7 +39,7 @@ const SideNav = () => {
         <nav>
           <h3
             onClick={() => {
-              navigate(routes.ORGANIZATIONS);
+              navigate(`${routes.ORGANIZATIONS}?section=projects`);
             }}
           >
             <span>Hives</span>

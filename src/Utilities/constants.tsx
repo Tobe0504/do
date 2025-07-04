@@ -13,5 +13,15 @@ export const searchParamKeys = {
     KEY: "organization",
     CREATE: "create",
     SECTION: "section",
+    FEATURE: "feature",
+    MODAL: "modal",
+  },
+};
+
+export const searchParamValues = {
+  ORGANIZATIONS: {
+    CREATE: "create",
+    EDIT: "edit",
+    KEY: "organization",
   },
 };

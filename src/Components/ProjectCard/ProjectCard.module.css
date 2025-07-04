@@ -1,19 +1,18 @@
 .card {
   position: relative;
-  background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
   padding: 0.75rem;
   max-width: 340px;
   width: 100%;
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   transition: all 0.2s ease-in-out;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .card:hover {
-  transform: translateY(-6px);
   box-shadow: 0 18px 28px rgba(0, 0, 0, 0.15);
 }
 
@@ -21,6 +20,77 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.header > div {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+
+.header > div:hover {
+  background-color: var(--black1);
+}
+
+.header > div > svg {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  fill: var(--orange);
+}
+
+.header > div:nth-child(2) {
+  margin-left: auto;
+}
+
+.options {
+  position: absolute;
+  padding: 0.5rem;
+  z-index: 5;
+  top: 120%;
+  right: 0;
+  min-width: 100px;
+  background: rgba(255, 255, 255, 0.05);
+  background-color: var(--black1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+.options > div {
+  padding: 0.25rem;
+  border-radius: 5px;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.options > div > svg {
+  width: 16px;
+  height: 16px;
+  color: green;
+}
+
+.options > div:hover {
+  background-color: var(--black);
+}
+
+.options > div {
+  font-size: 12px;
+  cursor: pointer;
 }
 
 .title {
@@ -46,7 +116,7 @@
   background: rgba(255, 255, 255, 0.15);
   padding: 0.3rem 0.75rem;
   border-radius: calc(infinity * 1rem);
-  font-size: var(--paragraphFontSize);
+  font-size: 10px;
   color: white;
 }
 
