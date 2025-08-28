@@ -1,0 +1,22 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.container > div:nth-child(1) {
+  flex-basis: 60px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+}
+
+.container > div:nth-child(2) {
+  flex: 1;
+}
+
+.container > div:nth-child(3) {
+  position: sticky;
+  bottom: 0;
+  flex-basis: 80px;
+}

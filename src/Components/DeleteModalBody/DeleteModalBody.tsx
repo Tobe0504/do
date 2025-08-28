@@ -1,4 +1,5 @@
 import { Delete } from "@mui/icons-material";
+import { Trash, Trash2 } from "lucide-react";
 import Close from "../../Assets/Icons/Close";
 import Button from "../Button/Button";
 import classes from "./DeleteModalBody.module.css";
@@ -17,18 +18,22 @@ const DeleteModalBody = ({
   onDelete,
 }: DeleteModalBodyTypes) => {
   return (
-    <div className={classes.container}>
-      <h2>{title}</h2>
-      <p>{caption}</p>
-      <div className={classes.buttons}>
-        <Button onClick={onClose} type="null">
-          <Close />
-          <span>Close</span>
-        </Button>
-        <Button onClick={onDelete}>
-          <Delete />
-          <span>Delete</span>
-        </Button>
+    <div className={classes.outerContainer}>
+      <div className={classes.imageSection}>
+        <img
+          src="https://res.cloudinary.com/dryjxk5jw/image/upload/v1756220101/__10_smwkns.jpg"
+          alt={title}
+        />
+      </div>
+      <div className={classes.container}>
+        <h2>{title}</h2>
+        <p>{caption}</p>
+        <div className={classes.buttons}>
+          <Button onClick={onDelete} type="delete">
+            <Trash2 size={16} />
+            <span>Delete</span>
+          </Button>
+        </div>
       </div>
     </div>
   );

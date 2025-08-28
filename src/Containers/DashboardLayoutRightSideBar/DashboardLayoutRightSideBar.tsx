@@ -1,3 +1,4 @@
+import Draggable from "../../Components/Draggable/Draggable";
 import classes from "./DashboardLayoutRightSideBar.module.css";
 
 type DashboardLayoutRightSideBarType = {
@@ -10,9 +11,11 @@ const DashboardLayoutRightSideBar = ({
   className,
 }: DashboardLayoutRightSideBarType) => {
   return (
+    // <Draggable>
     <section className={`${className} ${classes.container}`}>
       {children}
     </section>
+    // </Draggable>
   );
 };
 

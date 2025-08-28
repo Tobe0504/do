@@ -1,10 +1,6 @@
 import classes from "./OrganizationsListSummary.module.css";
 import OrganizationStatCard from "../../Components/OrganizationStatCard/OrganizationStatCard";
-import HomeIcon from "../../SvgIcons/HomeIcon";
-import Projects from "../../SvgIcons/Projects";
-import Tasks from "../../SvgIcons/Tasks";
-import Squads from "../../SvgIcons/Squads";
-import Members from "../../SvgIcons/Members";
+import { Flame, FolderKanban, ListTodo, Shapes } from "lucide-react";
 
 const OrganizationsListSummary = () => {
   return (
@@ -12,21 +8,21 @@ const OrganizationsListSummary = () => {
       <OrganizationStatCard
         label="Active Projects"
         value={4}
-        icon={<Projects />}
+        icon={<FolderKanban size={16} />}
         trend="up"
         trendValue="10"
       />
       <OrganizationStatCard
         label="Squads"
         value={4}
-        icon={<Squads />}
+        icon={<Shapes size={16} />}
         trend="down"
         trendValue="10"
       />
       <OrganizationStatCard
         label="Upcoming Tasks"
         value={4}
-        icon={<Tasks />}
+        icon={<ListTodo size={16} />}
         trend="up"
         trendValue="10"
       />
@@ -34,7 +30,7 @@ const OrganizationsListSummary = () => {
       <OrganizationStatCard
         label="Members accross squads"
         value={40}
-        icon={<Members />}
+        icon={<Flame size={16} />}
         trend="up"
         trendValue="10"
       />

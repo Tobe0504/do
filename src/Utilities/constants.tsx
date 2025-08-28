@@ -16,6 +16,9 @@ export const searchParamKeys = {
     FEATURE: "feature",
     MODAL: "modal",
   },
+  PROJECT: {
+    KEY: "section",
+  },
 };
 
 export const searchParamValues = {
@@ -23,5 +26,8 @@ export const searchParamValues = {
     CREATE: "create",
     EDIT: "edit",
     KEY: "organization",
+  },
+  PROJECT: {
+    key: "tasks",
   },
 };

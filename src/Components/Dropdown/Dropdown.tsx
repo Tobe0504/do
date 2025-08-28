@@ -2,8 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import classes from "./Dropdown.module.css";
-import Loader from "../Loader/Loader";
-import { CircularProgress } from "@mui/material";
+import { ChevronDown, Loader } from "lucide-react";
 
 export type DropdownProps = {
   title?: string | React.ReactNode;
@@ -123,27 +122,17 @@ const Dropdown = (props: DropdownProps) => {
         >
           {props?.selected ||
             props?.title ||
-            `Select ${props.label?.toLowerCase()}`}
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+            `Select ${props.label?.toLowerCase() || ""}`}
+
+          <ChevronDown
+            size={16}
+            color="#a1a1a1"
             style={
               isActive
                 ? { transform: "rotate(-90deg)" }
                 : { transform: "rotate(0deg)" }
             }
-          >
-            <path
-              d="M4 6L8 10L12 6"
-              stroke="black"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          />
         </div>
         {isActive && (
           <div
@@ -193,10 +182,10 @@ const Dropdown = (props: DropdownProps) => {
               <p className={`${classes.dropdownItem2}`}>No matching Items</p>
             ) : (
               <div className={classes.loadingContainer}>
-                <CircularProgress
-                  size="2rem"
+                <Loader
+                  size={16}
                   color="inherit"
-                  style={{ color: "#e5c300" }}
+                  style={{ color: "#e63e21" }}
                 />
               </div>
             )}

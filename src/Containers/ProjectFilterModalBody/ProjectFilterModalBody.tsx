@@ -1,4 +1,5 @@
 import { FilterAlt } from "@mui/icons-material";
+import { ListFilter } from "lucide-react";
 import Button from "../../Components/Button/Button";
 import Dropdown from "../../Components/Dropdown/Dropdown";
 import FilterOptions from "../../Components/FilterOptions/FilterOptions";
@@ -46,7 +47,7 @@ const ProjectFilterModalBody = () => {
         />
 
         <Button type="secondary">
-          <FilterAlt style={{ height: "16px", width: "16px" }} />
+          <ListFilter size={16} color="#fff" />
           <span>Filter</span>
         </Button>
       </div>

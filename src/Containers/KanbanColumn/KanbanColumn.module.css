@@ -13,7 +13,11 @@
   color: #fff;
   text-transform: capitalize;
   margin-bottom: 0.5rem;
-  font-size: var(--headerFontSize);
+  font-size: var(--paragraphFontSize);
+  font-weight: 600;
+  border-bottom: 2px solid var(--orange);
+  padding: 0rem 0rem 0.5rem 0rem;
+  margin-bottom: 1rem;
 }
 
 .noTasks {

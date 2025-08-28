@@ -5,13 +5,16 @@ import {
   StarOutlineOutlined,
 } from "@mui/icons-material";
 import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "../../Context/ToastContext";
 import {
   setAllModalsFalse,
   setModalTrue,
 } from "../../HelperFunctions/modalHandlers";
+import { routes } from "../../Utilities/routes";
 import { genericModalsTypes, optionsType } from "../../Utilities/types";
 import MembersList from "../MembersList";
+import ProgressBar from "../ProgressBar/ProgressBar";
 import styles from "./ProjectCard.module.css";
 
 type ProjectCardProps = {
@@ -38,6 +41,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     options: false,
   });
 
+  // Router
+  const navigate = useNavigate();
+
   // Refs
   const optionsRef = useRef<null | HTMLDivElement>(null);
 
@@ -63,7 +69,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     <div className={styles.card}>
       <div className={styles.inner}>
         <div className={styles.header}>
-          <h3 className={styles.title}>{title}</h3>
+          <Link to={routes.PROJECT_OVERVIEW} className={styles.title}>
+            {title}
+          </Link>
           <div
             onClick={() => {
               showToast("Added to favorites successfully 🎉", 3000);
@@ -106,12 +114,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
         <div className={styles.footer}>
           <MembersList members={members} />
-          <div className={styles.progressWrapper}>
-            <div
-              className={styles.progressBar}
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+          <ProgressBar progress={progress} />
         </div>
       </div>
     </div>

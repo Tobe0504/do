@@ -1,0 +1,85 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.statSection {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.statSection > div {
+  flex: 1;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 5px;
+  border: 1px solid var(--black1);
+  padding: 1.5rem 1rem;
+}
+
+.summary > h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.summary > p {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.summary > p > span {
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: flex-start;
+}
+
+.stat > h5 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--white);
+  margin: 0;
+}
+
+.stat > p {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray);
+  margin: 0;
+}
+
+.calendar {
+  display: flex;
+  gap: 1rem;
+}
+
+.calendar > div:first-child {
+  flex-basis: 65%;
+}
+
+.calendar > div:nth-child(2) {
+  background-image: url("https://res.cloudinary.com/dryjxk5jw/image/upload/v1756223691/f635d7c4-c012-4409-86a9-4511fc266786_chfu5v.jpg");
+  background-position: center center;
+  border-radius: 5px;
+  flex: 1;
+  background-size: cover;
+}

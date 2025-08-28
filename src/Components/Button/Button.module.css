@@ -4,7 +4,7 @@
   padding: 8px 12px;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 8px;
   font-family: Inter;
   font-size: var(--paragraphFontSize);
   font-weight: 500;

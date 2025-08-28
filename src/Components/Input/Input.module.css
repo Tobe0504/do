@@ -6,9 +6,9 @@
     opacity: 1;
   }
 }
-.container {
+/* .container {
   margin-bottom: 16px;
-}
+} */
 
 .container > label {
   font-family: Inter;

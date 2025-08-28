@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.activeMembers,
+.activities,
+.files {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 5px;
+  border: 1px solid var(--black1);
+  padding: 2rem 1rem;
+}
+
+.activeMembers > h4,
+.activities > h4,
+.files > h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.activeMembers > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.activeMembers > div > h5 {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.activities {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

@@ -1,0 +1,22 @@
+.activity {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--black1);
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.activity > img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.activity > p {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 150%;
+}

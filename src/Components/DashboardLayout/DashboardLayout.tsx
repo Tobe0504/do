@@ -1,6 +1,7 @@
 import DashboardLayoutRightSideBar from "../../Containers/DashboardLayoutRightSideBar/DashboardLayoutRightSideBar";
 import Header from "../../Containers/Header/Header";
 import SideNav from "../../Containers/SideNav/SideNav";
+import Draggable from "../Draggable/Draggable";
 import classes from "./DashboardLayout.module.css";
 
 type DashboardLayoutTypes = {
@@ -10,6 +11,7 @@ type DashboardLayoutTypes = {
   rightBarChild?: React.ReactNode;
   rightBarClassName?: string;
   openSidenav?: boolean;
+  noHeader?: boolean;
 };
 
 const DashboardLayout = ({
@@ -19,12 +21,14 @@ const DashboardLayout = ({
   rightBarChild,
   rightBarClassName,
   openSidenav = false,
+  noHeader,
 }: DashboardLayoutTypes) => {
   return (
     <main className={classes.container}>
       <SideNav />
+
       <section>
-        <Header>{header}</Header>
+        {!noHeader && <Header>{header}</Header>}
         <section className={className}>{children}</section>
       </section>
       <DashboardLayoutRightSideBar

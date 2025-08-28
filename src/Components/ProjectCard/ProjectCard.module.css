@@ -60,7 +60,7 @@
   z-index: 5;
   top: 120%;
   right: 0;
-  min-width: 100px;
+  min-width: 170px;
   background: rgba(255, 255, 255, 0.05);
   background-color: var(--black1);
   backdrop-filter: blur(12px);
@@ -89,7 +89,7 @@
 }
 
 .options > div {
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
 }
 
@@ -98,6 +98,10 @@
   font-weight: 600;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+}
+
+.title:hover {
+  text-decoration: underline;
 }
 
 .description {

@@ -14,6 +14,7 @@ export type navItemTypes = {
   description?: string;
   id: string;
   isBordered?: boolean;
+  icon?: React.ReactNode;
 };
 
 export type TaskType = {
@@ -27,4 +28,27 @@ export type optionsType = {
   title: string;
   action?: (data?: any) => void;
   condition?: boolean;
+};
+
+export type breadCrumbNavItemTypes = {
+  title: string;
+  route: string;
+};
+
+export type riskTypes = {
+  id: number;
+  title: string;
+  description: string;
+  severity: string;
+  owner: string;
+  status: string;
+};
+
+export type issuesType = {
+  id: number;
+  title: string;
+  description: string;
+  severity: string;
+  owner: string;
+  status: string;
 };

@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-block: 1rem;
+}
+
+.container > div:first-child {
+  flex-basis: 50%;
+}
+
+.container > div {
+  flex-basis: 25%;
+}

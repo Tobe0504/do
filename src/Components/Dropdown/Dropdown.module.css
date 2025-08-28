@@ -7,23 +7,18 @@
   }
 }
 
-.container {
-  margin-bottom: 20px;
-}
-
 .dropdown {
   position: relative;
   user-select: none;
-  border-radius: 10px;
+  border-radius: 5px;
   width: 100%;
-  height: 50px;
-  padding: 16px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   outline: none;
-  margin: 12px 0;
-  color: var(--grey6);
+  color: var(--white);
+  margin: 5px 0;
+  padding: 11px;
 }
 
 .invalid,
@@ -32,11 +27,11 @@
 }
 
 .valid {
-  border: 1px solid var(--grey4);
+  border: 1px solid var(--gray);
 }
 
 .active {
-  border: 1px solid var(--yellow);
+  border: 1px solid var(--white);
 }
 
 .dropdownButton:focus {
@@ -48,9 +43,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--black);
-  font-family: "General Sans";
-  font-size: 16px;
+  color: var(--white);
+  font-size: var(--paragraphFontSize);
   font-weight: 400;
   line-height: 19.2px;
   letter-spacing: -0.03em;
@@ -73,7 +67,7 @@
   left: 0;
   box-sizing: border-box;
   z-index: 2;
-  background: #ffffff;
+  background: var(--black);
   min-height: 100%;
   max-height: 350px;
   overflow-y: auto;
@@ -85,10 +79,9 @@
   border: none;
   animation: appear 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  background: #fff;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.06),
     0px 4px 6px -1px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .dropdown .dropdownContent::-webkit-scrollbar {
@@ -96,31 +89,29 @@
 }
 
 .dropdown .dropdownContent .dropdownItem {
-  padding: 10px 22px;
+  padding: 12px;
   cursor: pointer;
   transition: all 0.2s;
   position: relative;
-  font-family: "General Sans";
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 19.2px;
   letter-spacing: -0.03em;
-  color: var(--black);
+  color: var(--white);
   width: 100%;
 }
 
 .dropdown .dropdownContent .dropdownItem:hover {
-  background: var(--foundation-grey-g-20, #efefef);
+  background: var(--gray);
 }
 
 .dropdownItem2 {
   margin: 0;
-  padding: 0.7rem 1rem;
+  padding: 0.7rem;
   cursor: pointer;
   transition: all 0.2s;
   position: relative;
-  font-family: "General Sans";
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 19.2px;
   letter-spacing: -0.03em;
@@ -129,26 +120,23 @@
 }
 
 .inputSection {
-  height: 60px;
+  height: 40px;
   padding: 0.5rem 0.5rem;
   position: sticky;
   top: 0;
-  background: #ffffff;
   z-index: 1;
 }
 
 .inputSection > input {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   text-indent: 8px;
-  font-family: "General Sans";
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 19.2px;
   letter-spacing: -0.03em;
-  background: #fcfcfc;
-  border: 0.5px solid #d8dce9;
+  border: 0.5px solid var(--gray);
   outline: none;
   box-sizing: border-box;
 }
@@ -163,13 +151,12 @@
 }
 
 .label {
-  font-family: "General Sans";
-  color: var(--black);
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 120%;
+  font-family: Inter;
+  color: var(--gray, #a1a1a1);
+  font-size: var(--paragraphFontSize);
+  font-weight: 400;
+  line-height: 16px;
   text-align: left;
-  display: block;
 }
 
 .label > span {
@@ -178,7 +165,6 @@
 
 .errorMessage {
   color: var(--red);
-  font-family: "General Sans";
   font-size: 13px;
   font-style: normal;
   font-weight: 400;

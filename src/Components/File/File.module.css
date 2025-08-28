@@ -1,0 +1,37 @@
+.file {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.file:hover {
+  background-color: var(--black1);
+  cursor: pointer;
+}
+
+.file > div:first-child {
+  background-color: var(--black1);
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.file > div:nth-child(2) {
+  flex: 1;
+}
+
+.file > div:nth-child(2) > h6 {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 150%;
+}
+
+.file > div:nth-child(2) > p {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--gray);
+  line-height: 150%;
+}

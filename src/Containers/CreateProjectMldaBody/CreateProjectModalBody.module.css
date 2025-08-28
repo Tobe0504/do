@@ -1,9 +1,22 @@
+.outerContainer {
+  display: flex;
+  height: 90vh;
+  overflow: hidden;
+  width: 1200px;
+  gap: 1em;
+}
+
+.outerContainer > div {
+  flex: 1;
+}
+
 .container {
   border-radius: 16px;
   padding: 2rem 1rem;
-  width: 400px;
   margin: auto;
   color: var(--textPrimary, #ffffff);
+  overflow-y: auto;
+  height: 100%;
 }
 
 h2 {
@@ -25,4 +38,18 @@ h2 {
 
 .actions > button:nth-child(1) {
   margin-left: auto;
+}
+
+.outerContainer > div:nth-child(2) {
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outerContainer > div > img {
+  height: 90%;
+  width: 90%;
+  object-fit: cover;
+  border-radius: 1rem;
 }

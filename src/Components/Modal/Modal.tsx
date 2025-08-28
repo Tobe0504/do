@@ -1,6 +1,7 @@
 import classes from "./Modal.module.css";
 import ReactDom from "react-dom";
 import Close from "../../Assets/Icons/Close";
+import { X } from "lucide-react";
 
 const BackDrop = (props: any) => {
   return <div className={classes.backdrop} onClick={props.onClick} />;
@@ -9,7 +10,12 @@ const BackDrop = (props: any) => {
 const ModalOverlay = (props: any) => {
   return (
     <div className={classes.modal} style={props.style}>
-      <Close onClick={() => props.onClose()} />
+      <X
+        color={props.isLight ? "#000" : "#fff"}
+        onClick={() => props.onClose()}
+        size={20}
+        style={{ cursor: "pointer" }}
+      />
       <div>{props.body}</div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { Add, Check, Filter, FilterAlt, Sort } from "@mui/icons-material";
+import { Add, Check, FilterAlt, Sort } from "@mui/icons-material";
 import { useEffect, useRef, useState } from "react";
 import Button from "../../Components/Button/Button";
 import DeleteModalBody from "../../Components/DeleteModalBody/DeleteModalBody";
@@ -68,7 +68,7 @@ const OrganizationListsProjects = () => {
   //Utils
   const options: optionsType[] = [
     {
-      title: "View",
+      title: "Edit project details",
       action: () => {
         updateConcurrentSearchParams({
           feature: {
@@ -83,7 +83,37 @@ const OrganizationListsProjects = () => {
       },
     },
     {
-      title: "Delete",
+      title: "Archive project",
+      action: () => {
+        updateConcurrentSearchParams({
+          feature: {
+            method: "set",
+            value: searchParamValues.ORGANIZATIONS.KEY,
+          },
+          modal: {
+            method: "set",
+            value: searchParamValues.ORGANIZATIONS.EDIT,
+          },
+        });
+      },
+    },
+    {
+      title: "Duplicate project",
+      action: () => {
+        updateConcurrentSearchParams({
+          feature: {
+            method: "set",
+            value: searchParamValues.ORGANIZATIONS.KEY,
+          },
+          modal: {
+            method: "set",
+            value: searchParamValues.ORGANIZATIONS.EDIT,
+          },
+        });
+      },
+    },
+    {
+      title: "Delete this project",
       action() {
         setModalTrue(setShowOptions, "delete");
       },
@@ -117,7 +147,16 @@ const OrganizationListsProjects = () => {
       {feature === searchParamKeys?.ORGANIZATIONS?.KEY &&
         modal === searchParamKeys?.ORGANIZATIONS?.CREATE && (
           <Modal
-            body={<CreateProjectModalBody />}
+            body={
+              <CreateProjectModalBody
+                onClose={() =>
+                  updateConcurrentSearchParams({
+                    feature: { method: "delete", value: undefined },
+                    modal: { method: "delete", value: undefined },
+                  })
+                }
+              />
+            }
             onClose={() =>
               updateConcurrentSearchParams({
                 feature: { method: "delete", value: undefined },
@@ -130,7 +169,17 @@ const OrganizationListsProjects = () => {
       {feature === searchParamKeys?.ORGANIZATIONS?.KEY &&
         modal === searchParamValues?.ORGANIZATIONS?.EDIT && (
           <Modal
-            body={<CreateProjectModalBody isEdit />}
+            body={
+              <CreateProjectModalBody
+                isEdit
+                onClose={() =>
+                  updateConcurrentSearchParams({
+                    feature: { method: "delete", value: undefined },
+                    modal: { method: "delete", value: undefined },
+                  })
+                }
+              />
+            }
             onClose={() =>
               updateConcurrentSearchParams({
                 feature: { method: "delete", value: undefined },
@@ -151,6 +200,7 @@ const OrganizationListsProjects = () => {
               }}
             />
           }
+          isLight={true}
           onClose={() => setAllModalsFalse(setShowOptions)}
         />
       )}
@@ -211,6 +261,7 @@ const OrganizationListsProjects = () => {
                 },
               });
             }}
+            type="secondary"
           >
             <Add />
             <span>Create a project</span>

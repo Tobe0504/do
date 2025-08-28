@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import BreadCrumb from "../../Components/BreadCrumb";
 import SectionsNav from "../../Components/SectionsNav/SectionsNav";
 import OrganizationHeader from "../../Headers/OrganizationHeader/OrganizationHeader";
 import useUpdateSearchParams from "../../Hooks/useUpdateSearchParams";
@@ -56,13 +57,12 @@ const OrganizationLists = () => {
     }
   }, []);
 
-  console.log(section, "Section");
-
   return (
     <OrganizationsLayout className={classes.container}>
       <OrganizationListHeader />
       <OrganizationsListSummary />
       {/* <OrganizationListTable /> */}
+
       <SectionsNav navItems={navItems} setNavItems={setNavItems} isRoute />
       {section === navItems[0].id && <OrganizationListsProjects />}
       {section === navItems[1].id && <OrganizationListSquads />}

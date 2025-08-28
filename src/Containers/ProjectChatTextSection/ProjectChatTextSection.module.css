@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.container > div:nth-child(1) {
+  flex: 1;
+}

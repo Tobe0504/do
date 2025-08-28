@@ -2,6 +2,7 @@
   height: 100svh;
   display: flex;
   overflow: hidden;
+  position: relative;
 }
 
 .container > section:nth-child(1) {
@@ -17,27 +18,34 @@
 
 .container > section:nth-child(3) {
   transition: all 0.2s ease-in-out;
+  height: 100vh;
+  position: absolute;
+  right: 8px;
+  background: var(--black);
+  z-index: 10;
+  border-radius: 5px;
+  max-width: 400px;
 }
 
 .rightOpen {
-  flex-basis: 350px;
   border-left: 1px solid var(--black1);
+  translate: 0px;
 }
 
 .rightClosed {
-  flex-basis: 0px;
   border-left: 1px solid transparent;
+  translate: 400px;
 }
 
 .container > section > header {
-  height: 60px;
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 20;
+  z-index: 9;
   background-color: var(--black);
 }
 
-.container > section > section {
+.container > section > section:nth-child(2) {
   height: calc(100svh - 60px);
+  flex: 1;
 }

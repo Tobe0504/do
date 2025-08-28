@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.progress,
+.teams {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.teams {
+  padding: 1rem;
+  border: 1px solid var(--black1);
+}
+
+.progress {
+  height: 300px;
+}
+
+.progress > h4,
+.activities > h4,
+.teams > h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.progress > p {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gray);
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.progress > p > span > a {
+  color: var(--orange);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.team {
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white);
+  background-color: var(--black1);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

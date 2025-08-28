@@ -1,0 +1,35 @@
+.container {
+  border-left: 1px solid var(--black1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.header > div {
+  width: 300px;
+}
+
+.files {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.files > div {
+  flex-basis: calc(20% - 1rem);
+}
+
+.banner {
+  height: 150px;
+  width: 100%;
+  border-radius: 5px;
+  background-image: url("https://res.cloudinary.com/dryjxk5jw/image/upload/v1756223749/Wallpaper_2024___Sanatsal_resimler_Arkaplan_r3efua.jpg");
+  background-size: contain;
+}

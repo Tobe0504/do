@@ -71,7 +71,7 @@
 .header > button,
 .header > div > button {
   padding: 0.25rem 0.5rem;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .header > button > svg {

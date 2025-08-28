@@ -1,8 +1,10 @@
+import DashboardLayout from "../Components/DashboardLayout/DashboardLayout";
 import Dashboard from "../Containers/Dashboard/Dashboard";
 import ForgotPassword from "../Containers/ForgotPassword/ForgotPassword";
 import Home from "../Containers/Home/Home";
 import Onboarding from "../Containers/Onboarding/Onboarding";
 import Organizations from "../Containers/Organizations/Organizations";
+import ProjectDashboard from "../Containers/ProjectDashboard/ProjectDashboard";
 import ResetPassword from "../Containers/ResetPassword/ResetPassword";
 import SignIn from "../Containers/SignIn/SignIn";
 import SignUp from "../Containers/SignUp/SignUp";
@@ -34,6 +36,7 @@ export const routes = Object.freeze({
   ORGANIZATION_RESOURCES: "/hives/:organizationId/resources",
   ORGANIZATION_SECRETS: "/hives/:organizationId/secrets",
   ONBOARDING: "/onboarding",
+  PROJECT_OVERVIEW: "/hives/:organizationId/project/:projectId",
 });
 
 export const routeComponents = [
@@ -128,6 +131,13 @@ export const routeComponents = [
     component: <Onboarding />,
     properties: ["isOrganization", "isProtected"],
     route: routes.ORGANIZATION_TEAMS,
+    icon: "👥",
+  },
+  {
+    title: "Project Overview",
+    component: <ProjectDashboard />,
+    properties: [, "isProtected"],
+    route: routes.PROJECT_OVERVIEW,
     icon: "👥",
   },
 ];

@@ -1,0 +1,83 @@
+.wrapper {
+  border-radius: 12px;
+  padding: 16px;
+  color: white;
+  border: 1px solid var(--black1);
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tabs button {
+  background: transparent;
+  border: 1px solid var(--gray);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.tabs .active {
+  background: var(--orangeWithTransparency);
+  border-color: #e63e21;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card {
+  background: var(--black1);
+  border-radius: 5px;
+  padding: 12px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.severity {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 4px;
+  border-radius: 6px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.high {
+  background: #a11;
+}
+
+.medium {
+  background: #e68a00;
+}
+
+.low {
+  background: #2e8b57;
+}
+
+.details h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.details p {
+  margin: 4px 0;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.meta {
+  margin-top: 4px;
+  font-size: 10px;
+  display: flex;
+  gap: 8px;
+  color: #ccc;
+}
