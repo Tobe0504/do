@@ -10,7 +10,9 @@ import ProjectChat from "../ProjectChat/ProjectChat";
 import ProjectDashbaordFilesAndAssets from "../ProjectDashbaordFilesAndAssets/ProjectDashbaordFilesAndAssets";
 import ProjectDashboardFilters from "../ProjectDashboardFilters/ProjectDashboardFilters";
 import ProjectDashboardOverview from "../ProjectDashboardOverview/ProjectDashboardOverview";
+import ProjectDashboardSecrets from "../ProjectDashboardSecrets/ProjectDashboardSecrets";
 import ProjectDashboardTitle from "../ProjectDashboardTitle/ProjectDashboardTitle";
+import ProjectsDashboardRisksAndIssues from "../ProjectsDashboardRisksAndIssues/ProjectsDashboardRisksAndIssues";
 import ProjectsHeader from "../ProjectsHeader/ProjectsHeader";
 import classes from "./ProjectDashboard.module.css";
 
@@ -96,6 +98,8 @@ const ProjectDashboard = () => {
       {section === navItems[0].id && <ProjectDashboardOverview />}
       {section === navItems[1].id && <KanbanBoard />}
       {section === navItems[2].id && <ProjectDashbaordFilesAndAssets />}
+      {section === navItems[3].id && <ProjectsDashboardRisksAndIssues />}
+      {section === navItems[4].id && <ProjectDashboardSecrets />}
     </DashboardLayout>
   );
 };

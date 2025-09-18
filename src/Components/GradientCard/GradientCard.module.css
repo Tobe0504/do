@@ -11,13 +11,63 @@
 
 .active {
   background: linear-gradient(
-    278.85deg,
-    #1b1b1b 3.36%,
-    #d4472f 48.72%,
-    #e63e21 99.06%
+    270deg,
+    #1b1b1b,
+    #2f2f5f,
+    #4a90e2,
+    #9b59b6,
+    #e63e21,
+    #ffcc00,
+    #1b1b1b
   );
-  background-size: 600% 600%;
-  animation: colorMotion 8s ease infinite;
+  background-size: 400% 400%;
+  animation: colorMotion 6s ease infinite;
+
+  box-shadow: 0 0 10px rgba(230, 62, 33, 0.6), 0 0 20px rgba(155, 89, 182, 0.5),
+    0 0 30px rgba(74, 144, 226, 0.4);
+  border-radius: 7px;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0),
+    transparent
+  );
+  animation: shimmer 3s infinite;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+@keyframes colorMotion {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 .inActive {
@@ -26,7 +76,7 @@
 
 .container {
   padding: 8px;
-  border-radius: 3px;
+  border-radius: 5px;
   background-color: var(--black);
 }
 

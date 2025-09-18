@@ -1,3 +1,11 @@
+import {
+  Bell,
+  Info,
+  LayoutDashboard,
+  Search,
+  Settings,
+  Trash2,
+} from "lucide-react";
 import DashboardLayout from "../Components/DashboardLayout/DashboardLayout";
 import Dashboard from "../Containers/Dashboard/Dashboard";
 import ForgotPassword from "../Containers/ForgotPassword/ForgotPassword";
@@ -8,11 +16,6 @@ import ProjectDashboard from "../Containers/ProjectDashboard/ProjectDashboard";
 import ResetPassword from "../Containers/ResetPassword/ResetPassword";
 import SignIn from "../Containers/SignIn/SignIn";
 import SignUp from "../Containers/SignUp/SignUp";
-import HomeIcon from "../SvgIcons/HomeIcon";
-import Notifications from "../SvgIcons/Notifications";
-import Search from "../SvgIcons/Search";
-import Settings from "../SvgIcons/Settings";
-import Trash from "../SvgIcons/Trash";
 
 export const routes = Object.freeze({
   BASE_URL: "/",
@@ -82,21 +85,21 @@ export const routeComponents = [
     component: <Dashboard />,
     properties: ["isProtected", "isSideNavRoute"],
     route: routes.DASHBOARD,
-    icon: <HomeIcon />,
+    icon: <LayoutDashboard size={20} />,
   },
   {
     title: "Search",
     component: <Dashboard />,
     properties: ["isProtected", "isSideNavRoute"],
     route: routes.DASHBOARD,
-    icon: <Search />,
+    icon: <Search size={20} />,
   },
   {
     title: "Notifications",
     component: <Dashboard />,
     properties: ["isProtected", "isSideNavRoute"],
     route: routes.DASHBOARD,
-    icon: <Notifications />,
+    icon: <Bell size={20} />,
   },
   {
     title: "Organizations",
@@ -148,20 +151,20 @@ export const sideNavFooterRoutes = [
     component: <Dashboard />,
     properties: ["isProtected", "isSideNavRoute"],
     route: routes.DASHBOARD,
-    icon: <Settings />,
+    icon: <Settings size={20} />,
   },
   {
     title: "Help & Support",
     component: <Dashboard />,
     properties: ["isProtected", "isSideNavRoute"],
     route: routes.DASHBOARD,
-    icon: <Notifications />,
+    icon: <Info size={20} />,
   },
   {
     title: "Trash",
     component: <Dashboard />,
     properties: ["isProtected", "isSideNavRoute"],
     route: routes.DASHBOARD,
-    icon: <Trash />,
+    icon: <Trash2 size={20} />,
   },
 ];

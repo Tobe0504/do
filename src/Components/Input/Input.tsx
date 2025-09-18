@@ -9,7 +9,7 @@ import EmojiPicker, {
   Theme,
 } from "emoji-picker-react";
 
-type InputProps = {
+type InputProps = React.HTMLAttributes<HTMLInputElement> & {
   type?: string;
   label?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -58,6 +58,7 @@ const Input = ({
   min,
   max,
   emojiObject,
+  ...props
 }: InputProps) => {
   // States
   const [invalid, setInvalid] = useState(false);
@@ -141,6 +142,7 @@ const Input = ({
           onKeyUp={onKeyup}
           min={min}
           max={max}
+          autoFocus={props.autoFocus}
         />
         {emojiObject && (
           <Smiley onClick={() => setShowEmoji((prevState) => !prevState)} />

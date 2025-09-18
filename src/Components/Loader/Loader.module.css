@@ -18,6 +18,13 @@
   animation: l3 1s infinite linear;
 }
 
+.container {
+  padding-block: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @keyframes l3 {
   20% {
     background-position: 0% 0%, 50% 50%, 100% 50%;

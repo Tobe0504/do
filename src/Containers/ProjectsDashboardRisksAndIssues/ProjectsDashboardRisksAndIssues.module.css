@@ -1,0 +1,53 @@
+.container {
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.header > button:nth-child(2) {
+  margin-left: auto;
+}
+
+.header > h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 150%;
+}
+
+.innerContainer {
+  display: flex;
+  height: 100%;
+  min-height: 60svh;
+}
+
+.innerContainer > div {
+  padding: 1rem;
+}
+
+.innerContainer > div:nth-child(1) {
+  flex-basis: 200px;
+}
+
+.innerContainer > div:nth-child(2) {
+  flex: 1;
+}
+
+.risks {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.risks > div:nth-child(2) {
+  flex-basis: 350px;
+}
+
+.risks > div:first-child {
+  flex: 1;
+}

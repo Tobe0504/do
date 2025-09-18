@@ -1,3 +1,4 @@
+import { AudioLines, File, Image, Video } from "lucide-react";
 import classes from "./FileDisplayComponent.module.css";
 
 interface Props {
@@ -8,13 +9,13 @@ interface Props {
 const FileDisplayComponent: React.FC<Props> = ({ type = "file", name }) => {
   const icon =
     type === "image" ? (
-      <span> 🎞️</span>
+      <Image size={20} color="#e63e21" />
     ) : type === "video" ? (
-      <span>📹</span>
+      <Video size={20} color="#e63e21" />
     ) : type === "audio" ? (
-      <span>🔉</span>
+      <AudioLines size={20} color="#e63e21" />
     ) : (
-      <span> 🗃️</span>
+      <File size={20} color="#e63e21" />
     );
   return (
     <div className={classes.container}>

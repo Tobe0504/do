@@ -1,0 +1,761 @@
+/* .calendar {
+  color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.header > h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.viewSwitcher {
+  display: inline-flex;
+  gap: 0;
+  margin: 0.5rem 0;
+  margin-bottom: 2rem;
+  border-radius: 2px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.tab {
+  background: #2a2a2a;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  position: relative;
+}
+
+.tab:hover {
+  background: #3a3a3a;
+  transform: translateY(-2px);
+}
+
+.tab.active {
+  color: white;
+  border-bottom: 2px solid var(--orange);
+}
+
+.tab.active:hover {
+  background: #d32f0f;
+  transform: none;
+}
+
+.monthView {
+  margin-top: 1rem;
+}
+
+.gridHeader {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+}
+
+.day {
+  background: #2a2a2a;
+  border-radius: 8px;
+  padding: 0.25rem;
+  min-height: 80px;
+  position: relative;
+  cursor: default;
+}
+
+.day.hasTasks {
+  cursor: pointer;
+}
+
+.day.hasTasks:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease;
+}
+
+.day.inactive {
+  opacity: 0.4;
+}
+
+.date {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.task {
+  background: #e63e21;
+  color: white;
+  border-radius: 4px;
+  font-size: 10px;
+  padding: 0.1rem 0.25rem;
+  margin-bottom: 0.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dayView ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dayView > h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.dayView li {
+  background: #2a2a2a;
+  padding: 0.5rem;
+  margin-bottom: 0.75rem;
+  border-radius: 5px;
+}
+
+.yearView {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.monthBox {
+  background: #2a2a2a;
+  padding: 0.5rem;
+  border-radius: 5px;
+  min-height: 40px;
+}
+
+.miniTasks {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.taskDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal {
+  background: #1b1b1b;
+  padding: 2rem 1rem;
+  border-radius: 5px;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal > h3 {
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.modal ul {
+  list-style: none;
+  padding: 0;
+}
+
+.modal li {
+  background: #2a2a2a;
+  padding: 0.5rem;
+  margin-bottom: 0.75rem;
+  border-radius: 6px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+} */
+
+:root {
+  --black: #000;
+  --white: #fff;
+  --black1: #1b1b1b;
+  --orange: #e63e21;
+  --orangeWithTransparency: #e63e2158;
+  --gray: #a1a1a1;
+  --headerFontSize: 16px;
+  --paragraphFontSize: 14px;
+
+  --titleFontSize: 20px;
+  --cardRadius: 10px;
+  --gap: 10px;
+}
+
+/* ---------- container ---------- */
+.container {
+  /* background: var(--black1); */
+  color: var(--white);
+  padding: 16px;
+  border-radius: var(--cardRadius);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- header ---------- */
+.header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.headerLeft {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.iconBtn {
+  color: var(--white);
+  transition: background 0.12s ease;
+}
+
+.todayBtn {
+  color: var(--white);
+  font-size: 12px;
+}
+
+/* Title */
+.title h1 {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: -0.2px;
+  color: var(--white);
+}
+
+/* view switch */
+.viewSwitch {
+  display: flex;
+  gap: 2px;
+}
+
+.viewSwitch button {
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--gray);
+  font-size: 12px;
+}
+
+.activeViewBtn {
+  color: var(--white) !important;
+}
+
+/* ---------- month view ---------- */
+.monthView {
+  display: block;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+  padding: 1rem;
+  border-radius: 5px;
+  background: #151515;
+}
+
+.weekday {
+  color: var(--gray);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* main grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  padding: 1rem;
+}
+
+/* empty cells */
+.emptyCell {
+  min-height: 92px;
+  background: transparent;
+  border-radius: 5px;
+}
+
+/* day cell */
+.dayCell {
+  background: #151515;
+  border-radius: 5px;
+  min-height: 92px;
+  padding: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.dayCell:hover {
+  background: #171717;
+}
+
+.today {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.dayTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dayNumber {
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.eventCount {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.eventBadge {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 50%;
+  font-size: 10px;
+  color: var(--white);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.previewEvents {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.previewEvent {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--gray);
+  opacity: 0.95;
+}
+
+.previewEvent .previewText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+/* event dots */
+.eventDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.orange {
+  background: var(--orange);
+}
+.gray {
+  background: var(--gray);
+}
+.red {
+  background: #ff4b4b;
+}
+.purple {
+  background: rebeccapurple;
+}
+
+/* ---------- popup (floating inside day cell) ---------- */
+.popup {
+  position: absolute;
+  z-index: 8;
+  left: 8px;
+  top: calc(100% + 10px);
+  min-width: 260px;
+  background: linear-gradient(
+    180deg,
+    rgba(27, 27, 27, 0.98),
+    rgba(18, 18, 18, 0.98)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7);
+  animation: popupIn 0.14s ease both;
+  overflow: hidden;
+}
+@keyframes popupIn {
+  from {
+    transform: translateY(-6px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.popupHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.popupHeader strong {
+  font-size: 12px;
+  color: var(--orange);
+}
+
+.closeBtn {
+  color: var(--gray);
+}
+
+.popupBody {
+  padding: 8px;
+  max-height: 220px;
+  overflow: auto;
+}
+
+.popupEvent {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.popupEventTitle {
+  font-weight: 600;
+  color: var(--white);
+  font-size: 12px;
+}
+
+.popupEventNotes {
+  color: var(--gray);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.noEvents {
+  color: var(--gray);
+  font-size: 12px;
+}
+
+.popupFooter {
+  display: flex;
+  padding: 4px 0px;
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.popupFooter > button {
+  width: 100%;
+}
+
+/* ---------- day view ---------- */
+.dayViewMain {
+  padding: 8px 0;
+}
+
+.dayHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.dayHeader h3 {
+  margin: 0;
+  font-size: 14px;
+  color: var(--white);
+  font-weight: 600;
+}
+
+.dayActions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.timeline {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.hoursColumn {
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hourLabel {
+  color: var(--gray);
+  font-size: 13px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.eventsColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* slot and timed event */
+.hourSlot {
+  min-height: 40px;
+  position: relative;
+  border: 1px dashed var(--gray);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.timedEvent {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.01), transparent);
+  border-radius: 5px;
+  padding: 4px;
+  width: 320px;
+  transition: transform 0.12s ease;
+  cursor: pointer;
+  background-color: var(--black1);
+}
+
+.timedLeft {
+  width: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.timedRight {
+  display: flex;
+  flex-direction: column;
+}
+
+.timedTitle {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.timedTime {
+  color: var(--gray);
+  font-size: 10px;
+  display: none;
+}
+
+/* event popup in day view */
+.eventPopup {
+  position: absolute;
+  right: -12px;
+  top: 0;
+  transform: translate(100%, 0);
+  min-width: 220px;
+  background: #0f0f0f;
+  border-radius: 5px;
+  padding: 8px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  z-index: 8;
+  animation: popupIn 0.12s ease both;
+}
+.eventPopupTitle {
+  font-weight: 700;
+  color: var(--white);
+  font-size: 12px;
+}
+.eventPopupTime {
+  color: var(--gray);
+  margin-top: 4px;
+  font-size: 10px;
+}
+.eventPopupNotes {
+  color: var(--gray);
+  margin-top: 6px;
+  font-size: 10px;
+}
+
+/* unscheduled events */
+.unscheduled {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.unscheduledEvent {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  border: 2px solid var(--gray);
+  font-size: 12px;
+}
+
+/* ---------- year view (mini months) ---------- */
+.yearGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.miniMonthCard {
+  background: #151515;
+  border-radius: 5px;
+  padding: 8px;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.miniHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.miniMonthBtn {
+  background: transparent;
+  border: none;
+  color: var(--orange);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.miniEventBadge {
+  background: rgba(230, 62, 33, 0.12);
+  color: var(--orange);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+/* mini grid */
+.miniGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.miniWeekday {
+  font-size: 10px;
+  color: var(--gray);
+  text-align: center;
+}
+
+.miniCellEmpty {
+  height: 18px;
+}
+
+.miniCell {
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.miniCell:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.miniCellNumber {
+  font-size: 10px;
+  color: var(--gray);
+}
+
+.miniDot {
+  position: absolute;
+  bottom: 2px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--orange);
+  bottom: 0;
+}

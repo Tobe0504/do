@@ -16,7 +16,7 @@ const ProjectDashboardOverviewCharts = () => {
           <CircularProgressbar
             value={value}
             maxValue={1}
-            strokeWidth={4}
+            strokeWidth={6}
             text={`${value * 100}%`}
             counterClockwise
             styles={buildStyles({

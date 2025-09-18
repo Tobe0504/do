@@ -1,0 +1,119 @@
+.container {
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  white-space: break-spaces;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--black1);
+  gap: 0.5rem;
+}
+
+.header h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.markAll {
+  font-size: 12px;
+  color: var(--gray);
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0.5rem;
+}
+
+.item {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  border-bottom: 1px solid var(--black1);
+  text-align: left;
+}
+
+.item:not(.item:last-child) {
+  border-bottom: 1px solid var(--black1);
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  flex-basis: 32px;
+}
+
+.content {
+  flex: 1;
+  font-size: 12px;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.project {
+  font-weight: 600;
+  color: var(--gray);
+  font-size: 12px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.actions > button {
+  padding: 2px 8px;
+  font-size: 12px;
+}
+
+.comment {
+  margin-top: 4px;
+  color: var(--gray);
+  white-space: break-spaces;
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--black1);
+}
+
+.fileIcon {
+  color: #ef4444;
+  width: 20px;
+  height: 20px;
+}
+
+.meta {
+  margin-top: 4px;
+  font-size: 10px;
+  color: var(--gray);
+  text-align: left;
+}
+
+.unread {
+  width: 8px;
+  height: 8px;
+  background: #3b82f6;
+  border-radius: 50%;
+}

@@ -2,10 +2,12 @@
   padding: 24px 20px;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 }
 
 .container {
-  flex-basis: calc(100svh - 70px);
+  flex-basis: calc(100svh - 140px);
+  overflow: auto;
 }
 
 .altContainer {
@@ -17,14 +19,14 @@
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  margin-bottom: 3rem;
 }
 
 .header > h1 {
   font-family: Inter;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 16px;
   line-height: 100%;
-  letter-spacing: -0.34%;
   display: flex;
   align-items: center;
   padding: 0.25rem 0.5rem;
@@ -48,7 +50,7 @@
   align-items: center;
   gap: 12px;
   padding: 6px;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   text-decoration: none;
   border-radius: 5px;
   transition: all 0.2s ease-in-out;
@@ -56,8 +58,15 @@
 
 .container > nav > a:hover,
 .altContainer > a:hover,
-.container > nav > h3:hover {
+.container > nav > h3:hover,
+.subItem:hover {
   background-color: var(--black1);
+  color: var(--orange);
+}
+
+.container > nav > a:hover > span,
+.altContainer > a:hover > span {
+  color: var(--orange);
 }
 
 .container > nav > a > span,
@@ -72,6 +81,7 @@
   font-size: 14px;
   line-height: 100%;
   letter-spacing: -0.34%;
+  transition: all 0.2s ease-in-out;
 }
 
 .container > nav > h3 {
@@ -91,4 +101,41 @@
 
 .container > nav > h3:hover {
   text-decoration: underline;
+}
+
+.options {
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.subItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-family: Inter;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: -0.34%;
+  color: var(--white);
+  font-weight: 400;
+  margin-bottom: 8px;
+  padding: 6px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+.subItem > svg {
+  flex-shrink: 0;
+}
+
+.subItem > a {
+  text-decoration: none;
+}
+
+.subItem > img {
+  width: 24px;
+  height: 24px;
 }

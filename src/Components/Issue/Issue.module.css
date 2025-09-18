@@ -1,0 +1,162 @@
+.wrapper {
+  border-radius: 12px;
+  padding: 16px;
+  color: white;
+  border: 1px solid var(--black1);
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tabs button {
+  background: transparent;
+  border: 1px solid var(--gray);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.tabs .active {
+  background: var(--orangeWithTransparency);
+  border-color: #e63e21;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card {
+  background: var(--black1);
+  border-radius: 5px;
+  padding: 12px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.severity {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 4px;
+  border-radius: 6px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.high {
+  background: #a11;
+}
+
+.medium {
+  background: #e68a00;
+}
+
+.low {
+  background: #2e8b57;
+}
+
+.details h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.details p {
+  margin: 4px 0;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.meta {
+  margin-top: 4px;
+  font-size: 10px;
+  display: flex;
+  gap: 8px;
+  color: #ccc;
+}
+
+.optionsContainer {
+  margin-left: auto;
+  cursor: pointer;
+  position: relative;
+}
+
+.options {
+  position: absolute;
+  padding: 0.5rem;
+  z-index: 5;
+  top: 120%;
+  right: 0;
+  min-width: 150px;
+  background: rgba(255, 255, 255, 0.05);
+  background-color: var(--black1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+.options > div {
+  padding: 0.25rem;
+  border-radius: 5px;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.options > div > svg {
+  width: 16px;
+  height: 16px;
+  color: green;
+}
+
+.options > div:hover {
+  background-color: var(--black);
+}
+
+.options > div {
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.ai {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ai > p {
+  position: relative;
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 400;
+  color: #fff;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    rgb(80, 80, 80) 20%,
+    #ffffff 40%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 7s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}

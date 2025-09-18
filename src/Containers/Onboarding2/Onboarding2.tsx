@@ -1,5 +1,5 @@
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
-import ArrowRight from "../../Assets/Icons/ArrowRight";
 import Button from "../../Components/Button/Button";
 import GradientCard from "../../Components/GradientCard/GradientCard";
 import useUpdateSearchParams from "../../Hooks/useUpdateSearchParams";
@@ -44,16 +44,31 @@ const Onboarding2 = ({ answers, setAnswers }: Onboarding2Types) => {
         })}
       </div>
 
-      <Button
-        disabled={!answers?.vibe}
-        type="secondary"
-        onClick={() => {
-          updateSearchParams("step", "3", "set");
-        }}
-      >
-        <span>Continue</span>
-        <ArrowRight />
-      </Button>
+      <div className={classes.butotonSection}>
+        <Button
+          type="tertiary"
+          onClick={(e) => {
+            e.preventDefault();
+            updateSearchParams("step", "1", "set");
+          }}
+        >
+          <ArrowLeft size={16} />
+          <span>Previous</span>
+        </Button>
+
+        <Button
+          disabled={!answers?.vibe}
+          type="secondary"
+          onClick={(e) => {
+            e.preventDefault();
+
+            updateSearchParams("step", "3", "set");
+          }}
+        >
+          <span>Continue</span>
+          <ArrowRight size={16} />
+        </Button>
+      </div>
     </section>
   );
 };

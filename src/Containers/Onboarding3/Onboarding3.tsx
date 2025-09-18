@@ -1,3 +1,4 @@
+import { Trash2, UserPlus } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Add from "../../Assets/Icons/Add";
@@ -17,6 +18,7 @@ const Onboarding3 = () => {
   const [data, setData] = useState({
     hiveName: "",
   });
+  const [emails, setEmails] = useState(["", ""]);
 
   return (
     <section className={classes.container}>
@@ -35,17 +37,43 @@ const Onboarding3 = () => {
           name="hiveName"
           onChange={(e) => inputChangeHandler(e, setData)}
           value={data?.hiveName}
+          autoFocus
         />
 
-        <div>
+        <div className={classes.emails}>
           <h2>Invite teammates (optional)</h2>
-          <Input type="email" placeholder="someone@example.com" />
-          <Input type="email" placeholder="someone@example.com" />
-          <Input type="email" placeholder="someone@example.com" />
+          {emails?.map((email, i) => (
+            <div key={i} className={classes?.email}>
+              <Input
+                type="email"
+                placeholder="someone@example.com"
+                value={email}
+                onChange={(event) => {
+                  setEmails((prev) => {
+                    const updated = [...prev];
+                    updated[i] = (event.target as any)?.value;
+                    return updated;
+                  });
+                }}
+              />
+              {email && (
+                <Trash2
+                  size={20}
+                  color="#780606"
+                  className="cursor-pointer"
+                  onClick={() => {
+                    setEmails((prev) => prev.filter((_, idx) => idx !== i));
+                  }}
+                />
+              )}
+            </div>
+          ))}
+
           <Button
             type="secondary"
             onClick={(e) => {
               e.preventDefault();
+              setEmails((prevState) => [...prevState, ""]);
             }}
           >
             <Add />
@@ -60,8 +88,8 @@ const Onboarding3 = () => {
               navigate(routes.DASHBOARD);
             }}
           >
-            <span>Skip for now</span>
-            <Skip />
+            <UserPlus size={16} />
+            <span>Invite All</span>
           </Button>
 
           <Button
@@ -70,7 +98,7 @@ const Onboarding3 = () => {
               navigate(routes.DASHBOARD);
             }}
           >
-            <span>Start adding Dos</span>
+            <span>Start DOing</span>
             <ArrowRight />
           </Button>
         </div>

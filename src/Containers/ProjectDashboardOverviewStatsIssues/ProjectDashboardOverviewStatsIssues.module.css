@@ -81,3 +81,82 @@
   gap: 8px;
   color: #ccc;
 }
+
+.optionsContainer {
+  margin-left: auto;
+  cursor: pointer;
+  position: relative;
+}
+
+.options {
+  position: absolute;
+  padding: 0.5rem;
+  z-index: 5;
+  top: 120%;
+  right: 0;
+  min-width: 170px;
+  background: rgba(255, 255, 255, 0.05);
+  background-color: var(--black1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+.options > div {
+  padding: 0.25rem;
+  border-radius: 5px;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.options > div > svg {
+  width: 16px;
+  height: 16px;
+  color: green;
+}
+
+.options > div:hover {
+  background-color: var(--black);
+}
+
+.options > div {
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.ai {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ai > p {
+  position: relative;
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 400;
+  color: #fff;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    rgb(80, 80, 80) 20%,
+    #ffffff 40%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 7s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}

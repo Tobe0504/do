@@ -3,6 +3,8 @@ import { DndContext, DragEndEvent, closestCenter } from "@dnd-kit/core";
 import { initialTasks } from "../OrganozationListTasksContainer/OrganizationListTasksContainer";
 import KanbanColumn from "../KanbanColumn/KanbanColumn";
 import classes from "./KanbanBoard.module.css";
+import { Calendar, Kanban, List } from "lucide-react";
+import { activeToggler } from "../../HelperFunctions/activeTogglerr";
 
 interface Task {
   id: string;
@@ -63,17 +65,51 @@ const KanbanBoard = () => {
     }));
   };
 
+  const [views, setViews] = useState([
+    {
+      title: "Kanban",
+      isActive: true,
+      icon: <Kanban size={16} />,
+    },
+    {
+      title: "List",
+      isActive: false,
+      icon: <List size={16} />,
+    },
+    {
+      title: "Calendar",
+      isActive: false,
+      icon: <Calendar size={16} />,
+    },
+  ]);
+
   return (
     <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-      <div className={classes.container}>
-        {statuses.map((status) => (
-          <KanbanColumn
-            key={status}
-            id={status}
-            title={status}
-            tasks={tasks[status]}
-          />
-        ))}
+      <div className={classes.outerContainer}>
+        <div className={classes.viewNav}>
+          {views.map((data, i) => {
+            return (
+              <div
+                key={data?.title}
+                className={data?.isActive ? classes.active : undefined}
+                onClick={() => activeToggler(i, views, setViews)}
+              >
+                <span>{data?.icon}</span>
+                <span>{data?.title}</span>
+              </div>
+            );
+          })}
+        </div>
+        <div className={classes.container}>
+          {statuses.map((status) => (
+            <KanbanColumn
+              key={status}
+              id={status}
+              title={status}
+              tasks={tasks[status]}
+            />
+          ))}
+        </div>
       </div>
     </DndContext>
   );

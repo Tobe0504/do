@@ -3,6 +3,7 @@ import { useDroppable } from "@dnd-kit/core";
 import TaskCard from "../../Components/TaskCard/TaskCard";
 import { TaskType } from "../../Utilities/types";
 import classes from "./KanbanColumn.module.css";
+import { Ellipsis, Plus } from "lucide-react";
 
 interface Task {
   id: string;
@@ -22,7 +23,11 @@ const KanbanColumn = ({ id, title, tasks }: KanbanColumnProps) => {
 
   return (
     <div ref={setNodeRef} className={classes.container}>
-      <h3>{title}</h3>
+      <div className={classes.header}>
+        <h3>{title}</h3>
+        <Plus size={16} color="#a1a1a1" strokeWidth={2} />
+        <Ellipsis size={16} color="#a1a1a1" strokeWidth={2} />
+      </div>
       {tasks?.length > 0 ? (
         tasks.map((task: TaskType) => <TaskCard key={task.id} {...task} />)
       ) : (

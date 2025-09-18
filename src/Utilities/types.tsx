@@ -35,6 +35,13 @@ export type breadCrumbNavItemTypes = {
   route: string;
 };
 
+export type comments = {
+  id: string;
+  user: string;
+  text: string;
+  date: string;
+};
+
 export type riskTypes = {
   id: number;
   title: string;
@@ -42,6 +49,7 @@ export type riskTypes = {
   severity: string;
   owner: string;
   status: string;
+  comments?: comments[];
 };
 
 export type issuesType = {
@@ -51,4 +59,10 @@ export type issuesType = {
   severity: string;
   owner: string;
   status: string;
+  comments?: comments[];
+};
+
+export type issueOptionsTypes = {
+  title: string;
+  action: () => void;
 };

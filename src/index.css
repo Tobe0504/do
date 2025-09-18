@@ -78,9 +78,6 @@ code {
 }
 
 .EmojiPickerReact.epr-dark-theme {
-}
-
-.EmojiPickerReact.epr-dark-theme {
   --epr-emoji-size: 20px;
   --epr-emoji-gap: 8px;
   --epr-hover-bg-color: #333333;

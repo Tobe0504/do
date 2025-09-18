@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useCallback } from "react";
 import ToastContainer from "../Containers/ToastContainer/ToastContainer";
 
 type ToastContextTypes = {
-  showToast: (msg: string, duration: number) => void;
+  showToast: (msg: string, duration?: number) => void;
 };
 
 type ToastProviderTypes = { children: React.ReactNode };

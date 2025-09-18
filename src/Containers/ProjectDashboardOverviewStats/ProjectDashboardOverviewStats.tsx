@@ -10,7 +10,7 @@ const deadlines = [
   { id: 4, title: "Client Demo", date: "2025-09-15" },
 ];
 
-const risks = [
+export const risks = [
   {
     id: 1,
     title: "Dependency on third-party API",
@@ -19,6 +19,50 @@ const risks = [
     severity: "High",
     owner: "Alice",
     status: "Open",
+    comments: [
+      {
+        id: "1",
+        user: "Alice",
+        text: "Noticed the API is down again. We need to prioritize this fix.",
+        date: "2025-09-05 14:30",
+      },
+      {
+        id: "2",
+        user: "Bob",
+        text: "I'm looking into the third-party API issue. Will update soon.",
+        date: "2025-09-05 15:15",
+      },
+      {
+        id: "3",
+        user: "Charlie",
+        text: "Can we get a timeline for the resolution? This is impacting the release.",
+        date: "2025-09-05 16:00",
+      },
+      {
+        id: "4",
+        user: "Dave",
+        text: "Just tested the workaround. It seems to be stable for now.",
+        date: "2025-09-05 17:45",
+      },
+      {
+        id: "4",
+        user: "Dave",
+        text: "Just tested the workaround. It seems to be stable for now.",
+        date: "2025-09-05 17:45",
+      },
+      {
+        id: "4",
+        user: "Dave",
+        text: "Just tested the workaround. It seems to be stable for now.",
+        date: "2025-09-05 17:45",
+      },
+      {
+        id: "4",
+        user: "Dave",
+        text: "Just tested the workaround. It seems to be stable for now.",
+        date: "2025-09-05 17:45",
+      },
+    ],
   },
   {
     id: 2,
@@ -27,10 +71,70 @@ const risks = [
     severity: "Medium",
     owner: "Bob",
     status: "Mitigating",
+    comments: [
+      {
+        id: "1",
+        user: "Alice",
+        text: "Noticed the API is down again. We need to prioritize this fix.",
+        date: "2025-09-05 14:30",
+      },
+      {
+        id: "2",
+        user: "Bob",
+        text: "I'm looking into the third-party API issue. Will update soon.",
+        date: "2025-09-05 15:15",
+      },
+      {
+        id: "3",
+        user: "Charlie",
+        text: "Can we get a timeline for the resolution? This is impacting the release.",
+        date: "2025-09-05 16:00",
+      },
+      {
+        id: "4",
+        user: "Dave",
+        text: "Just tested the workaround. It seems to be stable for now.",
+        date: "2025-09-05 17:45",
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Timeline overrun",
+    description: "Potential delay due to resource shortage.",
+    severity: "Medium",
+    owner: "Bob",
+    status: "Mitigating",
+    comments: [
+      {
+        id: "1",
+        user: "Alice",
+        text: "Noticed the API is down again. We need to prioritize this fix.",
+        date: "2025-09-05 14:30",
+      },
+      {
+        id: "2",
+        user: "Bob",
+        text: "I'm looking into the third-party API issue. Will update soon.",
+        date: "2025-09-05 15:15",
+      },
+      {
+        id: "3",
+        user: "Charlie",
+        text: "Can we get a timeline for the resolution? This is impacting the release.",
+        date: "2025-09-05 16:00",
+      },
+      {
+        id: "4",
+        user: "Dave",
+        text: "Just tested the workaround. It seems to be stable for now.",
+        date: "2025-09-05 17:45",
+      },
+    ],
   },
 ];
 
-const issues = [
+export const issues = [
   {
     id: 1,
     title: "UI Bug in Dashboard",
@@ -38,6 +142,32 @@ const issues = [
     severity: "Low",
     owner: "Charlie",
     status: "In Progress",
+    comments: [
+      {
+        id: "1",
+        user: "Alice",
+        text: "Noticed the API is down again. We need to prioritize this fix.",
+        date: "2025-09-05 14:30",
+      },
+      {
+        id: "2",
+        user: "Bob",
+        text: "I'm looking into the third-party API issue. Will update soon.",
+        date: "2025-09-05 15:15",
+      },
+      {
+        id: "3",
+        user: "Charlie",
+        text: "Can we get a timeline for the resolution? This is impacting the release.",
+        date: "2025-09-05 16:00",
+      },
+      {
+        id: "4",
+        user: "Dave",
+        text: "Just tested the workaround. It seems to be stable for now.",
+        date: "2025-09-05 17:45",
+      },
+    ],
   },
   {
     id: 2,
@@ -46,6 +176,32 @@ const issues = [
     severity: "High",
     owner: "Diana",
     status: "Open",
+    comments: [
+      {
+        id: "1",
+        user: "Alice",
+        text: "Noticed the API is down again. We need to prioritize this fix.",
+        date: "2025-09-05 14:30",
+      },
+      {
+        id: "2",
+        user: "Bob",
+        text: "I'm looking into the third-party API issue. Will update soon.",
+        date: "2025-09-05 15:15",
+      },
+      {
+        id: "3",
+        user: "Charlie",
+        text: "Can we get a timeline for the resolution? This is impacting the release.",
+        date: "2025-09-05 16:00",
+      },
+      {
+        id: "4",
+        user: "Dave",
+        text: "Just tested the workaround. It seems to be stable for now.",
+        date: "2025-09-05 17:45",
+      },
+    ],
   },
 ];
 
@@ -85,7 +241,11 @@ const ProjectDashboardOverviewStats = () => {
         <Calendar deadlines={deadlines} />
         <div></div>
       </div>
-      <ProjectDashboardOverviewStatsIssues risks={risks} issues={issues} />
+      <ProjectDashboardOverviewStatsIssues
+        risks={risks}
+        issues={issues}
+        summary
+      />
     </div>
   );
 };

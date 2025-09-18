@@ -1,0 +1,52 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px #00000014;
+  border: 1px solid var(--black1);
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.id {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray2);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.joinbutton {
+  margin-left: auto;
+  padding-block: 0.25rem;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.copyButton {
+  padding: 4px;
+}

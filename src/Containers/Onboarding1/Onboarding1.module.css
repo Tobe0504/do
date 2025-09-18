@@ -1,5 +1,5 @@
 .container {
-  max-width: 600px;
+  width: 500px;
 }
 
 .container > h1,
@@ -46,4 +46,57 @@
   align-items: center;
   gap: 1rem;
   margin-top: 3rem;
+}
+
+.emails > h2 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.emails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.emails > button {
+  max-width: 50px;
+}
+
+.email {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.email > div {
+  flex: 1;
+}
+
+.joinOrg > div:nth-child(1) {
+  margin-bottom: 1.5rem;
+}
+
+.organizations {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+}
+
+.organizations > h4 {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%;
+}
+
+.organizations > p {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 150%;
+  color: var(--gray2);
+  width: 100%;
+  margin-bottom: 1.5rem;
 }

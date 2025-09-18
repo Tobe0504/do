@@ -234,7 +234,7 @@ const EditTask = () => {
               label="Subtasks"
               placeholder="Eg. wash more dishes..."
               onChange={(e) => {
-                setSubTaskText(e.target.value);
+                setSubTaskText((e.target as any).value);
               }}
               value={subTaskText}
               onKeyup={(e) => {

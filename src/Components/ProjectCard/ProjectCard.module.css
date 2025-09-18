@@ -39,10 +39,6 @@
   position: relative;
 }
 
-.header > div:hover {
-  background-color: var(--black1);
-}
-
 .header > div > svg {
   width: 18px;
   height: 18px;
@@ -52,6 +48,10 @@
 
 .header > div:nth-child(2) {
   margin-left: auto;
+}
+
+.header > a:hover {
+  color: var(--white);
 }
 
 .options {

@@ -1,8 +1,9 @@
 import classes from "./Button.module.css";
 import { CircularProgress } from "@mui/material";
 import { SmallLoader } from "../Loader/Loader";
+import { HTMLAttributes } from "react";
 
-type ButtonPropTypes = {
+type ButtonPropTypes = HTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
   type?:
     | "primary"
@@ -24,10 +25,11 @@ const Button = ({
   disabled,
   onClick,
   loading,
+  ...props
 }: ButtonPropTypes) => {
   return (
     <button
-      className={`${classes.button} ${
+      className={`${props.className} ${classes.button} ${
         type === "secondary"
           ? classes.secondary
           : type === "tertiary"
