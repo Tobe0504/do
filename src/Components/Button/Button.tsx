@@ -48,6 +48,7 @@ const Button = ({
       }`}
       onClick={onClick}
       disabled={loading || disabled}
+      {...props}
     >
       {loading ? <SmallLoader /> : children}
     </button>

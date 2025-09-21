@@ -7,12 +7,19 @@ import {
 } from "lucide-react";
 import React, { useRef, useState, useEffect, useMemo, useContext } from "react";
 import Button from "../../Components/Button/Button";
+import DeleteModalBody from "../../Components/DeleteModalBody/DeleteModalBody";
 import Dropdown from "../../Components/Dropdown/Dropdown";
+import Modal from "../../Components/Modal/Modal";
 import StepProgress from "../../Components/StepProgress/StepProgress";
 import { AppContext } from "../../Context/AppContext";
 import { capitalize } from "../../HelperFunctions/capitalize";
+import {
+  setAllModalsFalse,
+  setModalTrue,
+} from "../../HelperFunctions/modalHandlers";
 import { tasks } from "../../Utilities/dummyData";
 import { stepProgressType } from "../../Utilities/tasks";
+import { genericModalsTypes } from "../../Utilities/types";
 import classes from "./ProjectDashboardWorkflows.module.css";
 
 const pipelineData = [
@@ -105,6 +112,7 @@ const ProjectDashboardWorkflows = () => {
   //   States
   const [lines, setLines] = useState([]);
   const [lineWidth, setLineWidth] = useState(0);
+  const [modals, setModals] = useState<genericModalsTypes>({ delete: false });
 
   useEffect(() => {
     const updateLines = () => {
@@ -166,18 +174,15 @@ const ProjectDashboardWorkflows = () => {
 
   const steps: stepProgressType[] = useMemo(() => {
     return pipelineData?.map((pipeline) => {
-      // count how many tasks are done
       const doneCount = pipeline?.tasks?.filter(
         (task) => task.status === "done"
       ).length;
 
-      // calculate percentage
       const percentage =
         pipeline?.tasks?.length > 0
           ? (doneCount / pipeline.tasks.length) * 100
           : 0;
 
-      // assign color by speed
       const color =
         pipeline?.speed === "quick"
           ? "#219653"
@@ -195,158 +200,176 @@ const ProjectDashboardWorkflows = () => {
   }, [pipelineData]);
 
   return (
-    <section className={classes.outerContainer}>
-      <div className={classes.header}>
-        <h4>Project Pipelines</h4>
+    <>
+      {modals.delete && (
+        <Modal
+          onClose={() => setAllModalsFalse(setModals)}
+          body={
+            <DeleteModalBody
+              title="Delete Workflow?"
+              caption="This action cannot be undone. Deleting this workflow will impact dependent tasks and integrations."
+              onClose={() => setAllModalsFalse(setModals)}
+            />
+          }
+        />
+      )}
+      <section className={classes.outerContainer}>
+        <div className={classes.header}>
+          <h4>Project Pipelines</h4>
 
-        <div className={classes.step}>
-          <StepProgress title="Pipeline Progress" steps={steps} />
-        </div>
-
-        <div className={classes.actions}>
-          <Dropdown
-            options={speedTypes.map((data) => capitalize(data) as string)}
-            label="Filter by Workflow Status"
-          />
-          <Button>
-            <FileChartLine size={16} />
-            <span>Generate Pipeline Report</span>
-          </Button>
-        </div>
-      </div>
-      <div className={classes.container}>
-        <div className={classes.chart} ref={chartRef}>
-          <svg
-            className={classes.chartLine}
-            width={`${lineWidth}`}
-            height="100%"
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              pointerEvents: "none",
-            }}
-          >
-            {lines}
-          </svg>
-
-          {/* First column (labels) */}
-          <div className={`${classes.chartRow} ${classes.chartTitles}`}>
-            <div style={{ flex: "1" }}></div>
-            <div>
-              <span className="bg-[#219653]"></span>
-              <span>Quick</span>
-            </div>
-            <div>
-              <span className="bg-[#a1a1a1]"></span>
-              <span>Average</span>
-            </div>
-            <div>
-              <span className="bg-[#780606]"></span>
-              <span> Delayed</span>
-            </div>
-            <div>Tasks Assigned</div>
-            <div>Insights</div>
+          <div className={classes.step}>
+            <StepProgress title="Pipeline Progress" steps={steps} />
           </div>
 
-          {pipelineData?.map((data, index) => {
-            return (
-              <div className={classes.chartRow} key={data?.name}>
-                <div
-                  style={{
-                    borderBottom:
-                      data?.speed === "quick"
-                        ? "4px solid #219653"
-                        : data?.speed === "average"
-                        ? "4px solid #a1a1a1"
-                        : data?.speed === "delayed"
-                        ? "4px solid #780606"
-                        : "4px solid transparent",
-                    flex: "1",
-                  }}
-                >
-                  <span>{data?.name}</span>
+          <div className={classes.actions}>
+            <Dropdown
+              options={speedTypes.map((data) => capitalize(data) as string)}
+              label="Filter by Workflow Status"
+            />
+            <Button>
+              <FileChartLine size={16} />
+              <span>Generate Pipeline Report</span>
+            </Button>
+          </div>
+        </div>
+        <div className={classes.container}>
+          <div className={classes.chart} ref={chartRef}>
+            <svg
+              className={classes.chartLine}
+              width={`${lineWidth}`}
+              height="100%"
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                pointerEvents: "none",
+              }}
+            >
+              {lines}
+            </svg>
 
-                  <Button type="tertiary" title="Add a new task">
-                    <Plus
-                      size={16}
-                      className="cursor-pointer"
-                      color="#a1a1a1"
-                    />
-                  </Button>
+            {/* First column (labels) */}
+            <div className={`${classes.chartRow} ${classes.chartTitles}`}>
+              <div style={{ flex: "1" }}></div>
+              <div>
+                <span className="bg-[#219653]"></span>
+                <span>Quick</span>
+              </div>
+              <div>
+                <span className="bg-[#a1a1a1]"></span>
+                <span>Average</span>
+              </div>
+              <div>
+                <span className="bg-[#780606]"></span>
+                <span> Delayed</span>
+              </div>
+              <div>Tasks Assigned</div>
+              <div>Insights</div>
+            </div>
 
-                  <Button type="tertiary" title="Delete workflow stage">
-                    <Trash2
-                      size={16}
-                      className="cursor-pointer"
-                      color="#a1a1a1"
-                    />
-                  </Button>
-                </div>
-                {speedTypes.map((speed) => {
-                  if (speed === data?.speed) {
-                    return (
-                      <div key={speed} ref={stageRefs.current[index]}>
-                        <CircleDotDashed
-                          color={
-                            data?.speed === "quick"
-                              ? "#219653"
-                              : data?.speed === "average"
-                              ? "#a1a1a1"
-                              : "#780606"
-                          }
-                        />
-                      </div>
-                    );
-                  } else {
-                    return <div key={speed}></div>;
-                  }
-                })}
+            {pipelineData?.map((data, index) => {
+              return (
+                <div className={classes.chartRow} key={data?.name}>
+                  <div
+                    style={{
+                      borderBottom:
+                        data?.speed === "quick"
+                          ? "4px solid #219653"
+                          : data?.speed === "average"
+                          ? "4px solid #a1a1a1"
+                          : data?.speed === "delayed"
+                          ? "4px solid #780606"
+                          : "4px solid transparent",
+                      flex: "1",
+                    }}
+                  >
+                    <span>{data?.name}</span>
 
-                <div className={`${classes.tasks} no-scroll-bar`}>
-                  {data?.tasks?.map((task) => {
-                    return (
-                      <div className={classes.task} key={task.title}>
-                        <Circle
-                          fill={
-                            task?.status === "not-started"
-                              ? "#219653"
-                              : task?.status === "in-progress"
-                              ? "#e63e21"
-                              : "#780606"
-                          }
-                          color={
-                            task?.status === "not-started"
-                              ? "#219653"
-                              : task?.status === "in-progress"
-                              ? "#e63e21"
-                              : "#780606"
-                          }
-                          size={10}
-                          className={`flex-shrink-0 ${
-                            task.status === "in-progress" &&
-                            "animate-pulse duration-2000"
-                          }`}
-                        />
-                        <div>
-                          <span>{task.title}</span>
+                    <Button type="tertiary" title="Add a new task">
+                      <Plus
+                        size={16}
+                        className="cursor-pointer"
+                        color="#a1a1a1"
+                      />
+                    </Button>
+
+                    <Button
+                      type="tertiary"
+                      title="Delete workflow stage"
+                      onClick={() => setModalTrue(setModals, "delete")}
+                    >
+                      <Trash2
+                        size={16}
+                        className="cursor-pointer"
+                        color="#a1a1a1"
+                      />
+                    </Button>
+                  </div>
+                  {speedTypes.map((speed) => {
+                    if (speed === data?.speed) {
+                      return (
+                        <div key={speed} ref={stageRefs.current[index]}>
+                          <CircleDotDashed
+                            color={
+                              data?.speed === "quick"
+                                ? "#219653"
+                                : data?.speed === "average"
+                                ? "#a1a1a1"
+                                : "#780606"
+                            }
+                          />
+                        </div>
+                      );
+                    } else {
+                      return <div key={speed}></div>;
+                    }
+                  })}
+
+                  <div className={`${classes.tasks} no-scroll-bar`}>
+                    {data?.tasks?.map((task) => {
+                      return (
+                        <div className={classes.task} key={task.title}>
+                          <Circle
+                            fill={
+                              task?.status === "not-started"
+                                ? "#219653"
+                                : task?.status === "in-progress"
+                                ? "#e63e21"
+                                : "#780606"
+                            }
+                            color={
+                              task?.status === "not-started"
+                                ? "#219653"
+                                : task?.status === "in-progress"
+                                ? "#e63e21"
+                                : "#780606"
+                            }
+                            size={10}
+                            className={`flex-shrink-0 ${
+                              task.status === "in-progress" &&
+                              "animate-pulse duration-2000"
+                            }`}
+                          />
                           <div>
-                            {data?.teamsAssigned?.map((team) => {
-                              return <span key={team}>{team}, </span>;
-                            })}
+                            <span>{task.title}</span>
+                            <div>
+                              {data?.teamsAssigned?.map((team) => {
+                                return <span key={team}>{team}, </span>;
+                              })}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
+                  <div></div>
                 </div>
-                <div></div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

@@ -9,7 +9,6 @@ import {
   Search,
 } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Button from "../../Components/Button/Button";
 import Modal from "../../Components/Modal/Modal";
 import {
@@ -32,9 +31,6 @@ const ProjectsHeader: React.FC<Props> = ({
   handleOpenClose,
   sideIsOpen,
 }) => {
-  // Router
-  const navigate = useNavigate();
-
   // States
   const [modals, setModals] = useState<genericModalsTypes>({
     calendar: false,
@@ -71,13 +67,6 @@ const ProjectsHeader: React.FC<Props> = ({
       )}
 
       <div className={classes.container}>
-        <ChevronLeft
-          size={16}
-          color="#a1a1a1"
-          className="cursor-pointer"
-          onClick={() => navigate(-1)}
-        />
-
         <div className={classes.inputSection}>
           <input
             type="search"
@@ -86,29 +75,32 @@ const ProjectsHeader: React.FC<Props> = ({
           <Search size={16} className={classes.search} color="#a1a1a1" />
         </div>
 
-        <Button type="tertiary" onClick={handleOpenClose} title="Insights">
+        <Button type="tertiary" title="Insights">
           <Flame size={16} fill={"#e63e21"} color={"#e63e21"} />
         </Button>
 
-        <Button type="tertiary" onClick={handleOpenClose}>
+        <Button type="tertiary" onClick={handleOpenClose} title="Chats">
           <MessageCircle size={16} color={sideIsOpen ? "#e63e21" : "#a1a1a1"} />
         </Button>
 
         <Button
           type="tertiary"
           onClick={() => setModalTrue(setModals, "calendar")}
+          title="Project Calendar"
         >
           <Calendar size={16} color="#a1a1a1" />
         </Button>
 
-        <Button
-          type="tertiary"
-          onClick={() => {
-            setModalTrue(setModals, "notifications");
-          }}
-          className={classes.notifications}
-        >
-          <Bell size={16} color="#a1a1a1" />
+        <div className={classes.notifications}>
+          <Button
+            type="tertiary"
+            onClick={() => {
+              setModalTrue(setModals, "notifications");
+            }}
+            title="Notifications"
+          >
+            <Bell size={16} color="#a1a1a1" />
+          </Button>
 
           {modals?.notifications && (
             <div
@@ -118,7 +110,7 @@ const ProjectsHeader: React.FC<Props> = ({
               <ProjectNotifications />
             </div>
           )}
-        </Button>
+        </div>
 
         <Button type="secondary">
           <Archive size={16} />

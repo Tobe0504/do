@@ -29,6 +29,8 @@ const DashboardLayout = ({
   // States
   const [showTrigger, setShowTrigger] = useState(false);
   const [triggerY, setTriggerY] = useState(100);
+  const [sideNavWidth, setSideNavWidth] = useState(250);
+  const [isResizing, setIsResizing] = useState(true);
 
   // Context
   const { sideNavIsOpened, setSideNavisOpened } = useContext(AppContext);
@@ -69,12 +71,40 @@ const DashboardLayout = ({
     };
   }, []);
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (isResizing) {
+        const newWidth = Math.max(150, Math.min(e.clientX, 500));
+        setSideNavWidth(newWidth);
+      }
+    };
+
+    const handleMouseUp = () => {
+      if (isResizing) setIsResizing(false);
+    };
+
+    if (isResizing) {
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleMouseUp);
+    }
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isResizing]);
+
   return (
     <main className={classes.container}>
       <SideNav
         isOpen={sideNavIsOpened}
         toggleSideNav={() => setSideNavisOpened((prev) => !prev)}
-        style={sideNavIsOpened ? { width: "250px" } : { width: "0px" }}
+        style={
+          sideNavIsOpened ? { width: `${sideNavWidth}px` } : { width: "0px" }
+        }
+        onSetResizer={() => {
+          setIsResizing(true);
+        }}
       />
 
       <section>

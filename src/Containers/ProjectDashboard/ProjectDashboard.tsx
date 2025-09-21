@@ -77,12 +77,11 @@ const ProjectDashboard = () => {
   };
 
   const scrollToTop = () => {
-    if (navRef?.current) {
-      navRef.current.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
+    const layout = document.querySelector(`.${classes.container}`);
+    layout?.scrollTo({
+      top: 150,
+      behavior: "smooth",
+    });
   };
 
   // Effects

@@ -1,13 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
-import { useNavigate } from "react-router-dom";
 import ArrowRight from "../../Assets/Icons/ArrowRight";
 import Skip from "../../Assets/Icons/Skip";
 import Button from "../../Components/Button/Button";
 import GradientCard from "../../Components/GradientCard/GradientCard";
 import useUpdateSearchParams from "../../Hooks/useUpdateSearchParams";
-import { routes } from "../../Utilities/routes";
 import { onboardingAnswersType } from "../../Utilities/types";
-import Logo from "../Logo/Logo";
 import classes from "./Onboarding1.module.css";
 
 type Onboarding1Types = {
@@ -28,7 +25,6 @@ const Onboarding1 = ({ answers, setAnswers }: Onboarding1Types) => {
   const { updateSearchParams } = useUpdateSearchParams();
 
   // Router
-  const navigate = useNavigate();
 
   return (
     <section className={classes.container}>
@@ -57,7 +53,7 @@ const Onboarding1 = ({ answers, setAnswers }: Onboarding1Types) => {
           type="tertiary"
           onClick={(e) => {
             e.preventDefault();
-            navigate(routes.DASHBOARD);
+            updateSearchParams("step", "3", "set");
           }}
         >
           <span>Skip for now</span>

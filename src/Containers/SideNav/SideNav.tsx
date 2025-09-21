@@ -20,9 +20,15 @@ import classes from "./SideNav.module.css";
 interface Props extends HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
   toggleSideNav: () => void;
+  onSetResizer: () => void;
 }
 
-const SideNav: React.FC<Props> = ({ isOpen, toggleSideNav, ...props }) => {
+const SideNav: React.FC<Props> = ({
+  isOpen,
+  toggleSideNav,
+  onSetResizer,
+  ...props
+}) => {
   // Router
   const navigate = useNavigate();
 
@@ -319,6 +325,8 @@ const SideNav: React.FC<Props> = ({ isOpen, toggleSideNav, ...props }) => {
             })}
         </div>
       </div>
+
+      <div onMouseDown={onSetResizer} className={classes.resizer}></div>
     </section>
   );
 };

@@ -13,7 +13,7 @@
   text-align: left;
 }
 
-.container > button:nth-child(3) {
+.container > button:nth-child(2) {
   margin-left: auto;
 }
 
@@ -28,7 +28,7 @@
 .inputSection > input {
   display: block;
   width: 100%;
-  padding: 7px;
+  padding: 10px;
   font-family: Inter;
   font-size: var(--paragraphFontSize);
   font-weight: 400;
@@ -40,7 +40,7 @@
   background: var(--ds-background-100, #0a0a0a);
   position: relative;
   min-width: 350px;
-  text-indent: 1.2rem;
+  text-indent: 1.7rem;
   font-size: 12px;
 }
 
@@ -87,4 +87,8 @@
 
 .notifications {
   position: relative;
+}
+
+.container > button:last-child {
+  margin-left: 1rem;
 }

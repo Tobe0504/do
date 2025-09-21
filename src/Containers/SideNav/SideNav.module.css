@@ -2,6 +2,11 @@
   height: 100svh;
 }
 
+.outerOuterContainer {
+  position: relative;
+  user-select: none;
+}
+
 .outerContainer {
   padding: 24px 20px;
   display: flex;
@@ -143,4 +148,14 @@
 .subItem > img {
   width: 24px;
   height: 24px;
+}
+
+.resizer {
+  position: absolute;
+  top: 0;
+  right: -1px;
+  width: 4px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 20;
 }
