@@ -1,4 +1,8 @@
 .outerContainer {
+  height: 100svh;
+}
+
+.outerContainer {
   padding: 24px 20px;
   display: flex;
   flex-direction: column;
@@ -38,6 +42,11 @@
 
 .header > h1:hover {
   background-color: var(--black1);
+}
+
+.header > button {
+  margin-left: auto;
+  padding: 4px;
 }
 
 .container > nav {
@@ -97,10 +106,6 @@
   cursor: pointer;
   padding: 6px;
   border-radius: 5px;
-}
-
-.container > nav > h3:hover {
-  text-decoration: underline;
 }
 
 .options {

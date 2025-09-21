@@ -3,6 +3,8 @@ import {
   Bell,
   Calendar,
   ChevronLeft,
+  Flame,
+  Lightbulb,
   MessageCircle,
   Search,
 } from "lucide-react";
@@ -83,6 +85,10 @@ const ProjectsHeader: React.FC<Props> = ({
           />
           <Search size={16} className={classes.search} color="#a1a1a1" />
         </div>
+
+        <Button type="tertiary" onClick={handleOpenClose} title="Insights">
+          <Flame size={16} fill={"#e63e21"} color={"#e63e21"} />
+        </Button>
 
         <Button type="tertiary" onClick={handleOpenClose}>
           <MessageCircle size={16} color={sideIsOpen ? "#e63e21" : "#a1a1a1"} />

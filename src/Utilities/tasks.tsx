@@ -24,3 +24,10 @@ export type subTasksType = {
   title: string;
   isComplete: boolean;
 };
+
+export type stepProgressType = {
+  title: string;
+  percentage: number;
+  color: string;
+  isActive: boolean;
+};

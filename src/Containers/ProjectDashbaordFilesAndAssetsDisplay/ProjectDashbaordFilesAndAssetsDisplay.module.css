@@ -33,3 +33,132 @@
   background-image: url("https://res.cloudinary.com/dryjxk5jw/image/upload/v1756223749/Wallpaper_2024___Sanatsal_resimler_Arkaplan_r3efua.jpg");
   background-size: contain;
 }
+
+.tableHeader,
+.tableBody {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--black1);
+}
+
+.tableHeader {
+  background-color: var(--black);
+  border-radius: 5px 5px 0 0;
+}
+
+.tableHeader > div {
+  padding: 0.75rem;
+  background-color: var(--black1);
+}
+
+.tableBody > div {
+  padding: 0.75rem;
+  border-inline: 1px solid var(--black1);
+}
+
+.tableHeader > div:first-child {
+  border-radius: 5px 0 0 0;
+}
+
+.tableHeader > div:last-child {
+  border-radius: 0 5px 0 0;
+}
+
+.tableHeader > div,
+.tableBody > div,
+.tableBody > p {
+  flex: 1;
+}
+
+.tableBody > div:nth-child(1) {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tableBody > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tableBody > div:nth-child(1) > div,
+.tableBody > div:nth-child(2) > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.tableBody > div:nth-child(1) > div > span:nth-child(1),
+.tableBody > div:nth-child(2) > div > span:nth-child(1) {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25%;
+}
+
+.tableBody > div:nth-child(1) > div > span:nth-child(2),
+.tableBody > div:nth-child(2) > div > span:nth-child(2) {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.25%;
+  color: var(--gray);
+}
+
+.tableBody > div:nth-child(2) > img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.tableBody > div:nth-child(3) {
+  align-self: center;
+}
+
+.tableBody > div:nth-child(4) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.options {
+  position: absolute;
+  z-index: 2;
+  right: 2rem;
+  top: 70%;
+  min-width: 170px;
+  background: rgba(255, 255, 255, 0.05);
+  background-color: var(--black1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.options > div {
+  padding: 0.25rem;
+  border-radius: 5px;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.options > div:hover {
+  background-color: var(--black);
+}
+
+.headertext {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25%;
+  color: var(--white);
+  margin-top: 1rem;
+}

@@ -1,5 +1,6 @@
 .container {
   padding: 1rem;
+  position: relative;
 }
 
 .header {
@@ -24,6 +25,8 @@
   display: flex;
   height: 100%;
   min-height: 60svh;
+  position: sticky;
+  top: 20px;
 }
 
 .innerContainer > div {

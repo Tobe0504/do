@@ -7,6 +7,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import TaskContextProvider from "./Context/TaskContext";
 import AuthUserContextProvider from "./Context/AuthUserContext";
 import { ToastProvider } from "./Context/ToastContext";
+import AppContextProvider from "./Context/AppContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -14,13 +15,15 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Router>
-      <ToastProvider>
-        <AuthUserContextProvider>
-          <TaskContextProvider>
-            <App />
-          </TaskContextProvider>
-        </AuthUserContextProvider>
-      </ToastProvider>
+      <AppContextProvider>
+        <ToastProvider>
+          <AuthUserContextProvider>
+            <TaskContextProvider>
+              <App />
+            </TaskContextProvider>
+          </AuthUserContextProvider>
+        </ToastProvider>
+      </AppContextProvider>
     </Router>
   </React.StrictMode>
 );

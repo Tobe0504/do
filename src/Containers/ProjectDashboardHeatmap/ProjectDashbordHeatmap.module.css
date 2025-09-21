@@ -1,0 +1,84 @@
+.heatmap-container {
+  font-family: Inter, sans-serif;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  border: 2px solid var(--black1);
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.heatmap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.heatmap-header {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.heatmap-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.heatmap-cell {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: white;
+  font-weight: bold;
+}
+
+.heatmap-header > select {
+  background-color: var(--black);
+  outline: 1px solid var(--black1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.level-0 {
+  background-color: #e63e2133; /* Low - light transparent orange */
+}
+
+.level-1 {
+  background-color: #e63e2177; /* Medium - mid transparency */
+}
+
+.level-2 {
+  background-color: #e63e21cc; /* High - strong orange */
+}
+
+.heatmap-legend {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 2rem;
+  font-size: 12px;
+}
+
+.legend-box {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.legend-box.level-0 {
+  background-color: #e63e2133;
+}
+.legend-box.level-1 {
+  background-color: #e63e2177;
+}
+.legend-box.level-2 {
+  background-color: #e63e21cc;
+}

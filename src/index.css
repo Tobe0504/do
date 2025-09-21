@@ -15,6 +15,7 @@
   --paragraphFontSize: 14px;
   --red: #780606;
   --gray2: #a1a1a1;
+  --green: #219653;
 }
 
 body {
@@ -99,4 +100,9 @@ code {
 
 .no-scroll-bar::-webkit-scrollbar {
   display: none;
+}
+
+body.modal-open {
+  overflow: hidden;
+  padding-right: var(--scrollbar-compensation, 0px);
 }

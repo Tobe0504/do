@@ -3,6 +3,7 @@ import Activity from "../../Components/Activity/Activity";
 import File from "../../Components/File/File";
 import MembersList from "../../Components/MembersList";
 import { projects } from "../../Utilities/dummyData";
+import ProjectDashboardHeatmap from "../ProjectDashboardHeatmap/ProjectDashboardHeatmap";
 import classes from "./ProjectDashboardOverviewAssets.module.css";
 
 const ProjectDashboardOverviewAssets = () => {
@@ -16,6 +17,8 @@ const ProjectDashboardOverviewAssets = () => {
         </div>
       </div>
 
+      <ProjectDashboardHeatmap />
+
       <div className={classes.activities}>
         <h4>Activity Feed</h4>
         <Activity />
@@ -23,14 +26,14 @@ const ProjectDashboardOverviewAssets = () => {
         <Activity />
       </div>
 
-      <div className={classes.files}>
+      {/* <div className={classes.files}>
         <h4>Files</h4>
 
         <File type="file" name="User Research" />
         <File type="image" name="Design Mockup" />
         <File type="video" name="Style Guide" />
         <File type="audio" name="User Guide" />
-      </div>
+      </div> */}
     </div>
   );
 };

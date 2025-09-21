@@ -10,6 +10,7 @@ import { images } from "../../Utilities/constants";
 import classes from "./CreateProjectModalBody.module.css";
 import task from "../../Assets/editTask.jpg";
 import viewTask from "../../Assets/viewTask.jpg";
+import ProjectEditor from "../../Components/Editor/Editor";
 
 type CreateProjectModalBodyTypes = {
   isEdit?: boolean;
@@ -26,7 +27,7 @@ const CreateProjectModalBody = ({
 
   return (
     <div className={classes.outerContainer}>
-      <div className={`${classes.container} no-scroll-bar`}>
+      {/* <div className={`${classes.container} no-scroll-bar`}>
         <h2>{isEdit ? "Edit Task Name" : "Create a New Project"}</h2>
         <form className={classes.form} onSubmit={(e) => e.preventDefault()}>
           <Input placeholder="E.g. Revamp landing page" label="Project Name" />
@@ -136,7 +137,9 @@ const CreateProjectModalBody = ({
       </div>
       <div>
         <img src={isEdit ? viewTask : task} alt="View task" />
-      </div>
+      </div> */}
+
+      <ProjectEditor />
     </div>
   );
 };

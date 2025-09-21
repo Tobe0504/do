@@ -1,0 +1,190 @@
+.container {
+  min-height: 60vh;
+  font-family: Inter;
+  border-radius: 5px;
+  position: relative;
+  border: 2px solid var(--black1);
+  overflow-x: auto;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.header > h4 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 2rem;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.actions > div {
+  width: 300px;
+}
+
+.actions > button:nth-child(2) {
+  margin-left: auto;
+}
+
+.step {
+  max-width: 40%;
+}
+
+.chart {
+  display: flex;
+  height: 100%;
+  position: relative;
+}
+
+.chartLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  pointer-events: none;
+}
+
+.chartRow:nth-child(2) {
+  flex-basis: 150px;
+  position: sticky;
+  left: 0;
+  background-color: var(--black);
+  z-index: 1;
+}
+
+.chartRow > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  font-weight: 600;
+  padding-inline: 1rem;
+}
+
+.chartRow > div:first-child > button:nth-child(2) {
+  margin-left: auto;
+}
+
+.chartRow > div:first-child > button {
+  padding: 4px;
+}
+
+.chartRow > div:first-child {
+  border-bottom: 1px dashed transparent;
+  flex: 1;
+}
+
+.chartRow:nth-child(2) > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.chartRow {
+  max-width: 20%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 20%;
+  border-right: 1px solid var(--black1);
+}
+
+.chartRow > div {
+  flex: 2;
+  border-bottom: 1px dashed var(--black1);
+}
+
+.chartRow > div {
+  padding: 0.5rem;
+  text-transform: capitalize;
+}
+
+.chartRow > div:not(.chartRow > div:nth-child(5)) {
+  flex: 2;
+}
+
+.chartRow > div:nth-child(2) {
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chartRow > div:nth-child(2),
+.chartRow > div:nth-child(3),
+.chartRow > div:nth-child(4),
+.chartRow:nth-child(2) > div:nth-child(5) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chartRow > div:nth-child(5) {
+  flex: 6;
+  overflow-y: auto;
+}
+
+.chartRow:first-child > div {
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  font-size: 12px;
+  margin-bottom: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  background: var(--black1);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.task:hover {
+  border: 1px solid var(--black1);
+  background: var(--black);
+}
+
+.task > div {
+  padding: 0;
+}
+
+.task > div > div {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.task > div > div > span {
+  font-weight: 500;
+  font-size: 10px;
+  color: var(--gray);
+}
+
+.chartTitles > div {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.chartTitles > div > span:nth-child(1) {
+  display: block;
+  height: 1.7rem;
+  border-radius: 2rem;
+  width: 6px;
+}

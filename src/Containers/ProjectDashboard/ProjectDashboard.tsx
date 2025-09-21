@@ -1,7 +1,8 @@
 import { ChevronLeft } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import DashboardLayout from "../../Components/DashboardLayout/DashboardLayout";
 import SectionsNav from "../../Components/SectionsNav/SectionsNav";
+import { AppContext } from "../../Context/AppContext";
 import useUpdateSearchParams from "../../Hooks/useUpdateSearchParams";
 import { searchParamKeys } from "../../Utilities/constants";
 import { navItemTypes } from "../../Utilities/types";
@@ -12,6 +13,7 @@ import ProjectDashboardFilters from "../ProjectDashboardFilters/ProjectDashboard
 import ProjectDashboardOverview from "../ProjectDashboardOverview/ProjectDashboardOverview";
 import ProjectDashboardSecrets from "../ProjectDashboardSecrets/ProjectDashboardSecrets";
 import ProjectDashboardTitle from "../ProjectDashboardTitle/ProjectDashboardTitle";
+import ProjectDashboardWorkflows from "../ProjectDashboardWorkflows/ProjectDashboardWorkflows";
 import ProjectsDashboardRisksAndIssues from "../ProjectsDashboardRisksAndIssues/ProjectsDashboardRisksAndIssues";
 import ProjectsHeader from "../ProjectsHeader/ProjectsHeader";
 import classes from "./ProjectDashboard.module.css";
@@ -25,6 +27,12 @@ const ProjectDashboard = () => {
       route: "overview",
       isActive: true,
       id: "overview",
+    },
+    {
+      title: "Workflows",
+      route: "workflows",
+      isActive: false,
+      id: "workflows",
     },
     {
       title: "Do's",
@@ -50,12 +58,6 @@ const ProjectDashboard = () => {
       isActive: false,
       id: "secrets",
     },
-    {
-      title: "Settings",
-      route: "settings",
-      isActive: false,
-      id: "settings",
-    },
   ]);
 
   // Hooks
@@ -66,9 +68,21 @@ const ProjectDashboard = () => {
     "get"
   );
 
+  // refs
+  const navRef = useRef<HTMLDivElement | null>(null);
+
   // handlers
   const handleToggleSide = () => {
     setOpenSide((prevState) => !prevState);
+  };
+
+  const scrollToTop = () => {
+    if (navRef?.current) {
+      navRef.current.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
   };
 
   // Effects
@@ -77,6 +91,19 @@ const ProjectDashboard = () => {
       updateSearchParams("section", navItems?.[0]?.id, "set");
     }
   }, []);
+
+  useEffect(() => {
+    if (section && section !== navItems[0].id) {
+      const timeout = setTimeout(() => {
+        scrollToTop();
+        console.log("Hmm");
+      }, 1000);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [section]);
 
   return (
     <DashboardLayout
@@ -92,14 +119,16 @@ const ProjectDashboard = () => {
     >
       <ProjectDashboardTitle />
       <ProjectDashboardFilters />
-      <div>
+
+      <div ref={navRef}>
         <SectionsNav navItems={navItems} setNavItems={setNavItems} isRoute />
       </div>
       {section === navItems[0].id && <ProjectDashboardOverview />}
-      {section === navItems[1].id && <KanbanBoard />}
-      {section === navItems[2].id && <ProjectDashbaordFilesAndAssets />}
-      {section === navItems[3].id && <ProjectsDashboardRisksAndIssues />}
-      {section === navItems[4].id && <ProjectDashboardSecrets />}
+      {section === navItems[1].id && <ProjectDashboardWorkflows />}
+      {section === navItems[2].id && <KanbanBoard />}
+      {section === navItems[3].id && <ProjectDashbaordFilesAndAssets />}
+      {section === navItems[4].id && <ProjectsDashboardRisksAndIssues />}
+      {section === navItems[5].id && <ProjectDashboardSecrets />}
     </DashboardLayout>
   );
 };

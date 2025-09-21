@@ -59,7 +59,8 @@
   transition: all 0.3s ease-in-out;
   border: 1px solid var(--gray);
   color: var(--white);
-  background: var(--ds-background-100, #0a0a0a);
+  /* background: var(--ds-background-100, #0a0a0a); */
+  background: transparent;
   position: relative;
 }
 
