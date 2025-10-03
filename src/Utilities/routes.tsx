@@ -1,12 +1,13 @@
 import {
+  Archive,
   Bell,
   Info,
   LayoutDashboard,
-  Search,
+  MessagesSquare,
   Settings,
-  Trash2,
+  Sun,
+  Search as SearchIcon,
 } from "lucide-react";
-import DashboardLayout from "../Components/DashboardLayout/DashboardLayout";
 import Dashboard from "../Containers/Dashboard/Dashboard";
 import ForgotPassword from "../Containers/ForgotPassword/ForgotPassword";
 import Home from "../Containers/Home/Home";
@@ -14,6 +15,7 @@ import Onboarding from "../Containers/Onboarding/Onboarding";
 import Organizations from "../Containers/Organizations/Organizations";
 import ProjectDashboard from "../Containers/ProjectDashboard/ProjectDashboard";
 import ResetPassword from "../Containers/ResetPassword/ResetPassword";
+import Search from "../Containers/Search/Search";
 import SignIn from "../Containers/SignIn/SignIn";
 import SignUp from "../Containers/SignUp/SignUp";
 
@@ -40,6 +42,10 @@ export const routes = Object.freeze({
   ORGANIZATION_SECRETS: "/hives/:organizationId/secrets",
   ONBOARDING: "/onboarding",
   PROJECT_OVERVIEW: "/hives/:organizationId/project/:projectId",
+  CONVERSATIONS: "/conversations",
+  SEARCH: "/search",
+  NOTIFICATIONS: "/notifications",
+  TEAMS: "/squads",
 });
 
 export const routeComponents = [
@@ -89,18 +95,33 @@ export const routeComponents = [
   },
   {
     title: "Search",
+    component: <Search />,
+    properties: ["isProtected", "isSideNavRoute"],
+    route: routes.SEARCH,
+    icon: <SearchIcon size={20} />,
+  },
+  {
+    title: "Do's",
     component: <Dashboard />,
     properties: ["isProtected", "isSideNavRoute"],
-    route: routes.DASHBOARD,
-    icon: <Search size={20} />,
+    route: routes.DOs,
+    icon: <Sun size={20} />,
+  },
+  {
+    title: "Conversations",
+    component: <Dashboard />,
+    properties: ["isProtected", "isSideNavRoute"],
+    route: routes.CONVERSATIONS,
+    icon: <MessagesSquare size={20} />,
   },
   {
     title: "Notifications",
     component: <Dashboard />,
     properties: ["isProtected", "isSideNavRoute"],
-    route: routes.DASHBOARD,
+    route: routes.NOTIFICATIONS,
     icon: <Bell size={20} />,
   },
+
   {
     title: "Organizations",
     component: <Organizations />,
@@ -136,6 +157,7 @@ export const routeComponents = [
     route: routes.ORGANIZATION_TEAMS,
     icon: "👥",
   },
+
   {
     title: "Project Overview",
     component: <ProjectDashboard />,
@@ -161,10 +183,10 @@ export const sideNavFooterRoutes = [
     icon: <Info size={20} />,
   },
   {
-    title: "Trash",
+    title: "Archive",
     component: <Dashboard />,
     properties: ["isProtected", "isSideNavRoute"],
     route: routes.DASHBOARD,
-    icon: <Trash2 size={20} />,
+    icon: <Archive size={20} />,
   },
 ];

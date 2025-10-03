@@ -4,6 +4,7 @@ import {
   StarOutlined,
   StarOutlineOutlined,
 } from "@mui/icons-material";
+import { ArchiveIcon } from "@phosphor-icons/react";
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "../../Context/ToastContext";
@@ -14,6 +15,7 @@ import {
 import { routes } from "../../Utilities/routes";
 import { genericModalsTypes, optionsType } from "../../Utilities/types";
 import MembersList from "../MembersList";
+import Options from "../Options/Options";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import styles from "./ProjectCard.module.css";
 
@@ -85,20 +87,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 setModalTrue(setOptions, "options");
               }}
             />
+
             {options?.options && (
-              <div className={styles.options} ref={optionsRef}>
-                {optionsArr?.map((data) => {
-                  return (
-                    <div
-                      onClick={() => {
-                        data?.action && data?.action();
-                      }}
-                    >
-                      {data?.title}
-                    </div>
-                  );
-                })}
-              </div>
+              <Options
+                options={optionsArr}
+                main={{
+                  title: "Archive project",
+                  action: () => {},
+                  icon: <ArchiveIcon size={18} />,
+                }}
+                ref={optionsRef}
+              />
             )}
           </div>
         </div>

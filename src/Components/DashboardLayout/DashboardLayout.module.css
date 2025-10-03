@@ -9,6 +9,7 @@
   border-right: 1px solid var(--black1);
   width: 250px;
   transition: all 0.1s ease-in-out;
+  overflow: hidden;
 }
 
 .container > section:nth-child(2) {

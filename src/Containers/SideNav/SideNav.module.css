@@ -58,6 +58,17 @@
   margin-top: 1.5rem;
 }
 
+.container > nav:nth-child(3) {
+  margin-top: 4rem;
+  border-bottom: 1px solid var(--black1);
+}
+
+.container
+  > nav:not(.container > nav:first-of-type, .container > nav:nth-child(3)) {
+  border-bottom: 1px solid var(--black1);
+  margin-top: 2rem;
+}
+
 .container > nav > a,
 .altContainer > a {
   display: flex;
@@ -73,13 +84,15 @@
 .container > nav > a:hover,
 .altContainer > a:hover,
 .container > nav > h3:hover,
-.subItem:hover {
+.subItem:hover,
+.active {
   background-color: var(--black1);
   color: var(--orange);
 }
 
 .container > nav > a:hover > span,
-.altContainer > a:hover > span {
+.altContainer > a:hover > span,
+.active > span {
   color: var(--orange);
 }
 
@@ -106,6 +119,7 @@
   letter-spacing: -0.34%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.3rem;
   margin-bottom: 0.5rem;
   cursor: pointer;

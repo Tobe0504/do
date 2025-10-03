@@ -88,7 +88,7 @@
 }
 
 .chartRow {
-  max-width: 20%;
+  max-width: 250px;
   display: flex;
   flex-direction: column;
   flex-grow: 0;

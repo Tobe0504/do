@@ -3,11 +3,11 @@ import {
   FolderKanban,
   Heart,
   PanelRightClose,
+  SquaresUnite,
 } from "lucide-react";
 import { HTMLAttributes, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Button from "../../Components/Button/Button";
-import { activeToggler } from "../../HelperFunctions/activeTogglerr";
 import { images } from "../../Utilities/constants";
 import {
   routeComponents,
@@ -31,11 +31,12 @@ const SideNav: React.FC<Props> = ({
 }) => {
   // Router
   const navigate = useNavigate();
+  const location = useLocation();
 
   const sideNavHives = {
     title: "Hives",
     route: routes.ORGANIZATIONS,
-    isActive: false,
+    isActive: true,
     children: [
       {
         name: "Meta AI",
@@ -73,6 +74,22 @@ const SideNav: React.FC<Props> = ({
       },
       {
         name: "Internal Wiki Setup",
+        route: routes.PROJECT_OVERVIEW,
+      },
+    ],
+  };
+
+  const sideSquads = {
+    title: "Squads",
+    route: routes.TEAMS,
+    isActive: true,
+    children: [
+      {
+        name: "Frontend Sharks",
+        route: routes.PROJECT_OVERVIEW,
+      },
+      {
+        name: "QA Quakers",
         route: routes.PROJECT_OVERVIEW,
       },
     ],
@@ -130,6 +147,7 @@ const SideNav: React.FC<Props> = ({
   const [hives, setHives] = useState(sideNavHives);
   const [projects, setProject] = useState(sideProjects);
   const [favorites, setFavorites] = useState(sideFavourites);
+  const [squads, setSquads] = useState(sideSquads);
 
   return (
     <section className={classes.outerOuterContainer} {...props}>
@@ -152,7 +170,14 @@ const SideNav: React.FC<Props> = ({
               ?.filter((data) => data?.properties?.includes("isSideNavRoute"))
               ?.map((data) => {
                 return (
-                  <Link to={data?.route}>
+                  <Link
+                    to={data?.route}
+                    className={
+                      location.pathname.includes(data?.route)
+                        ? classes.active
+                        : classes.inActive
+                    }
+                  >
                     {data?.icon}
                     <span>{data?.title}</span>
                   </Link>
@@ -202,6 +227,57 @@ const SideNav: React.FC<Props> = ({
                     title={data?.name}
                   >
                     <img src={data?.logo} alt={data?.name} />
+                    <span className="truncate">{data?.name}</span>
+                  </Link>
+                );
+              })}
+            </div>
+          </nav>
+
+          <nav>
+            <h3
+              onClick={() => {
+                setSquads((prevState) => ({
+                  ...prevState,
+                  isActive: !prevState?.isActive,
+                }));
+              }}
+            >
+              <span>{squads.title}</span>
+              <ChevronDown
+                color="#a1a1a1"
+                size={16}
+                style={
+                  squads?.isActive
+                    ? {
+                        transform: "rotate(-90deg)",
+                        transition: "all .2s ease-in-out",
+                      }
+                    : {
+                        transform: "rotate(0deg)",
+                        transition: "all .2s ease-in-out",
+                      }
+                }
+              />
+            </h3>
+
+            <div
+              className={classes.options}
+              style={
+                squads?.isActive
+                  ? { maxHeight: "1000px" }
+                  : { maxHeight: "0px" }
+              }
+            >
+              {sideSquads?.children?.map((data) => {
+                return (
+                  <Link
+                    to={data?.route}
+                    key={data?.name}
+                    className={`${classes.subItem} `}
+                    title={data?.name}
+                  >
+                    <SquaresUnite color="#e63e21" size={16} />
                     <span className="truncate">{data?.name}</span>
                   </Link>
                 );

@@ -16,6 +16,14 @@ import { genericModalsTypes, optionsType } from "../../Utilities/types";
 import CreateProjectModalBody from "../CreateProjectMldaBody/CreateProjectModalBody";
 import ProjectFilterModalBody from "../ProjectFilterModalBody/ProjectFilterModalBody";
 import classes from "./OrganizationListsProjects.module.css";
+import {
+  Archive,
+  ArchiveIcon,
+  FoldersIcon,
+  PencilSimpleLine,
+  PencilSimpleLineIcon,
+  TrashIcon,
+} from "@phosphor-icons/react";
 
 const OrganizationListsProjects = () => {
   // States
@@ -81,22 +89,9 @@ const OrganizationListsProjects = () => {
           },
         });
       },
+      icon: <PencilSimpleLineIcon size={18} />,
     },
-    {
-      title: "Archive project",
-      action: () => {
-        updateConcurrentSearchParams({
-          feature: {
-            method: "set",
-            value: searchParamValues.ORGANIZATIONS.KEY,
-          },
-          modal: {
-            method: "set",
-            value: searchParamValues.ORGANIZATIONS.EDIT,
-          },
-        });
-      },
-    },
+
     {
       title: "Duplicate project",
       action: () => {
@@ -111,12 +106,14 @@ const OrganizationListsProjects = () => {
           },
         });
       },
+      icon: <FoldersIcon size={18} />,
     },
     {
       title: "Delete this project",
       action() {
         setModalTrue(setShowOptions, "delete");
       },
+      icon: <TrashIcon size={18} />,
     },
   ];
 

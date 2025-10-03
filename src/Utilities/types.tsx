@@ -28,6 +28,7 @@ export type optionsType = {
   title: string;
   action?: (data?: any) => void;
   condition?: boolean;
+  icon?: React.ReactNode;
 };
 
 export type breadCrumbNavItemTypes = {

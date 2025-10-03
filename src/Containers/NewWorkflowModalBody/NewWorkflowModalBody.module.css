@@ -1,0 +1,22 @@
+.container {
+  width: 380px;
+  padding: 1.5rem;
+}
+
+.container > h4 {
+  font-family: Inter;
+  font-size: var(--headerFontSize);
+  font-weight: 600;
+  line-height: 150%;
+  margin-bottom: 1.5rem;
+}
+
+.container > form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.container > form > button {
+  margin-top: 1rem;
+}

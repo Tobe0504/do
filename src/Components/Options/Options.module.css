@@ -1,0 +1,58 @@
+.options {
+  position: absolute;
+  padding: 0.5rem;
+  top: 120%;
+  right: 0;
+  min-width: 180px;
+  max-width: 250px;
+  background: rgba(255, 255, 255, 0.05);
+  background-color: var(--black1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  z-index: 6;
+}
+
+.options > div:not(.buttonSection) {
+  padding: 0.5rem 0.25rem;
+  border-radius: 5px;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.options > div > svg {
+  width: 16px;
+  height: 16px;
+  color: green;
+}
+
+.options > div:not(.buttonSection):hover {
+  background-color: var(--black);
+}
+
+.options > div {
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.buttonSection {
+  margin-top: 1rem;
+  padding-block: 1rem;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.buttonSection > button {
+  padding: 0.5rem 1rem;
+  font-size: 13px;
+  font-weight: 500;
+  width: 100%;
+}
+
+.delete {
+  color: red;
+}

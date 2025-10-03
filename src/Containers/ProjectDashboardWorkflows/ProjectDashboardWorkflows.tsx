@@ -4,14 +4,14 @@ import {
   FileChartLine,
   Plus,
   Trash2,
+  Workflow,
 } from "lucide-react";
-import React, { useRef, useState, useEffect, useMemo, useContext } from "react";
+import React, { useRef, useState, useEffect, useMemo } from "react";
 import Button from "../../Components/Button/Button";
 import DeleteModalBody from "../../Components/DeleteModalBody/DeleteModalBody";
 import Dropdown from "../../Components/Dropdown/Dropdown";
 import Modal from "../../Components/Modal/Modal";
 import StepProgress from "../../Components/StepProgress/StepProgress";
-import { AppContext } from "../../Context/AppContext";
 import { capitalize } from "../../HelperFunctions/capitalize";
 import {
   setAllModalsFalse,
@@ -20,6 +20,7 @@ import {
 import { tasks } from "../../Utilities/dummyData";
 import { stepProgressType } from "../../Utilities/tasks";
 import { genericModalsTypes } from "../../Utilities/types";
+import NewWorkflowModalBody from "../NewWorkflowModalBody/NewWorkflowModalBody";
 import classes from "./ProjectDashboardWorkflows.module.css";
 
 const pipelineData = [
@@ -112,7 +113,10 @@ const ProjectDashboardWorkflows = () => {
   //   States
   const [lines, setLines] = useState([]);
   const [lineWidth, setLineWidth] = useState(0);
-  const [modals, setModals] = useState<genericModalsTypes>({ delete: false });
+  const [modals, setModals] = useState<genericModalsTypes>({
+    delete: false,
+    newWorkflow: false,
+  });
 
   useEffect(() => {
     const updateLines = () => {
@@ -213,6 +217,13 @@ const ProjectDashboardWorkflows = () => {
           }
         />
       )}
+
+      {modals.newWorkflow && (
+        <Modal
+          onClose={() => setAllModalsFalse(setModals)}
+          body={<NewWorkflowModalBody />}
+        />
+      )}
       <section className={classes.outerContainer}>
         <div className={classes.header}>
           <h4>Project Pipelines</h4>
@@ -226,9 +237,13 @@ const ProjectDashboardWorkflows = () => {
               options={speedTypes.map((data) => capitalize(data) as string)}
               label="Filter by Workflow Status"
             />
-            <Button>
-              <FileChartLine size={16} />
-              <span>Generate Pipeline Report</span>
+            <Button
+              onClick={() => {
+                setModalTrue(setModals, "newWorkflow");
+              }}
+            >
+              <Workflow size={16} />
+              <span>Create New Workflow</span>
             </Button>
           </div>
         </div>

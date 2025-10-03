@@ -2,25 +2,29 @@
   display: flex;
   height: 90vh;
   overflow: hidden;
-  width: 1200px;
-  gap: 1em;
+  width: 500px;
+  gap: 1rem;
+  padding: 1rem 0.5rem;
+  font-family: Inter;
 }
 
 .outerContainer > div {
-  flex: 1;
+  width: 100%;
+  font-size: 2px;
 }
 
-.container {
-  border-radius: 16px;
-  padding: 2rem 1rem;
-  margin: auto;
-  color: var(--textPrimary, #ffffff);
-  overflow-y: auto;
+.outerContainer > div > div {
   height: 100%;
 }
 
+.outerContainer > div > div > div:nth-child(1) {
+  height: 100%;
+  background: none;
+  padding: 1rem;
+}
+
 h2 {
-  font-size: 18px;
+  font-size: 14px;
   margin-bottom: 1rem;
 }
 
@@ -38,18 +42,4 @@ h2 {
 
 .actions > button:nth-child(1) {
   margin-left: auto;
-}
-
-.outerContainer > div:nth-child(2) {
-  border-radius: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.outerContainer > div > img {
-  height: 90%;
-  width: 90%;
-  object-fit: cover;
-  border-radius: 1rem;
 }

@@ -30,7 +30,7 @@ const DashboardLayout = ({
   const [showTrigger, setShowTrigger] = useState(false);
   const [triggerY, setTriggerY] = useState(100);
   const [sideNavWidth, setSideNavWidth] = useState(250);
-  const [isResizing, setIsResizing] = useState(true);
+  const [isResizing, setIsResizing] = useState(false);
 
   // Context
   const { sideNavIsOpened, setSideNavisOpened } = useContext(AppContext);

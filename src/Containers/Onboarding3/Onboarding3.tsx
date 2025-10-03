@@ -98,7 +98,7 @@ const Onboarding3 = () => {
               navigate(routes.DASHBOARD);
             }}
           >
-            <span>Start DOing</span>
+            <span>Start Doing</span>
             <ArrowRight />
           </Button>
         </div>
