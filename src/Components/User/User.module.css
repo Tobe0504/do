@@ -1,0 +1,16 @@
+.user > img {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.user {
+  position: relative;
+}
+
+.user > div {
+  position: absolute;
+  top: 120%;
+  right: 0;
+}

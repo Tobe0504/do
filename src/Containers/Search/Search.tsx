@@ -1,3 +1,4 @@
+import { Command, Option } from "lucide-react";
 import React, { act, useState } from "react";
 import DashboardLayout from "../../Components/DashboardLayout/DashboardLayout";
 import Input from "../../Components/Input/Input";
@@ -86,7 +87,9 @@ const Search = () => {
               >
                 <span>{item.label}</span>
                 <span className={classes.shortcut}>
-                  <code>⌥{i + 1}</code>
+                  <code>
+                    <Command size={12} /> {i + 1}
+                  </code>
                 </span>
               </li>
             ))}
@@ -104,7 +107,9 @@ const Search = () => {
               >
                 <span>{action.label}</span>
                 <span className={classes.shortcut}>
-                  <code>⌥{i + 1}</code>
+                  <code>
+                    <Option size={12} /> {i + 1}
+                  </code>
                 </span>
               </li>
             ))}

@@ -29,6 +29,7 @@ export type optionsType = {
   action?: (data?: any) => void;
   condition?: boolean;
   icon?: React.ReactNode;
+  group?: string;
 };
 
 export type breadCrumbNavItemTypes = {

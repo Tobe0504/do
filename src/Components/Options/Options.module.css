@@ -11,9 +11,11 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 5px;
   z-index: 6;
+  max-height: 400px;
+  overflow: auto;
 }
 
-.options > div:not(.buttonSection) {
+.option {
   padding: 0.5rem 0.25rem;
   border-radius: 5px;
   margin-bottom: 0.25rem;
@@ -24,26 +26,25 @@
   font-weight: 500;
 }
 
-.options > div > svg {
+.option > svg {
   width: 16px;
   height: 16px;
   color: green;
 }
 
-.options > div:not(.buttonSection):hover {
+.option:not(.buttonSection):hover {
   background-color: var(--black);
 }
 
-.options > div {
+.option {
   font-size: 13px;
   cursor: pointer;
 }
 
 .buttonSection {
   margin-top: 1rem;
-  padding-block: 1rem;
+  padding-block: 0.5rem;
   width: 100%;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .buttonSection > button {
@@ -55,4 +56,25 @@
 
 .delete {
   color: red;
+}
+
+.group {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--gray-8);
+  padding-bottom: 0.5rem;
+}
+
+.group:only-child {
+  margin-bottom: 0rem;
+  border-bottom: none;
+}
+
+.groupHeader {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.6;
+  margin: 0.25rem 0 0.5rem;
+  padding-left: 0.25rem;
 }

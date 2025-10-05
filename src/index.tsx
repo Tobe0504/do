@@ -8,6 +8,7 @@ import TaskContextProvider from "./Context/TaskContext";
 import AuthUserContextProvider from "./Context/AuthUserContext";
 import { ToastProvider } from "./Context/ToastContext";
 import AppContextProvider from "./Context/AppContext";
+import { PrimeReactProvider } from "primereact/api";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -19,7 +20,9 @@ root.render(
         <ToastProvider>
           <AuthUserContextProvider>
             <TaskContextProvider>
-              <App />
+              <PrimeReactProvider>
+                <App />
+              </PrimeReactProvider>
             </TaskContextProvider>
           </AuthUserContextProvider>
         </ToastProvider>

@@ -8,9 +8,11 @@ import {
   Sun,
   Search as SearchIcon,
 } from "lucide-react";
+import Conversations from "../Containers/Conversations/Conversations";
 import Dashboard from "../Containers/Dashboard/Dashboard";
 import ForgotPassword from "../Containers/ForgotPassword/ForgotPassword";
 import Home from "../Containers/Home/Home";
+import MentionsPage from "../Containers/Mentions/Mentions";
 import Onboarding from "../Containers/Onboarding/Onboarding";
 import Organizations from "../Containers/Organizations/Organizations";
 import ProjectDashboard from "../Containers/ProjectDashboard/ProjectDashboard";
@@ -43,6 +45,9 @@ export const routes = Object.freeze({
   ONBOARDING: "/onboarding",
   PROJECT_OVERVIEW: "/hives/:organizationId/project/:projectId",
   CONVERSATIONS: "/conversations",
+  MENTIONS: "/conversations/mentions",
+  GENERAL_CONVERSATIONS: "/conversations/general",
+  CHAT_CONVERSATION: "/conversations/1",
   SEARCH: "/search",
   NOTIFICATIONS: "/notifications",
   TEAMS: "/squads",
@@ -109,9 +114,9 @@ export const routeComponents = [
   },
   {
     title: "Conversations",
-    component: <Dashboard />,
+    component: <Conversations />,
     properties: ["isProtected", "isSideNavRoute"],
-    route: routes.CONVERSATIONS,
+    route: routes.GENERAL_CONVERSATIONS,
     icon: <MessagesSquare size={20} />,
   },
   {
@@ -164,6 +169,13 @@ export const routeComponents = [
     properties: [, "isProtected"],
     route: routes.PROJECT_OVERVIEW,
     icon: "👥",
+  },
+
+  {
+    title: "Mentions",
+    component: <MentionsPage />,
+    properties: [, "isProtected"],
+    route: routes.MENTIONS,
   },
 ];
 

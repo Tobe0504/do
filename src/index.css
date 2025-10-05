@@ -10,7 +10,19 @@
   --black1: #1b1b1b;
   --orange: #e63e21;
   --orangeWithTransparency: #e63e2158;
+
   --gray: #a1a1a1;
+  --gray-10: #fafafa;
+  --gray-1: #f5f5f5;
+  --gray-2: #e5e5e5;
+  --gray-3: #d4d4d4;
+  --gray-4: #a3a3a3;
+  --gray-5: #737373;
+  --gray-6: #525252;
+  --gray-7: #404040;
+  --gray-8: #262626;
+  --gray-9: #171717;
+
   --headerFontSize: 16px;
   --paragraphFontSize: 14px;
   --red: #780606;
@@ -227,4 +239,30 @@ body.modal-open {
   display: block;
   height: 1rem;
   color: transparent;
+}
+
+.p-mention {
+  background: var(--black);
+}
+
+.p-mention-panel {
+  max-height: 200px;
+  width: 200px;
+  background: var(--black);
+  top: auto !important;
+  bottom: 100% !important;
+  margin-bottom: 4px;
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.p-mention-items {
+  width: 200px;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid var(--black1);
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }

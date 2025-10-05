@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  overflow: hidden;
+}
+
+.container > section:first-child {
+  flex-basis: 300px;
+  border-right: 1px solid var(--black1);
+  flex-shrink: 0;
+  overflow: auto;
+}
+
+.container > section:nth-child(2) {
+  flex: 1;
+  overflow: hidden;
+}

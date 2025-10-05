@@ -6,7 +6,7 @@
 .message {
   display: flex;
   flex-direction: column;
-  margin-bottom: 0.75rem;
+  margin-bottom: 2rem;
 }
 
 .sent {
@@ -22,18 +22,28 @@
   border: 1px solid var(--orange);
 }
 
-.sent > .chatBubble {
+.sent > div > .chatBubble {
   background-color: var(--black1);
 }
 
+.messagesInner {
+  min-width: 45%;
+  max-width: 60%;
+}
+
 .chatBubble {
-  padding: 0.5rem;
-  border-radius: 8px;
-  font-size: 12px;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--white);
   background-color: var(--orange);
-  min-width: 50%;
-  max-width: 80%;
+  max-width: calc(100%);
+  white-space: pre-wrap;
+}
+
+.received > div > .chatBubble {
+  max-width: calc(100% - 36px);
 }
 
 .details {
@@ -44,4 +54,70 @@
   font-size: 12px;
   color: var(--gray);
   margin-top: 0.25rem;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  columns: var(--gray);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.received > div > .user {
+  width: calc(100%);
+}
+
+.sent > div > .user {
+  width: 100%;
+}
+
+.user > img {
+  width: 28px;
+  height: 28px;
+  border-radius: 45%;
+}
+
+.received > div > .user > button {
+  margin-left: auto;
+}
+
+.sent > div > .user > img {
+  order: 1;
+}
+
+.sent > div > .user > button {
+  order: 2;
+}
+
+.sent > div > .user > p {
+  margin-left: auto;
+}
+
+.received > div > .chatBubble,
+.received > div > .details,
+.quote {
+  margin-left: 36px;
+}
+
+.user > div:last-child {
+  position: absolute;
+  right: 0;
+  top: 110%;
+}
+
+.quote {
+  border: 2px solid var(--black1);
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: calc(100% - 36px);
+  margin-bottom: 0.5rem;
 }

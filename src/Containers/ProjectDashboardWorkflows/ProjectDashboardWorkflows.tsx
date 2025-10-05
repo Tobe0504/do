@@ -128,7 +128,7 @@ const ProjectDashboardWorkflows = () => {
       const positions = stageRefs.current
         .map((ref: any) => {
           if (ref.current) {
-            const rect = ref.current.getBoundingClientRect();
+            const rect = ref?.current.getBoundingClientRect();
             return {
               x: rect.left - parentRect.left + rect.width / 2 + scrollLeft,
               y: rect.top - parentRect.top + rect.height / 2,

@@ -1,0 +1,110 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.container > div:nth-child(1) {
+  flex: 1;
+  overflow-y: auto;
+  width: 700px;
+  margin-inline: auto;
+}
+
+.container > div:nth-child(2) {
+  flex-basis: 150px;
+  flex-shrink: 0;
+  padding-block: 0.5rem;
+}
+
+.message,
+.message > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.message > div {
+  width: 480px;
+}
+
+.quote {
+  border: 2px solid var(--black1);
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.mention {
+  background-color: var(--black);
+  border-radius: 5px;
+}
+
+.mention > textarea {
+  width: 100%;
+  padding: 12px;
+  font-family: Inter;
+  font-size: var(--paragraphFontSize);
+  font-weight: 400;
+  line-height: 150%;
+  animation: appear 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid var(--black1);
+  color: var(--white);
+  background: transparent;
+  position: relative;
+  resize: none;
+  border-radius: 5px;
+  outline: none;
+  max-height: 150px;
+}
+
+.suggestionsContainer {
+  display: flex;
+  align-items: center;
+  background-color: var(--black);
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem;
+  max-width: 200px;
+  border-radius: 5px;
+}
+
+.suggestionsContainer > img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.suggestionName {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.suggestionsContainer:hover {
+  background-color: var(--black1);
+}
+
+.actions {
+  padding: 6px 12px;
+  border-radius: 5px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actions > button:last-child {
+  margin-left: auto;
+}

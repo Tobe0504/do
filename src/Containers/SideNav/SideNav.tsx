@@ -3,7 +3,7 @@ import {
   FolderKanban,
   Heart,
   PanelRightClose,
-  SquaresUnite,
+  Puzzle,
 } from "lucide-react";
 import { HTMLAttributes, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -169,14 +169,15 @@ const SideNav: React.FC<Props> = ({
             {routeComponents
               ?.filter((data) => data?.properties?.includes("isSideNavRoute"))
               ?.map((data) => {
+                const baseA = location.pathname.split("/")[1];
+                const baseB = data.route.split("/")[1];
+
+                const sameBase = baseA === baseB;
+
                 return (
                   <Link
                     to={data?.route}
-                    className={
-                      location.pathname.includes(data?.route)
-                        ? classes.active
-                        : classes.inActive
-                    }
+                    className={sameBase ? classes.active : classes.inActive}
                   >
                     {data?.icon}
                     <span>{data?.title}</span>
@@ -277,7 +278,7 @@ const SideNav: React.FC<Props> = ({
                     className={`${classes.subItem} `}
                     title={data?.name}
                   >
-                    <SquaresUnite color="#e63e21" size={16} />
+                    <Puzzle color="#e63e21" size={16} />
                     <span className="truncate">{data?.name}</span>
                   </Link>
                 );

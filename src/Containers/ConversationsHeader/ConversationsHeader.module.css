@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.container > h1 {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 140%;
+  text-align: left;
+}
+
+.container > button:nth-child(2) {
+  margin-left: auto;
+}
+
+.container > div > img {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.user {
+  position: relative;
+}
+
+.user > div {
+  position: absolute;
+  top: 120%;
+  right: 0;
+}

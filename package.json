@@ -35,6 +35,7 @@
     "lucide": "^0.536.0",
     "lucide-react": "^0.536.0",
     "moment": "^2.30.1",
+    "primereact": "^10.9.7",
     "qrcode": "^1.5.4",
     "react": "^18.3.1",
     "react-circular-progressbar": "^2.2.0",

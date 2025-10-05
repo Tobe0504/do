@@ -9,24 +9,37 @@ interface Props {
 }
 
 const Options = forwardRef<HTMLDivElement, Props>(({ options, main }, ref) => {
+  const grouped = options.reduce<Record<string, optionsType[]>>(
+    (acc, option) => {
+      const group = option.group ?? "";
+      if (!acc[group]) acc[group] = [];
+      acc[group].push(option);
+      return acc;
+    },
+    {}
+  );
+
   return (
     <div className={classes.options} ref={ref}>
-      {options.map((option) => {
-        return (
-          <div
-            key={`${option.title}`}
-            className={
-              option.title.toLowerCase().includes("delete")
-                ? classes.delete
-                : undefined
-            }
-            onClick={option.action}
-          >
-            {option?.icon && <span>{option?.icon}</span>}
-            <span>{option.title}</span>
-          </div>
-        );
-      })}
+      {Object.entries(grouped).map(([groupName, groupOptions]) => (
+        <div key={groupName} className={classes.group}>
+          <div className={classes.groupHeader}>{groupName}</div>
+          {groupOptions.map((option) => (
+            <div
+              key={option.title}
+              className={`${classes.option} ${
+                option.title.toLowerCase().includes("delete")
+                  ? classes.delete
+                  : undefined
+              }`}
+              onClick={option.action}
+            >
+              {option?.icon && <span>{option.icon}</span>}
+              <span>{option.title}</span>
+            </div>
+          ))}
+        </div>
+      ))}
 
       {main && (
         <div className={classes.buttonSection}>
