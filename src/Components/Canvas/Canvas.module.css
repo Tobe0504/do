@@ -1,0 +1,103 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.toolBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 1rem;
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 10;
+  background-color: var(--black1);
+  border-radius: 5px;
+  width: calc(100% - 32px);
+}
+
+.toobarButton {
+  width: 16px;
+  height: 16px;
+}
+
+.canvasContainer {
+  flex: 1;
+  position: relative;
+  border-radius: 5px;
+}
+
+.canvasContainer > canvas {
+  border: 2px solid red;
+}
+
+.color {
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 5px;
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+}
+
+.toolBar > button {
+  font-size: 12px;
+}
+
+/* --- Slider Styling for Brush Size --- */
+
+.sliderContainer input[type="range"] {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 100%; /* Match container width */
+  height: 6px; /* Make it less high */
+  background: transparent; /* Track is styled separately */
+  margin: 4px 0;
+  cursor: pointer;
+}
+
+/* Style for the track (the bar) */
+.sliderContainer input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.sliderContainer input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+/* Style for the thumb (the circle/handle) */
+.sliderContainer input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: #e63e21; /* Theme Color Orange */
+  cursor: pointer;
+  margin-top: -4px; /* Center the thumb vertically */
+  box-shadow: 0 0 0 2px rgba(230, 62, 33, 0.5);
+}
+
+.sliderContainer input[type="range"]::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  border: none;
+  border-radius: 50%;
+  background: #e63e21; /* Theme Color Orange */
+  cursor: pointer;
+}

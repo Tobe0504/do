@@ -46,7 +46,7 @@ const ConversationsMainHeader = () => {
     },
 
     {
-      title: "Add conversation to knowledge base",
+      title: "Add to knowledge base",
       icon: <BookOpen size={16} />,
       group: "Collaboration & Workflow",
     },

@@ -1,0 +1,22 @@
+.container {
+  width: 400px;
+  padding: 1rem;
+}
+
+.container,
+.container > form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.container > h4 {
+  font-size: var(--headerFontSize);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.container > form > button {
+  max-width: 100px;
+  margin-top: 1rem;
+}

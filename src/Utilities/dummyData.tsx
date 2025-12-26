@@ -498,3 +498,152 @@ export const customerService = {
     ];
   },
 };
+
+export const messages = [
+  {
+    id: 1,
+    text: "Hey, how’s it going?",
+    sender: "other",
+    time: "Today at 2:10pm",
+  },
+  {
+    id: 2,
+    text: "All good! Just working on the project.",
+    sender: "me",
+    time: "Today at 2:11pm",
+    status: "sent",
+  },
+  {
+    id: 3,
+    text: "Nice, what part are you on?",
+    sender: "other",
+    time: "Today at 2:12pm",
+  },
+  {
+    id: 4,
+    text: "Currently setting up the chat system.",
+    sender: "me",
+    time: "Today at 2:12pm",
+    status: "delivered",
+  },
+  {
+    id: 5,
+    text: "Oh cool! Using sockets?",
+    sender: "other",
+    time: "Today at 2:13pm",
+  },
+  {
+    id: 6,
+    text: "Yeah, Socket.IO with Next.js 😅",
+    sender: "me",
+    time: "Today at 2:13pm",
+    status: "read",
+  },
+  {
+    id: 7,
+    text: "That’s awesome. So Do is really coming alive 👀",
+    sender: "other",
+    time: "Today at 2:14pm",
+  },
+  {
+    id: 8,
+    text: "Have you handled typing indicators yet?",
+    sender: "other",
+    time: "Today at 2:15pm",
+  },
+  {
+    id: 9,
+    text: "Yep, just finished that earlier. Super smooth experience now.",
+    sender: "me",
+    time: "Today at 2:16pm",
+    status: "read",
+  },
+  {
+    id: 10,
+    text: "🔥🔥🔥",
+    sender: "other",
+    time: "Today at 2:16pm",
+  },
+  {
+    id: 11,
+    text: "Haha thanks 😂",
+    sender: "me",
+    time: "Today at 2:17pm",
+    status: "read",
+  },
+  {
+    id: 12,
+    text: "When do you think it’ll be ready?",
+    sender: "other",
+    time: "Today at 2:17pm",
+  },
+  {
+    id: 13,
+    text: `Probably by the end of the week.  
+But I’m not 100% sure, I have an engagement over the weekend.`,
+    sender: "me",
+    time: "Today at 2:18pm",
+    status: "read",
+  },
+  {
+    id: 14,
+    text: "That’s fast! 🚀",
+    sender: "other",
+    time: "Today at 2:18pm",
+  },
+  {
+    id: 15,
+    text: `Yeah, trying to stay productive 😅.  
+The core features are ready — task creation, real-time updates, and chat.  
+Now polishing the UX so Do feels different from Trello or Notion.`,
+    sender: "me",
+    time: "Today at 2:19pm",
+    status: "read",
+  },
+  {
+    id: 16,
+    text: "Respect 👏. Honestly, the chat integration is such a game changer.",
+    sender: "other",
+    time: "Today at 2:20pm",
+  },
+  {
+    id: 17,
+    text: "Appreciate it bro!",
+    sender: "me",
+    time: "Today at 2:20pm",
+    status: "read",
+  },
+  {
+    id: 18,
+    text: "What’s the idea behind Do again? Is it just tasks?",
+    sender: "other",
+    time: "Today at 2:21pm",
+  },
+  {
+    id: 19,
+    text: `Not just tasks.  
+The goal is to make productivity feel less like a checklist and more like a **conversation**.  
+
+So tasks, chats, notes, and even progress timelines live in one place.  
+People shouldn’t need to jump between Slack, Trello, and Google Docs.`,
+    sender: "me",
+    time: "Today at 2:22pm",
+    status: "read",
+  },
+  {
+    id: 20,
+    text: "Later!",
+    sender: "other",
+    time: "Today at 2:23pm",
+    quote:
+      "Not just tasks. The goal is to make productivity feel less like a checklist...",
+  },
+  {
+    id: 21,
+    text: "Exactly. That’s why Do exists 🙌",
+    sender: "me",
+    time: "Today at 2:24pm",
+    status: "read",
+    quote: "What’s the idea behind Do again? Is it just tasks?",
+  },
+];

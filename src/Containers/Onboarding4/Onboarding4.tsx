@@ -45,17 +45,6 @@ const Onboarding4 = () => {
           value={searchKey}
         />
 
-        <Button
-          type="secondary"
-          onClick={(e) => {
-            e.preventDefault();
-          }}
-          disabled={!searchKey}
-        >
-          <Search size={16} />
-          Search
-        </Button>
-
         <div className={classes.organizations}>
           <h4>Results for {searchKey} </h4>
           <p>

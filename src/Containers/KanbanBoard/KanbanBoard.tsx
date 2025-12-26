@@ -3,7 +3,7 @@ import { DndContext, DragEndEvent, closestCenter } from "@dnd-kit/core";
 import { initialTasks } from "../OrganozationListTasksContainer/OrganizationListTasksContainer";
 import KanbanColumn from "../KanbanColumn/KanbanColumn";
 import classes from "./KanbanBoard.module.css";
-import { Calendar, Kanban, List } from "lucide-react";
+import { Calendar, Kanban, List, Table } from "lucide-react";
 import { activeToggler } from "../../HelperFunctions/activeTogglerr";
 
 interface Task {
@@ -75,6 +75,11 @@ const KanbanBoard = () => {
       title: "List",
       isActive: false,
       icon: <List size={16} />,
+    },
+    {
+      title: "Table",
+      isActive: false,
+      icon: <Table size={16} />,
     },
     {
       title: "Calendar",

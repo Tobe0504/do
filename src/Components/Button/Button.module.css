@@ -33,7 +33,8 @@
   border: none;
 }
 
-.tertiary:hover {
+.tertiary:hover,
+.null:hover {
   background: var(--orangeWithTransparency);
 }
 

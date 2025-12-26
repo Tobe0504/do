@@ -1,4 +1,3 @@
-import Draggable from "../../Components/Draggable/Draggable";
 import classes from "./DashboardLayoutRightSideBar.module.css";
 
 type DashboardLayoutRightSideBarType = {

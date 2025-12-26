@@ -79,18 +79,27 @@ const SectionsNav = ({
               ref={(el) => (itemRefs.current[index] = el)}
               onClick={() => handleClick(index, navItem.id)}
               className={`
-                ${navItem.isActive ? classes.active : classes.inActive}
-                ${
-                  type === "secondary"
-                    ? classes.button
-                    : type === "tertiary"
-                    ? classes.tertiary
-                    : classes.noButton
-                }
-                ${navItem.isBordered ? classes.bordered : ""}
-              `}
+           ${navItem.isActive ? classes.active : classes.inActive}
+           ${
+             type === "secondary"
+               ? classes.button
+               : type === "tertiary"
+               ? classes.tertiary
+               : classes.noButton
+           }
+           ${navItem.isBordered ? classes.bordered : ""}
+         `}
             >
-              {capitalizeEachWord(navItem.title)}
+              <span className={classes.itemContent}>
+                {navItem.icon && (
+                  <navItem.icon
+                    className={classes.icon}
+                    strokeWidth={2}
+                    size={16}
+                  />
+                )}
+                {capitalizeEachWord(navItem.title)}
+              </span>
             </div>
           ))}
           <div

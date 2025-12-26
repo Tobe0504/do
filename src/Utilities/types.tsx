@@ -1,3 +1,5 @@
+import { LucideIcon } from "lucide-react";
+
 export type onboardingAnswersType = {
   whatToManage: string;
   vibe: string;
@@ -14,7 +16,7 @@ export type navItemTypes = {
   description?: string;
   id: string;
   isBordered?: boolean;
-  icon?: React.ReactNode;
+  icon?: LucideIcon;
 };
 
 export type TaskType = {

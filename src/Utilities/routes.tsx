@@ -7,6 +7,7 @@ import {
   Settings,
   Sun,
   Search as SearchIcon,
+  Infinity,
 } from "lucide-react";
 import Conversations from "../Containers/Conversations/Conversations";
 import Dashboard from "../Containers/Dashboard/Dashboard";
@@ -20,6 +21,8 @@ import ResetPassword from "../Containers/ResetPassword/ResetPassword";
 import Search from "../Containers/Search/Search";
 import SignIn from "../Containers/SignIn/SignIn";
 import SignUp from "../Containers/SignUp/SignUp";
+import ThinkSpace from "../Containers/ThinkSpace/ThinkSpace";
+import ThinkSpaceCanvas from "../Containers/ThinkSpaceCanvas/ThinkSpaceCanvas";
 
 export const routes = Object.freeze({
   BASE_URL: "/",
@@ -51,6 +54,7 @@ export const routes = Object.freeze({
   SEARCH: "/search",
   NOTIFICATIONS: "/notifications",
   TEAMS: "/squads",
+  THINK_SPACE: "/think-space",
 });
 
 export const routeComponents = [
@@ -118,6 +122,20 @@ export const routeComponents = [
     properties: ["isProtected", "isSideNavRoute"],
     route: routes.GENERAL_CONVERSATIONS,
     icon: <MessagesSquare size={20} />,
+  },
+  {
+    title: "Think Space",
+    component: <ThinkSpace />,
+    properties: ["isProtected", "isSideNavRoute"],
+    route: routes.THINK_SPACE,
+    icon: <Infinity size={20} />,
+  },
+  {
+    title: "Tobe's Think Space",
+    component: <ThinkSpaceCanvas />,
+    properties: ["isProtected"],
+    route: `${routes.THINK_SPACE}/1`,
+    icon: null,
   },
   {
     title: "Notifications",

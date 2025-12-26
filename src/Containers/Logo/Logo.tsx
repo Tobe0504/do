@@ -19,7 +19,8 @@ const Logo = ({ onClick }: LogoTypes) => {
       }}
     >
       <img
-        src="https://res.cloudinary.com/dgiropjpp/image/upload/v1746000565/Untitled_design__1_-removebg-preview_yysqk1.png"
+        // src="https://res.cloudinary.com/dgiropjpp/image/upload/v1746000565/Untitled_design__1_-removebg-preview_yysqk1.png"
+        src="https://res.cloudinary.com/dmpdhnjqs/image/upload/v1759733038/Do/Red_Flower_Emblem_on_Black_reuvpr.png"
         alt="Logo"
         height={40}
         width={40}

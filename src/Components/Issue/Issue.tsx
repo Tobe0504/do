@@ -10,6 +10,7 @@ import {
   issuesType,
   riskTypes,
 } from "../../Utilities/types";
+import Options from "../Options/Options";
 import styles from "./Issue.module.css";
 
 interface Props extends React.HtmlHTMLAttributes<HTMLDivElement> {
@@ -67,19 +68,10 @@ const Issue: React.FC<Props> = ({ item, type, options, ...props }) => {
           onClick={() => setModalTrue(setOptionsState, "options")}
         />
         {optionsState?.options && (
-          <div className={styles.options} ref={optionsRef}>
-            {options[type as "risk" | "issue"]?.map((data) => {
-              return (
-                <div
-                  onClick={() => {
-                    data?.action && data?.action();
-                  }}
-                >
-                  {data?.title}
-                </div>
-              );
-            })}
-          </div>
+          <Options
+            options={options[type as "risk" | "issue"]}
+            ref={optionsRef}
+          />
         )}
       </div>
     </div>

@@ -60,7 +60,11 @@ const ConversationsMainConversations = () => {
 
   return (
     <div className={classes.container}>
-      <ProjectChatMessages setQuotedMessage={setQuoteMessage} />
+      <ProjectChatMessages
+        setQuotedMessage={setQuoteMessage}
+        setMessage={setValue}
+      />
+
       <div className={classes.message}>
         <div>
           {quoteMessage && (

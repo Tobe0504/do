@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, MutableRefObject } from "react";
 import { optionsType } from "../../Utilities/types";
 import Button from "../Button/Button";
 import classes from "./Options.module.css";

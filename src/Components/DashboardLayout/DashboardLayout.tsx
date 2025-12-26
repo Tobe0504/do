@@ -14,7 +14,6 @@ type DashboardLayoutTypes = {
   rightBarClassName?: string;
   openSidenav?: boolean;
   noHeader?: boolean;
-  openSideNav?: boolean;
 };
 
 const DashboardLayout = ({
@@ -23,7 +22,7 @@ const DashboardLayout = ({
   header,
   rightBarChild,
   rightBarClassName,
-  openSidenav = false,
+  openSidenav = true,
   noHeader,
 }: DashboardLayoutTypes) => {
   // States
@@ -70,6 +69,12 @@ const DashboardLayout = ({
       if (rightEdgeTimer.current) clearTimeout(rightEdgeTimer.current);
     };
   }, []);
+
+  useEffect(() => {
+    if (openSidenav === false) {
+      setSideNavisOpened(false);
+    }
+  }, [openSidenav]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
